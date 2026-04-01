@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revere Fitness — Personal Training</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base:     '#0C0B09',
+            surface:  '#141310',
+            elevated: '#1C1A15',
+            border:   '#2A271F',
+            gold:     '#B8913A',
+            'gold-light': '#D4AA58',
+            'gold-dim':   '#8A6C28',
+            forest:   '#2C4438',
+            'text-primary':   '#EDE8DF',
+            'text-secondary': '#8A8580',
+            muted:            '#55524E',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garant"', 'Georgia', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0C0B09;
+      color: #EDE8DF;
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0C0B09; }
+    ::-webkit-scrollbar-thumb { background: #2A271F; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #B8913A; }
+
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nav-glass {
+      background: rgba(12, 11, 9, 0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(42, 39, 31, 0.6);
+    }
+
+    .btn-gold {
+      background: #B8913A;
+      color: #0C0B09;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.25s ease;
+    }
+    .btn-gold:hover {
+      background: #D4AA58;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(184, 145, 58, 0.2), 0 2px 8px rgba(184, 145, 58, 0.12);
+    }
+    .btn-gold:active  { transform: translateY(0); }
+    .btn-gold:focus-visible { outline: 2px solid #B8913A; outline-offset: 3px; }
+
+    .btn-ghost {
+      border: 1px solid rgba(237, 232, 223, 0.18);
+      color: #EDE8DF;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(184, 145, 58, 0.45);
+      background: rgba(184, 145, 58, 0.05);
+      transform: translateY(-1px);
+    }
+    .btn-ghost:active { transform: translateY(0); }
+    .btn-ghost:focus-visible { outline: 2px solid #B8913A; outline-offset: 3px; }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 65% 70% at 75% 35%, rgba(184, 145, 58, 0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 5%  85%, rgba(44, 68, 56, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 90% 50% at 50% 0%,  rgba(184, 145, 58, 0.04) 0%, transparent 50%),
+        #0C0B09;
+    }
+
+    .gold-rule {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #B8913A, transparent);
+      opacity: 0.35;
+    }
+
+    .card {
+      background: #141310;
+      border: 1px solid #2A271F;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      border-color: rgba(184, 145, 58, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(184,145,58,0.06);
+    }
+
+    .icon-badge {
+      background: rgba(184, 145, 58, 0.07);
+      border: 1px solid rgba(184, 145, 58, 0.15);
+      color: #B8913A;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    .card:hover .icon-badge {
+      background: rgba(184, 145, 58, 0.13);
+      border-color: rgba(184, 145, 58, 0.28);
+    }
+
+    .stat-item { border-right: 1px solid #2A271F; }
+    .stat-item:last-child { border-right: none; }
+
+    .pricing-card {
+      background: #141310;
+      border: 1px solid #2A271F;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .pricing-card:hover {
+      border-color: rgba(184, 145, 58, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+    }
+    .pricing-card.featured {
+      background: linear-gradient(160deg, #191611 0%, #141310 100%);
+      border-color: rgba(184, 145, 58, 0.45);
+      box-shadow: 0 0 0 1px rgba(184,145,58,0.08), 0 24px 64px rgba(0,0,0,0.4);
+    }
+    .pricing-card.featured:hover {
+      border-color: rgba(184, 145, 58, 0.65);
+      transform: translateY(-6px);
+    }
+
+    .testimonial-card {
+      background: #141310;
+      border: 1px solid #2A271F;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .testimonial-card:hover {
+      border-color: rgba(184, 145, 58, 0.22);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.38);
+    }
+
+    .label-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(184, 145, 58, 0.07);
+      border: 1px solid rgba(184, 145, 58, 0.2);
+      color: #B8913A;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 13px;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .nav-link {
+      color: #8A8580;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.15s ease;
+    }
+    .nav-link:hover { color: #EDE8DF; }
+    .nav-link:focus-visible { outline: 2px solid #B8913A; outline-offset: 3px; border-radius: 2px; }
+
+    .avatar-ring {
+      box-shadow: 0 0 0 2px #0C0B09, 0 0 0 3.5px rgba(184, 145, 58, 0.35);
+    }
+
+    .font-display { font-family: 'Cormorant Garant', Georgia, serif; }
+
+    .cta-bg {
+      background:
+        radial-gradient(ellipse 70% 100% at 50% 110%, rgba(184, 145, 58, 0.09) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 0% 50%, rgba(44, 68, 56, 0.07) 0%, transparent 55%),
+        #141310;
+      border-top:    1px solid #2A271F;
+      border-bottom: 1px solid #2A271F;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .hero-img-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, #0C0B09 0%, rgba(12,11,9,0.55) 55%, transparent 100%),
+        linear-gradient(to top,   #0C0B09 0%, transparent 35%);
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 1;
+      color: rgba(184, 145, 58, 0.18);
+      letter-spacing: -0.03em;
+    }
+
+    .quote-mark {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 5rem;
+      line-height: 0.6;
+      color: rgba(184, 145, 58, 0.15);
+      font-style: italic;
+      user-select: none;
+    }
+
+    #mobile-nav {
+      background: rgba(12, 11, 9, 0.98);
+      backdrop-filter: blur(20px);
+    }
+
+    footer { border-top: 1px solid #2A271F; }
+    .gold-star { color: #B8913A; }
+  </style>
+</head>
+
+<body class="font-body">
+
+  <!-- NAV -->
+  <header class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+
+      <a href="#" class="flex items-center gap-3" aria-label="Revere Fitness home">
+        <div class="w-7 h-7 rounded flex items-center justify-center flex-shrink-0"
+             style="background: linear-gradient(135deg, #B8913A 0%, #8A6C28 100%);">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+            <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0C0B09" opacity="0.4"/>
+            <path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0C0B09"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-display font-semibold text-text-primary" style="font-size:1.05rem; letter-spacing:0.12em;">REVERE</span>
+          <span class="font-body font-medium text-muted uppercase block" style="font-size:0.6rem; letter-spacing:0.22em; margin-top:-3px; line-height:1;">FITNESS</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#about"        class="nav-link">About</a>
+        <a href="#services"     class="nav-link">Services</a>
+        <a href="#process"      class="nav-link">How It Works</a>
+        <a href="#testimonials" class="nav-link">Results</a>
+        <a href="#pricing"      class="nav-link">Pricing</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden md:inline-flex btn-gold px-5 py-2.5 rounded">Book Free Call</a>
+        <button id="hamburger" class="md:hidden p-2 rounded border border-border text-text-secondary hover:text-text-primary transition-colors" aria-label="Toggle menu" aria-expanded="false">
+          <svg id="ham-icon"   width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M2 4H15M2 8.5H15M2 13H15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <svg id="close-icon" class="hidden" width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M3.5 3.5L13.5 13.5M13.5 3.5L3.5 13.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-nav" class="hidden md:hidden border-t border-border">
+      <nav class="flex flex-col px-6 py-4 gap-1">
+        <a href="#about"        class="nav-link py-3 border-b border-border/50 mobile-nav-link">About</a>
+        <a href="#services"     class="nav-link py-3 border-b border-border/50 mobile-nav-link">Services</a>
+        <a href="#process"      class="nav-link py-3 border-b border-border/50 mobile-nav-link">How It Works</a>
+        <a href="#testimonials" class="nav-link py-3 border-b border-border/50 mobile-nav-link">Results</a>
+        <a href="#pricing"      class="nav-link py-3 mobile-nav-link">Pricing</a>
+        <a href="#contact" class="btn-gold px-5 py-3 rounded text-center mt-4">Book Free Call</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero-bg grain relative min-h-screen flex items-center overflow-hidden pt-16">
+      <div class="absolute inset-0 z-0">
+        <img src="https://placehold.co/1600x900/0F0E0B/181510?text=+"
+             alt="" class="w-full h-full object-cover object-center opacity-35" aria-hidden="true" />
+        <div class="hero-img-overlay"></div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6 w-full py-28 md:py-36">
+        <div class="max-w-2xl">
+          <div class="label-chip mb-7 reveal">
+            <span style="width:5px;height:5px;background:#B8913A;border-radius:50%;display:inline-block;"></span>
+            Personal Training &amp; Coaching
+          </div>
+
+          <h1 class="font-display font-semibold text-text-primary reveal"
+              style="font-size: clamp(3.2rem, 8vw, 6.8rem); line-height: 0.97; letter-spacing: -0.01em; transition-delay: 0.08s;">
+            Respect<br/>
+            the body.<br/>
+            <em style="color: #B8913A; font-style: italic;">Trust the<br/>process.</em>
+          </h1>
+
+          <div class="gold-rule my-7 max-w-xs reveal" style="transition-delay:0.18s;"></div>
+
+          <p class="text-text-secondary text-base md:text-[1.05rem] leading-[1.8] max-w-lg reveal" style="transition-delay:0.25s;">
+            This isn't just training. This is self-respect in motion. Science-backed programming built on mastery, intention, and a deep reverence for what your body can become.
+          </p>
+
+          <div class="mt-9 flex flex-col sm:flex-row gap-3 reveal" style="transition-delay:0.33s;">
+            <a href="#contact" class="btn-gold px-8 py-3.5 rounded inline-flex items-center justify-center gap-2.5">
+              Book Free Consultation
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5H11M7 2.5L11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#services" class="btn-ghost px-8 py-3.5 rounded inline-flex items-center justify-center gap-2">
+              View Programs
+            </a>
+          </div>
+
+          <div class="mt-10 flex items-center gap-5 reveal" style="transition-delay:0.42s;">
+            <div class="flex -space-x-2.5">
+              <img src="https://placehold.co/36x36/1C1A15/B8913A?text=C" alt="" class="w-9 h-9 rounded-full avatar-ring object-cover" />
+              <img src="https://placehold.co/36x36/2A271F/8A6C28?text=C" alt="" class="w-9 h-9 rounded-full avatar-ring object-cover" />
+              <img src="https://placehold.co/36x36/141310/B8913A?text=C" alt="" class="w-9 h-9 rounded-full avatar-ring object-cover" />
+              <img src="https://placehold.co/36x36/1C1A15/8A6C28?text=C" alt="" class="w-9 h-9 rounded-full avatar-ring object-cover" />
+            </div>
+            <div>
+              <div class="mb-0.5"><span class="gold-star text-xs">★★★★★</span></div>
+              <p class="text-xs text-text-secondary">Trusted by <span class="text-text-primary font-medium">200+ clients</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-30">
+        <span class="font-body text-muted" style="font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase;">Scroll</span>
+        <div class="w-px h-9" style="background: linear-gradient(to bottom, #B8913A, transparent);"></div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section style="background:#141310; border-top:1px solid #2A271F; border-bottom:1px solid #2A271F;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4">
+          <div class="stat-item py-10 px-8 text-center reveal">
+            <p class="font-display font-semibold" style="font-size:3.25rem; color:#B8913A; letter-spacing:-0.02em; line-height:1;">200<span style="font-size:1.9rem;">+</span></p>
+            <p class="text-text-secondary text-xs mt-2 tracking-widest uppercase font-medium">Clients Trained</p>
+          </div>
+          <div class="stat-item py-10 px-8 text-center reveal" style="transition-delay:0.1s">
+            <p class="font-display font-semibold" style="font-size:3.25rem; color:#B8913A; letter-spacing:-0.02em; line-height:1;">8<span style="font-size:1.9rem;">+</span></p>
+            <p class="text-text-secondary text-xs mt-2 tracking-widest uppercase font-medium">Years Experience</p>
+          </div>
+          <div class="stat-item py-10 px-8 text-center reveal" style="transition-delay:0.2s">
+            <p class="font-display font-semibold" style="font-size:3.25rem; color:#B8913A; letter-spacing:-0.02em; line-height:1;">94<span style="font-size:1.9rem;">%</span></p>
+            <p class="text-text-secondary text-xs mt-2 tracking-widest uppercase font-medium">Goal Achievement</p>
+          </div>
+          <div class="stat-item py-10 px-8 text-center reveal" style="transition-delay:0.3s">
+            <p class="font-display font-semibold" style="font-size:3.25rem; color:#B8913A; letter-spacing:-0.02em; line-height:1;">5<span style="font-size:1.9rem;">★</span></p>
+            <p class="text-text-secondary text-xs mt-2 tracking-widest uppercase font-medium">Average Rating</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY BAND -->
+    <section style="background:#0C0B09; border-bottom:1px solid #2A271F; padding: 56px 0;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center justify-between reveal">
+          <div style="border-right: 1px solid #2A271F;" class="md:pr-12 md:mr-12 pb-8 md:pb-0 border-b md:border-b-0 border-border w-full md:w-auto">
+            <p class="font-body font-medium text-muted text-xs tracking-widest uppercase mb-2">The Philosophy</p>
+            <p class="font-display font-semibold text-text-primary" style="font-size:1.6rem; line-height:1.2;">Honour the work.</p>
+          </div>
+          <div class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div>
+              <p class="font-body text-muted uppercase font-medium mb-2" style="font-size:0.62rem; letter-spacing:0.18em;">Revere the Body</p>
+              <p class="text-text-secondary text-sm leading-[1.75]">We don't punish the body. We respect it — with smart programming, adequate recovery, and sustainable habits.</p>
+            </div>
+            <div>
+              <p class="font-body text-muted uppercase font-medium mb-2" style="font-size:0.62rem; letter-spacing:0.18em;">Revere the Process</p>
+              <p class="text-text-secondary text-sm leading-[1.75]">Mastery takes time. We trade short-term hustle for long-term consistency — the kind that actually lasts.</p>
+            </div>
+            <div>
+              <p class="font-body text-muted uppercase font-medium mb-2" style="font-size:0.62rem; letter-spacing:0.18em;">Revere the Result</p>
+              <p class="text-text-secondary text-sm leading-[1.75]">When you honour the work, results follow naturally. Not as the goal — as the inevitable outcome.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 md:py-32" style="background:#0C0B09;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+
+          <div class="relative reveal order-2 md:order-1">
+            <div class="relative rounded-xl overflow-hidden"
+                 style="box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(184,145,58,0.1);">
+              <img src="https://placehold.co/600x720/141310/1C1A15?text=Trainer+Photo"
+                   alt="Personal trainer" class="w-full object-cover" />
+              <div class="absolute inset-0 pointer-events-none"
+                   style="background: linear-gradient(to top, rgba(12,11,9,0.65) 0%, transparent 45%), linear-gradient(135deg, rgba(184,145,58,0.04) 0%, transparent 55%);"></div>
+            </div>
+            <div class="absolute -bottom-5 -right-4 md:-right-8 rounded-xl px-5 py-4"
+                 style="background:#1C1A15; border:1px solid #2A271F; box-shadow: 0 16px 48px rgba(0,0,0,0.45);">
+              <p class="font-body text-muted uppercase font-medium mb-2" style="font-size:0.6rem; letter-spacing:0.18em;">Certified By</p>
+              <div class="flex flex-col gap-1.5">
+                <p class="text-text-primary text-xs font-medium">NASM — Certified Personal Trainer</p>
+                <p class="text-text-primary text-xs font-medium">Precision Nutrition — Level 1</p>
+                <p class="text-text-primary text-xs font-medium">NSCA — CSCS</p>
+              </div>
+            </div>
+            <div class="absolute -top-10 -left-10 w-48 h-48 rounded-full pointer-events-none"
+                 style="background: radial-gradient(circle, rgba(184,145,58,0.10) 0%, transparent 70%);"></div>
+          </div>
+
+          <div class="order-1 md:order-2">
+            <div class="label-chip mb-5 reveal">About</div>
+            <h2 class="font-display font-semibold text-text-primary reveal"
+                style="font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
+              Training as an act<br/>of <em style="color:#B8913A; font-style:italic;">self-respect.</em>
+            </h2>
+            <div class="gold-rule my-6 max-w-[200px] reveal" style="transition-delay:0.18s;"></div>
+            <p class="text-text-secondary text-sm leading-[1.85] mb-5 reveal" style="transition-delay:0.22s;">
+              I'm a certified personal trainer with over 8 years of experience helping real people build bodies — and identities — they're proud of. My philosophy is simple: the body deserves better than punishment. It deserves a programme built on science, patience, and deep respect.
+            </p>
+            <p class="text-text-secondary text-sm leading-[1.85] mb-8 reveal" style="transition-delay:0.28s;">
+              Whether you're returning after injury, starting over, or looking to reach a new level — I'll build a plan around who you are, not a generic template. This is mastery work. And it starts with deciding you're worth the effort.
+            </p>
+            <ul class="space-y-3 reveal" style="transition-delay:0.34s;">
+              <li class="flex items-center gap-3 text-sm text-text-secondary">
+                <span class="flex-shrink-0 w-5 h-5 rounded flex items-center justify-center font-bold" style="font-size:0.65rem; background:rgba(184,145,58,0.08); color:#B8913A; border:1px solid rgba(184,145,58,0.18);">✓</span>
+                NASM Certified Personal Trainer (CPT)
+              </li>
+              <li class="flex items-center gap-3 text-sm text-text-secondary">
+                <span class="flex-shrink-0 w-5 h-5 rounded flex items-center justify-center font-bold" style="font-size:0.65rem; background:rgba(184,145,58,0.08); color:#B8913A; border:1px solid rgba(184,145,58,0.18);">✓</span>
+                Precision Nutrition Level 1 Coach
+              </li>
+              <li class="flex items-center gap-3 text-sm text-text-secondary">
+                <span class="flex-shrink-0 w-5 h-5 rounded flex items-center justify-center font-bold" style="font-size:0.65rem; background:rgba(184,145,58,0.08); color:#B8913A; border:1px solid rgba(184,145,58,0.18);">✓</span>
+                Certified Strength &amp; Conditioning Specialist (CSCS)
+              </li>
+              <li class="flex items-center gap-3 text-sm text-text-secondary">
+                <span class="flex-shrink-0 w-5 h-5 rounded flex items-center justify-center font-bold" style="font-size:0.65rem; background:rgba(184,145,58,0.08); color:#B8913A; border:1px solid rgba(184,145,58,0.18);">✓</span>
+                Specialised in body recomposition &amp; long-term performance
+              </li>
+            </ul>
+            <a href="#contact" class="btn-gold inline-flex items-center gap-2.5 px-7 py-3.5 rounded mt-8 reveal" style="transition-delay:0.42s;">
+              Work With Me
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5H11M7 2.5L11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-24 md:py-32" style="background:#141310; border-top:1px solid #2A271F;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-xl mb-16">
+          <div class="label-chip mb-5 reveal">Programs</div>
+          <h2 class="font-display font-semibold text-text-primary reveal"
+              style="font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
+            Built around<br/><em style="color:#B8913A; font-style:italic;">your goals.</em>
+          </h2>
+          <p class="text-text-secondary text-sm leading-[1.8] mt-4 reveal" style="transition-delay:0.18s;">
+            Three focused programmes — each designed around mastery, not hustle. Sustainable, science-backed, and built for real life.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card rounded-xl p-8 reveal">
+            <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center mb-6">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10H4M16 10H18M6 10H14M4 6.5L2.5 5M4 13.5L2.5 15M16 6.5L17.5 5M16 13.5L17.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3 class="font-display font-semibold text-text-primary text-2xl mb-1" style="letter-spacing:-0.01em;">1-on-1 Training</h3>
+            <p class="text-muted font-body font-medium uppercase mb-4" style="font-size:0.62rem; letter-spacing:0.14em;">In-person · Fully personalised</p>
+            <p class="text-text-secondary text-sm leading-[1.8] mb-6">The highest level of coaching. Every session is built around your body, your goals, and your life. Real-time feedback, intelligent programming, and complete accountability.</p>
+            <ul class="space-y-2.5 mb-7">
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Custom training programme</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Weekly check-ins &amp; adjustments</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Real-time form coaching</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Progress tracking dashboard</li>
+            </ul>
+            <a href="#contact" class="btn-ghost px-5 py-2.5 rounded inline-flex items-center gap-2">Get Started <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5H9.5M6 2L9.5 5.5L6 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+
+          <div class="card rounded-xl p-8 reveal relative overflow-hidden"
+               style="transition-delay:0.12s; border-color: rgba(184,145,58,0.35); background: linear-gradient(160deg, #181510 0%, #141310 100%);">
+            <div class="absolute top-5 right-5">
+              <span class="font-body font-semibold uppercase px-3 py-1.5 rounded" style="font-size:0.6rem; letter-spacing:0.1em; background:#B8913A; color:#0C0B09;">Most Popular</span>
+            </div>
+            <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center mb-6">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="4" width="15" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 8H10M6 12H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="font-display font-semibold text-text-primary text-2xl mb-1" style="letter-spacing:-0.01em;">Online Coaching</h3>
+            <p class="text-muted font-body font-medium uppercase mb-4" style="font-size:0.62rem; letter-spacing:0.14em;">Remote · Full support</p>
+            <p class="text-text-secondary text-sm leading-[1.8] mb-6">World-class coaching wherever you are. Train on your schedule with a programme built around your equipment, lifestyle, and goals — delivered through a dedicated coaching app.</p>
+            <ul class="space-y-2.5 mb-7">
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Personalised remote programme</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Bi-weekly video check-ins</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Nutrition coaching included</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> 24/7 messaging support</li>
+            </ul>
+            <a href="#contact" class="btn-gold px-5 py-2.5 rounded inline-flex items-center gap-2">Get Started <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5H9.5M6 2L9.5 5.5L6 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+
+          <div class="card rounded-xl p-8 reveal" style="transition-delay:0.24s;">
+            <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center mb-6">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C10 2 6.5 6.5 6.5 10C6.5 12.5 8 14 10 14C12 14 13.5 12.5 13.5 10C13.5 6.5 10 2 10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 14V18M7.5 18H12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="font-display font-semibold text-text-primary text-2xl mb-1" style="letter-spacing:-0.01em;">Nutrition Plans</h3>
+            <p class="text-muted font-body font-medium uppercase mb-4" style="font-size:0.62rem; letter-spacing:0.14em;">Standalone · Add-on available</p>
+            <p class="text-text-secondary text-sm leading-[1.8] mb-6">Fuelling the body is an act of respect. No restrictive diets — just smart, flexible eating strategies aligned with your training, your life, and your long-term wellbeing.</p>
+            <ul class="space-y-2.5 mb-7">
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Full macro &amp; calorie targets</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Flexible meal frameworks</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Supplement guidance</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Monthly plan revisions</li>
+            </ul>
+            <a href="#contact" class="btn-ghost px-5 py-2.5 rounded inline-flex items-center gap-2">Get Started <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5H9.5M6 2L9.5 5.5L6 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="py-24 md:py-32" style="background:#0C0B09; border-top:1px solid #2A271F;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-xl mx-auto mb-20">
+          <div class="label-chip mb-5 reveal inline-flex">How It Works</div>
+          <h2 class="font-display font-semibold text-text-primary reveal"
+              style="font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
+            Your path to<br/><em style="color:#B8913A; font-style:italic;">mastery.</em>
+          </h2>
+          <p class="text-text-secondary text-sm leading-[1.8] mt-4 reveal" style="transition-delay:0.18s;">
+            Three clear steps from your first conversation to your first transformation.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+          <div class="reveal">
+            <p class="step-num mb-3">01</p>
+            <h3 class="font-display font-semibold text-text-primary text-2xl mb-3" style="letter-spacing:-0.01em;">Discovery Call</h3>
+            <div class="gold-rule mb-4 max-w-[60px]" style="opacity:0.5;"></div>
+            <p class="text-text-secondary text-sm leading-[1.85]">A free 30-minute conversation to understand your goals, your history, your life. No pitch — just clarity. We figure out if we're the right fit for each other.</p>
+          </div>
+          <div class="reveal" style="transition-delay:0.15s;">
+            <p class="step-num mb-3">02</p>
+            <h3 class="font-display font-semibold text-text-primary text-2xl mb-3" style="letter-spacing:-0.01em;">Your Programme</h3>
+            <div class="gold-rule mb-4 max-w-[60px]" style="opacity:0.5;"></div>
+            <p class="text-text-secondary text-sm leading-[1.85]">I build a fully personalised training and nutrition plan around you — your schedule, your equipment, your body. Delivered within 48 hours. No templates.</p>
+          </div>
+          <div class="reveal" style="transition-delay:0.3s;">
+            <p class="step-num mb-3">03</p>
+            <h3 class="font-display font-semibold text-text-primary text-2xl mb-3" style="letter-spacing:-0.01em;">Execute &amp; Evolve</h3>
+            <div class="gold-rule mb-4 max-w-[60px]" style="opacity:0.5;"></div>
+            <p class="text-text-secondary text-sm leading-[1.85]">Train, track, and grow. Your programme adapts as you do. I'm alongside you at every step — adjusting, coaching, and keeping you accountable to the process.</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-16 reveal">
+          <a href="#contact" class="btn-gold px-8 py-3.5 rounded inline-flex items-center gap-2.5">
+            Begin the Process
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5H11M7 2.5L11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-24 md:py-32" style="background:#141310; border-top:1px solid #2A271F;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-xl mb-16">
+          <div class="label-chip mb-5 reveal">Client Results</div>
+          <h2 class="font-display font-semibold text-text-primary reveal"
+              style="font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
+            Real people.<br/><em style="color:#B8913A; font-style:italic;">Real results.</em>
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="testimonial-card rounded-xl p-7 reveal">
+            <div class="quote-mark mb-2">"</div>
+            <p class="text-text-secondary text-sm leading-[1.85] mb-7 italic">"I lost 18kg in 5 months — but the bigger shift was mental. For the first time, I actually respected what my body could do. The programme was hard, intentional, and it completely changed how I see myself."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://placehold.co/44x44/1C1A15/B8913A?text=JM" alt="James M." class="w-11 h-11 rounded-full object-cover" style="border:1.5px solid rgba(184,145,58,0.25);" />
+              <div>
+                <p class="text-text-primary text-sm font-medium">James M.</p>
+                <p class="text-muted text-xs">Lost 18kg · Online Coaching</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card rounded-xl p-7 reveal" style="transition-delay:0.12s;">
+            <div class="quote-mark mb-2">"</div>
+            <p class="text-text-secondary text-sm leading-[1.85] mb-7 italic">"After years of spinning my wheels, Revere gave me a clear structure and the accountability I needed. I'm deadlifting 140kg now. Turns out I just needed a process I could trust."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://placehold.co/44x44/2A271F/8A6C28?text=SK" alt="Sarah K." class="w-11 h-11 rounded-full object-cover" style="border:1.5px solid rgba(184,145,58,0.25);" />
+              <div>
+                <p class="text-text-primary text-sm font-medium">Sarah K.</p>
+                <p class="text-muted text-xs">140kg deadlift · 1-on-1 Training</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card rounded-xl p-7 reveal" style="transition-delay:0.24s;">
+            <div class="quote-mark mb-2">"</div>
+            <p class="text-text-secondary text-sm leading-[1.85] mb-7 italic">"The nutrition coaching reframed my entire relationship with food. No more restriction — just a philosophy I could actually live by. I feel the best I've felt in my life, and I'm only getting started."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://placehold.co/44x44/1C1A15/B8913A?text=RP" alt="Ryan P." class="w-11 h-11 rounded-full object-cover" style="border:1.5px solid rgba(184,145,58,0.25);" />
+              <div>
+                <p class="text-text-primary text-sm font-medium">Ryan P.</p>
+                <p class="text-muted text-xs">Body recomp · Nutrition + Coaching</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-24 md:py-32" style="background:#0C0B09; border-top:1px solid #2A271F;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-xl mx-auto mb-16">
+          <div class="label-chip mb-5 reveal inline-flex">Pricing</div>
+          <h2 class="font-display font-semibold text-text-primary reveal"
+              style="font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
+            Invest in the<br/><em style="color:#B8913A; font-style:italic;">process.</em>
+          </h2>
+          <p class="text-text-secondary text-sm leading-[1.8] mt-4 reveal" style="transition-delay:0.18s;">No lock-in contracts. Cancel or change plan at any time.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 items-start">
+          <div class="pricing-card rounded-xl p-8 reveal">
+            <p class="font-body font-medium uppercase text-muted mb-4" style="font-size:0.62rem; letter-spacing:0.18em;">Foundation</p>
+            <div class="flex items-end gap-1 mb-1">
+              <span class="font-display font-semibold text-text-primary" style="font-size:3rem; letter-spacing:-0.03em; line-height:1;">£149</span>
+              <span class="text-text-secondary text-xs mb-2.5">/month</span>
+            </div>
+            <p class="text-muted text-xs mb-7">Online coaching only</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Custom training programme</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Weekly check-in via app</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Messaging support (48hr)</li>
+              <li class="flex items-center gap-2.5 text-sm text-muted"><span class="text-xs">—</span> Nutrition coaching</li>
+              <li class="flex items-center gap-2.5 text-sm text-muted"><span class="text-xs">—</span> Video check-ins</li>
+            </ul>
+            <a href="#contact" class="btn-ghost w-full py-3 rounded flex items-center justify-center">Get Started</a>
+          </div>
+
+          <div class="pricing-card featured rounded-xl p-8 reveal relative" style="transition-delay:0.12s;">
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span class="font-body font-semibold uppercase px-4 py-1.5 rounded whitespace-nowrap" style="font-size:0.6rem; letter-spacing:0.1em; background:#B8913A; color:#0C0B09;">Best Value</span>
+            </div>
+            <p class="font-body font-medium uppercase text-muted mb-4" style="font-size:0.62rem; letter-spacing:0.18em;">Mastery</p>
+            <div class="flex items-end gap-1 mb-1">
+              <span class="font-display font-semibold text-text-primary" style="font-size:3rem; letter-spacing:-0.03em; line-height:1;">£249</span>
+              <span class="text-text-secondary text-xs mb-2.5">/month</span>
+            </div>
+            <p class="text-muted text-xs mb-7">Online coaching + nutrition</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Custom training programme</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Bi-weekly video check-ins</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> 24/7 messaging support</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Full nutrition coaching</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Monthly programme revisions</li>
+            </ul>
+            <a href="#contact" class="btn-gold w-full py-3 rounded flex items-center justify-center gap-2">Get Started <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 6H10.5M6.5 2L10.5 6L6.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+
+          <div class="pricing-card rounded-xl p-8 reveal" style="transition-delay:0.24s;">
+            <p class="font-body font-medium uppercase text-muted mb-4" style="font-size:0.62rem; letter-spacing:0.18em;">Elite</p>
+            <div class="flex items-end gap-1 mb-1">
+              <span class="font-display font-semibold text-text-primary" style="font-size:3rem; letter-spacing:-0.03em; line-height:1;">£399</span>
+              <span class="text-text-secondary text-xs mb-2.5">/month</span>
+            </div>
+            <p class="text-muted text-xs mb-7">In-person + full support</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> 4× weekly in-person sessions</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Weekly video check-ins</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Priority 24/7 support</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Full nutrition coaching</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Lifestyle &amp; recovery coaching</li>
+            </ul>
+            <a href="#contact" class="btn-ghost w-full py-3 rounded flex items-center justify-center">Get Started</a>
+          </div>
+        </div>
+        <p class="text-center text-muted text-xs mt-8 reveal">Not sure which plan fits? <a href="#contact" class="underline" style="color:#B8913A;">Book a free discovery call</a> — we'll figure it out together.</p>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-bg grain py-24 md:py-32 text-center relative overflow-hidden">
+      <div class="relative z-10 max-w-2xl mx-auto px-6">
+        <div class="label-chip mb-6 reveal inline-flex">Limited Spots</div>
+        <h2 class="font-display font-semibold text-text-primary reveal"
+            style="font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 0.97; letter-spacing: -0.02em; transition-delay:0.1s;">
+          Respect yourself<br/>enough to start.<br/><em style="color:#B8913A; font-style:italic;">Revere yourself<br/>enough to never stop.</em>
+        </h2>
+        <p class="text-text-secondary text-sm leading-[1.8] mt-7 max-w-md mx-auto reveal" style="transition-delay:0.2s;">
+          I take on a limited number of new clients each month to ensure everyone receives my full attention. Book your free call before spots close.
+        </p>
+        <div class="mt-9 reveal" style="transition-delay:0.28s;">
+          <a href="#contact" class="btn-gold px-10 py-4 rounded inline-flex items-center gap-2.5" style="font-size:0.8rem;">
+            Book Free Consultation
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <p class="text-muted text-xs mt-4 tracking-wide reveal" style="transition-delay:0.35s; font-size:0.65rem;">No commitment. 100% free. 30 minutes.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 md:py-32" style="background:#0C0B09; border-top:1px solid #2A271F;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+          <div>
+            <div class="label-chip mb-5 reveal">Contact</div>
+            <h2 class="font-display font-semibold text-text-primary reveal"
+                style="font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
+              Let's talk about<br/><em style="color:#B8913A; font-style:italic;">your goals.</em>
+            </h2>
+            <div class="gold-rule my-6 max-w-[160px] reveal" style="transition-delay:0.18s;"></div>
+            <p class="text-text-secondary text-sm leading-[1.85] mb-8 reveal" style="transition-delay:0.22s;">Fill in the form and I'll be in touch within 24 hours to schedule your free discovery call.</p>
+            <div class="space-y-5 reveal" style="transition-delay:0.28s;">
+              <div class="flex items-center gap-4">
+                <div class="icon-badge w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1.5" y="3.5" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 5L7.5 9L13.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                </div>
+                <div>
+                  <p class="font-body text-muted uppercase font-medium mb-0.5" style="font-size:0.6rem; letter-spacing:0.18em;">Email</p>
+                  <a href="mailto:hello@reverefitness.com" class="text-text-primary text-sm" style="transition: color 0.15s ease;" onmouseover="this.style.color='#D4AA58'" onmouseout="this.style.color='#EDE8DF'">hello@reverefitness.com</a>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="icon-badge w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="2" y="1.5" width="11" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 5H8M5 7.5H10M5 10H7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                </div>
+                <div>
+                  <p class="font-body text-muted uppercase font-medium mb-0.5" style="font-size:0.6rem; letter-spacing:0.18em;">Social</p>
+                  <span class="text-text-primary text-sm">@reverefitness</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card rounded-xl p-8 reveal" style="transition-delay:0.18s;">
+            <form id="contact-form" onsubmit="handleSubmit(event)" novalidate>
+              <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <label class="block font-body font-medium text-muted uppercase mb-2" style="font-size:0.6rem; letter-spacing:0.18em;" for="name">Full Name</label>
+                  <input type="text" id="name" name="name" required placeholder="Your name"
+                         class="w-full rounded px-4 py-3 text-sm text-text-primary placeholder-muted focus:outline-none"
+                         style="background:#0C0B09; border:1px solid #2A271F;"
+                         onfocus="this.style.borderColor='rgba(184,145,58,0.45)'"
+                         onblur="this.style.borderColor='#2A271F'" />
+                </div>
+                <div>
+                  <label class="block font-body font-medium text-muted uppercase mb-2" style="font-size:0.6rem; letter-spacing:0.18em;" for="email">Email</label>
+                  <input type="email" id="email" name="email" required placeholder="your@email.com"
+                         class="w-full rounded px-4 py-3 text-sm text-text-primary placeholder-muted focus:outline-none"
+                         style="background:#0C0B09; border:1px solid #2A271F;"
+                         onfocus="this.style.borderColor='rgba(184,145,58,0.45)'"
+                         onblur="this.style.borderColor='#2A271F'" />
+                </div>
+              </div>
+              <div class="mb-5">
+                <label class="block font-body font-medium text-muted uppercase mb-2" style="font-size:0.6rem; letter-spacing:0.18em;" for="goal">Primary Goal</label>
+                <select id="goal" name="goal"
+                        class="w-full rounded px-4 py-3 text-sm text-text-primary focus:outline-none appearance-none cursor-pointer"
+                        style="background:#0C0B09; border:1px solid #2A271F;"
+                        onfocus="this.style.borderColor='rgba(184,145,58,0.45)'"
+                        onblur="this.style.borderColor='#2A271F'">
+                  <option value="" disabled selected>Select your main goal</option>
+                  <option value="fat-loss">Fat Loss &amp; Body Recomposition</option>
+                  <option value="muscle">Muscle Building</option>
+                  <option value="performance">Athletic Performance</option>
+                  <option value="general">General Fitness &amp; Health</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="mb-6">
+                <label class="block font-body font-medium text-muted uppercase mb-2" style="font-size:0.6rem; letter-spacing:0.18em;" for="message">Tell Me About Yourself</label>
+                <textarea id="message" name="message" rows="4"
+                          placeholder="Current fitness level, any injuries, what's held you back before..."
+                          class="w-full rounded px-4 py-3 text-sm text-text-primary placeholder-muted resize-none focus:outline-none"
+                          style="background:#0C0B09; border:1px solid #2A271F;"
+                          onfocus="this.style.borderColor='rgba(184,145,58,0.45)'"
+                          onblur="this.style.borderColor='#2A271F'"></textarea>
+              </div>
+              <button type="submit" class="btn-gold w-full py-3.5 rounded flex items-center justify-center gap-2">
+                Send Message &amp; Book Call
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5H11M7 2.5L11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </form>
+            <div id="form-success" class="hidden text-center py-6">
+              <p class="font-display font-semibold text-text-primary text-xl mb-1">Message received.</p>
+              <p class="text-text-secondary text-sm">I'll be in touch within 24 hours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:#0C0B09;">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row items-start justify-between gap-10">
+        <div>
+          <a href="#" class="flex items-center gap-2.5 mb-4">
+            <div class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
+                 style="background: linear-gradient(135deg, #B8913A 0%, #8A6C28 100%);">
+              <svg width="10" height="10" viewBox="0 0 14 14" fill="none">
+                <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0C0B09" opacity="0.4"/>
+                <path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0C0B09"/>
+              </svg>
+            </div>
+            <div>
+              <span class="font-display font-semibold text-text-primary" style="font-size:0.95rem; letter-spacing:0.12em;">REVERE</span>
+              <span class="font-body font-medium text-muted uppercase block" style="font-size:0.55rem; letter-spacing:0.22em; margin-top:-2px;">FITNESS</span>
+            </div>
+          </a>
+          <p class="text-muted text-xs leading-[1.75] max-w-[220px]">Science-backed training rooted in respect for the body, the process, and the result.</p>
+          <p class="text-muted text-xs mt-3 font-display italic">"Honour the work."</p>
+        </div>
+
+        <div class="flex gap-12">
+          <div>
+            <p class="font-body font-medium text-muted uppercase mb-4" style="font-size:0.6rem; letter-spacing:0.18em;">Navigation</p>
+            <ul class="space-y-2.5">
+              <li><a href="#about"        class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">About</a></li>
+              <li><a href="#services"     class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">Services</a></li>
+              <li><a href="#process"      class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">How It Works</a></li>
+              <li><a href="#pricing"      class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-body font-medium text-muted uppercase mb-4" style="font-size:0.6rem; letter-spacing:0.18em;">Contact</p>
+            <ul class="space-y-2.5">
+              <li><a href="mailto:hello@reverefitness.com" class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">hello@reverefitness.com</a></li>
+              <li><span class="text-text-secondary text-sm">@reverefitness</span></li>
+              <li><a href="#contact" class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">Book a Free Call</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="gold-rule mt-10 mb-6"></div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-muted text-xs">© 2026 Revere Fitness. All rights reserved.</p>
+        <div class="flex gap-5">
+          <a href="#" class="text-muted text-xs" onmouseover="this.style.color='#8A8580'" onmouseout="this.style.color='#55524E'">Privacy Policy</a>
+          <a href="#" class="text-muted text-xs" onmouseover="this.style.color='#8A8580'" onmouseout="this.style.color='#55524E'">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const hamIcon   = document.getElementById('ham-icon');
+    const closeIcon = document.getElementById('close-icon');
+    hamburger.addEventListener('click', () => {
+      const open = !mobileNav.classList.contains('hidden');
+      mobileNav.classList.toggle('hidden');
+      hamIcon.classList.toggle('hidden', !open);
+      closeIcon.classList.toggle('hidden', open);
+      hamburger.setAttribute('aria-expanded', String(!open));
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.add('hidden');
+        hamIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').classList.remove('hidden');
+    }
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.borderBottomColor = window.scrollY > 10
+        ? 'rgba(42,39,31,0.85)' : 'rgba(42,39,31,0.6)';
+    }, { passive: true });
+  </script>
+</body>
+</html>
