@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Forms — Revere Fitness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background-color: #0C0B09; color: #EDE8DF; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0C0B09; }
+    ::-webkit-scrollbar-thumb { background: #2A271F; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #B8913A; }
+
+    .nav-glass { background: rgba(12,11,9,0.75); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(42,39,31,0.6); }
+    .font-display { font-family: 'Cormorant Garant', Georgia, serif; }
+    .nav-link { color: #8A8580; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s ease; }
+    .nav-link:hover { color: #EDE8DF; }
+    .nav-link.active { color: #B8913A; }
+
+    .btn-gold { background: #B8913A; color: #0C0B09; font-weight: 600; letter-spacing: 0.04em; font-size: 0.75rem; text-transform: uppercase; transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.25s ease; }
+    .btn-gold:hover { background: #D4AA58; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(184,145,58,0.2); }
+    .btn-gold:active { transform: translateY(0); }
+    .btn-ghost { border: 1px solid rgba(237,232,223,0.18); color: #EDE8DF; font-weight: 500; letter-spacing: 0.04em; font-size: 0.75rem; text-transform: uppercase; transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease; }
+    .btn-ghost:hover { border-color: rgba(184,145,58,0.45); background: rgba(184,145,58,0.05); transform: translateY(-1px); }
+    .btn-ghost:active { transform: translateY(0); }
+
+    .gold-rule { height: 1px; background: linear-gradient(to right, transparent, #B8913A, transparent); opacity: 0.35; }
+    .label-chip { display: inline-flex; align-items: center; gap: 7px; background: rgba(184,145,58,0.07); border: 1px solid rgba(184,145,58,0.2); color: #B8913A; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 13px; border-radius: 100px; }
+
+    .form-card { background: #141310; border: 1px solid #2A271F; transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; }
+    .form-card:hover { border-color: rgba(184,145,58,0.4); transform: translateY(-3px); box-shadow: 0 20px 56px rgba(0,0,0,0.45), 0 0 0 1px rgba(184,145,58,0.07); }
+
+    .icon-badge { background: rgba(184,145,58,0.07); border: 1px solid rgba(184,145,58,0.15); color: #B8913A; transition: background 0.25s ease, border-color 0.25s ease; }
+    .form-card:hover .icon-badge { background: rgba(184,145,58,0.13); border-color: rgba(184,145,58,0.3); }
+
+    .required-badge { background: rgba(184,145,58,0.1); border: 1px solid rgba(184,145,58,0.2); color: #B8913A; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
+    .optional-badge { background: rgba(138,133,128,0.08); border: 1px solid rgba(138,133,128,0.15); color: #8A8580; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    #mobile-nav { background: rgba(12,11,9,0.98); backdrop-filter: blur(20px); }
+    footer { border-top: 1px solid #2A271F; }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 30%, rgba(184,145,58,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 10% 80%, rgba(44,68,56,0.10) 0%, transparent 55%),
+        #0C0B09;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Revere Fitness home">
+        <div class="w-7 h-7 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #B8913A 0%, #8A6C28 100%);">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0C0B09" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0C0B09"/></svg>
+        </div>
+        <div>
+          <span class="font-display font-semibold text-text-primary" style="font-size:1.05rem; letter-spacing:0.12em; color:#EDE8DF;">REVERE</span>
+          <span style="font-size:0.6rem; letter-spacing:0.22em; margin-top:-3px; line-height:1; color:#55524E; display:block; text-transform:uppercase; font-weight:500;">FITNESS</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html#about"        class="nav-link">About</a>
+        <a href="index.html#services"     class="nav-link">Services</a>
+        <a href="index.html#process"      class="nav-link">How It Works</a>
+        <a href="index.html#testimonials" class="nav-link">Results</a>
+        <a href="index.html#pricing"      class="nav-link">Pricing</a>
+        <a href="forms.html"              class="nav-link active">Forms</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="index.html#contact" class="hidden md:inline-flex btn-gold px-5 py-2.5 rounded">Book Free Call</a>
+        <button id="hamburger" class="md:hidden p-2 rounded" style="border:1px solid #2A271F; color:#8A8580;" aria-label="Toggle menu" aria-expanded="false">
+          <svg id="ham-icon"   width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M2 4H15M2 8.5H15M2 13H15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <svg id="close-icon" class="hidden" width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M3.5 3.5L13.5 13.5M13.5 3.5L3.5 13.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-nav" class="hidden md:hidden" style="border-top:1px solid #2A271F;">
+      <nav class="flex flex-col px-6 py-4 gap-1">
+        <a href="index.html#about"        class="nav-link py-3 mobile-nav-link" style="border-bottom:1px solid rgba(42,39,31,0.5);">About</a>
+        <a href="index.html#services"     class="nav-link py-3 mobile-nav-link" style="border-bottom:1px solid rgba(42,39,31,0.5);">Services</a>
+        <a href="index.html#process"      class="nav-link py-3 mobile-nav-link" style="border-bottom:1px solid rgba(42,39,31,0.5);">How It Works</a>
+        <a href="index.html#testimonials" class="nav-link py-3 mobile-nav-link" style="border-bottom:1px solid rgba(42,39,31,0.5);">Results</a>
+        <a href="index.html#pricing"      class="nav-link py-3 mobile-nav-link" style="border-bottom:1px solid rgba(42,39,31,0.5);">Pricing</a>
+        <a href="forms.html"              class="nav-link py-3 mobile-nav-link active" style="border-bottom:1px solid rgba(42,39,31,0.5);">Forms</a>
+        <a href="index.html#contact" class="btn-gold px-5 py-3 rounded text-center mt-4">Book Free Call</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero-bg pt-32 pb-16 md:pt-40 md:pb-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-2xl">
+          <div class="label-chip mb-6 reveal">
+            <span style="width:5px;height:5px;background:#B8913A;border-radius:50%;display:inline-block;"></span>
+            Client Documents
+          </div>
+          <h1 class="font-display font-semibold reveal" style="font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.97; letter-spacing: -0.01em; color:#EDE8DF; transition-delay:0.08s;">
+            Client<br/><em style="color:#B8913A; font-style:italic;">Forms</em>
+          </h1>
+          <div class="gold-rule my-6 max-w-xs reveal" style="transition-delay:0.16s;"></div>
+          <p class="reveal" style="color:#8A8580; font-size:0.95rem; line-height:1.8; max-width:520px; transition-delay:0.22s;">
+            Download, print, and complete the forms below before your first session. Required forms must be submitted prior to commencing training. Optional forms help me build a fuller picture of where you are and where you want to go.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTRUCTIONS BAND -->
+    <section style="background:#141310; border-top:1px solid #2A271F; border-bottom:1px solid #2A271F; padding:28px 0;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 reveal">
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <div class="icon-badge w-9 h-9 rounded-lg flex items-center justify-center">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7.5 5V7.5L9 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <span style="color:#EDE8DF; font-size:0.82rem; font-weight:500;">How it works</span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-6 sm:gap-10 text-sm" style="color:#8A8580;">
+            <div class="flex items-center gap-2.5">
+              <span style="color:#B8913A; font-weight:700; font-size:0.85rem;">1</span>
+              Click <strong style="color:#EDE8DF; font-weight:500;">Open Form</strong> to open the printable version
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span style="color:#B8913A; font-weight:700; font-size:0.85rem;">2</span>
+              Print the form and fill it in by hand
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span style="color:#B8913A; font-weight:700; font-size:0.85rem;">3</span>
+              Bring the completed form to your first session
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMS GRID -->
+    <section class="py-20 md:py-28" style="background:#0C0B09;">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <!-- Required -->
+        <div class="mb-14">
+          <div class="flex items-center gap-4 mb-8 reveal">
+            <h2 class="font-display font-semibold" style="font-size:1.9rem; color:#EDE8DF; letter-spacing:-0.01em;">Required Forms</h2>
+            <div style="flex:1; height:1px; background:linear-gradient(to right, #2A271F, transparent);"></div>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            <!-- Form 1 — Client Intake -->
+            <div class="form-card rounded-xl p-6 reveal">
+              <div class="flex items-start justify-between mb-5">
+                <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 7H13M7 10.5H13M7 14H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="required-badge">Required</span>
+              </div>
+              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:4px;">Client Intake Form</h3>
+              <p style="color:#55524E; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Personal & Medical Details</p>
+              <p style="color:#8A8580; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">Personal details, medical history, emergency contacts, and any existing injuries or conditions I need to know about before we begin.</p>
+              <div class="flex items-center gap-2 mb-5" style="color:#55524E; font-size:0.75rem;">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6H8.5M4.5 7.5H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                2 pages · Est. 10 min to complete
+              </div>
+              <a href="forms/client-intake.html" target="_blank" class="btn-gold w-full py-2.5 rounded flex items-center justify-center gap-2">
+                Open Form
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M6.5 2.5L10 6L6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+
+            <!-- Form 2 — PAR-Q -->
+            <div class="form-card rounded-xl p-6 reveal" style="transition-delay:0.1s;">
+              <div class="flex items-start justify-between mb-5">
+                <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3C10 3 6 7.5 6 11C6 13.2 7.8 15 10 15C12.2 15 14 13.2 14 11C14 7.5 10 3 10 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 15V17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 17.5H12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="required-badge">Required</span>
+              </div>
+              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:4px;">PAR-Q+</h3>
+              <p style="color:#55524E; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Physical Activity Readiness</p>
+              <p style="color:#8A8580; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">The standard health screening questionnaire used by fitness professionals worldwide. Required by law before commencing any exercise programme.</p>
+              <div class="flex items-center gap-2 mb-5" style="color:#55524E; font-size:0.75rem;">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6H8.5M4.5 7.5H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                1 page · Est. 5 min to complete
+              </div>
+              <a href="forms/parq.html" target="_blank" class="btn-gold w-full py-2.5 rounded flex items-center justify-center gap-2">
+                Open Form
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M6.5 2.5L10 6L6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+
+            <!-- Form 3 — Informed Consent -->
+            <div class="form-card rounded-xl p-6 reveal" style="transition-delay:0.2s;">
+              <div class="flex items-start justify-between mb-5">
+                <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 10L9.5 12.5L13.5 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="2" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <span class="required-badge">Required</span>
+              </div>
+              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:4px;">Informed Consent & Waiver</h3>
+              <p style="color:#55524E; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Liability & Agreement</p>
+              <p style="color:#8A8580; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">Confirms your understanding of the nature of personal training, the inherent risks involved, and your agreement to the terms of our coaching relationship.</p>
+              <div class="flex items-center gap-2 mb-5" style="color:#55524E; font-size:0.75rem;">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6H8.5M4.5 7.5H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                1 page · Est. 5 min to complete
+              </div>
+              <a href="forms/consent-waiver.html" target="_blank" class="btn-gold w-full py-2.5 rounded flex items-center justify-center gap-2">
+                Open Form
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M6.5 2.5L10 6L6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optional -->
+        <div>
+          <div class="flex items-center gap-4 mb-8 reveal">
+            <h2 class="font-display font-semibold" style="font-size:1.9rem; color:#EDE8DF; letter-spacing:-0.01em;">Optional Forms</h2>
+            <div style="flex:1; height:1px; background:linear-gradient(to right, #2A271F, transparent);"></div>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            <!-- Form 4 — Goal Setting -->
+            <div class="form-card rounded-xl p-6 reveal">
+              <div class="flex items-start justify-between mb-5">
+                <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="0.75" fill="currentColor"/></svg>
+                </div>
+                <span class="optional-badge">Optional</span>
+              </div>
+              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:4px;">Goal Setting Worksheet</h3>
+              <p style="color:#55524E; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Short & Long-Term Goals</p>
+              <p style="color:#8A8580; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">Clarify exactly what you want to achieve — short-term, long-term, and the deeper "why" behind your training. This is the foundation we build your programme on.</p>
+              <div class="flex items-center gap-2 mb-5" style="color:#55524E; font-size:0.75rem;">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6H8.5M4.5 7.5H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                1 page · Est. 10 min to complete
+              </div>
+              <a href="forms/goal-setting.html" target="_blank" class="btn-ghost w-full py-2.5 rounded flex items-center justify-center gap-2">
+                Open Form
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M6.5 2.5L10 6L6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+
+            <!-- Form 5 — Nutrition & Lifestyle -->
+            <div class="form-card rounded-xl p-6 reveal" style="transition-delay:0.1s;">
+              <div class="flex items-start justify-between mb-5">
+                <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 4C6 4 4 8 4 11C4 13.2 4.9 15 7 16C7 16 7 17.5 8 18H12C13 17.5 13 16 13 16C15.1 15 16 13.2 16 11C16 8 14 4 14 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 4V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="optional-badge">Optional</span>
+              </div>
+              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:4px;">Nutrition & Lifestyle Assessment</h3>
+              <p style="color:#55524E; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Habits, Sleep & Wellbeing</p>
+              <p style="color:#8A8580; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">A deeper look at your current eating habits, sleep patterns, stress levels, and lifestyle. Helps me build a programme that fits around your actual life — not an ideal one.</p>
+              <div class="flex items-center gap-2 mb-5" style="color:#55524E; font-size:0.75rem;">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6H8.5M4.5 7.5H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                2 pages · Est. 15 min to complete
+              </div>
+              <a href="forms/nutrition-lifestyle.html" target="_blank" class="btn-ghost w-full py-2.5 rounded flex items-center justify-center gap-2">
+                Open Form
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M6.5 2.5L10 6L6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HELP BAND -->
+    <section style="background:#141310; border-top:1px solid #2A271F; border-bottom:1px solid #2A271F; padding:48px 0;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal">
+          <div>
+            <h3 class="font-display font-semibold" style="font-size:1.6rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:6px;">Questions about the forms?</h3>
+            <p style="color:#8A8580; font-size:0.85rem; line-height:1.7;">Don't hesitate to reach out if anything is unclear. I'd rather you ask than leave a section blank.</p>
+          </div>
+          <a href="index.html#contact" class="btn-gold px-7 py-3 rounded flex-shrink-0 flex items-center gap-2">
+            Get in Touch
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5H11M7 2.5L11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:#0C0B09;">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <div class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #B8913A 0%, #8A6C28 100%);">
+            <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0C0B09" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0C0B09"/></svg>
+          </div>
+          <span class="font-display font-semibold" style="font-size:0.9rem; letter-spacing:0.12em; color:#EDE8DF;">REVERE <span style="color:#B8913A;">FITNESS</span></span>
+        </a>
+        <p style="color:#55524E; font-size:0.72rem;">© 2026 Revere Fitness. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const hamIcon   = document.getElementById('ham-icon');
+    const closeIcon = document.getElementById('close-icon');
+    hamburger.addEventListener('click', () => {
+      const open = !mobileNav.classList.contains('hidden');
+      mobileNav.classList.toggle('hidden');
+      hamIcon.classList.toggle('hidden', !open);
+      closeIcon.classList.toggle('hidden', open);
+      hamburger.setAttribute('aria-expanded', String(!open));
+    });
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

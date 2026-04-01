@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Informed Consent & Waiver — Revere Fitness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; font-size: 10pt; color: #1A1A1A; background: #fff; line-height: 1.55; }
+    .page { max-width: 720px; margin: 0 auto; padding: 36px 40px 48px; }
+    .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid #1A1A1A; padding-bottom: 16px; margin-bottom: 20px; }
+    .logo-name { font-family: 'Cormorant Garant', serif; font-size: 22pt; font-weight: 700; letter-spacing: 0.08em; line-height: 1; }
+    .logo-sub  { font-size: 6.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: #888; margin-top: 3px; }
+    .form-title-block { text-align: right; }
+    .form-title { font-family: 'Cormorant Garant', serif; font-size: 14pt; font-weight: 600; }
+    .form-meta  { font-size: 7.5pt; color: #888; margin-top: 3px; letter-spacing: 0.06em; }
+    .required-note { background: #faf7f0; border: 1px solid #d4aa58; border-radius: 4px; padding: 8px 12px; font-size: 8pt; color: #7a5c1e; margin-bottom: 20px; }
+    .section { margin-bottom: 20px; }
+    .section-title { font-family: 'Cormorant Garant', serif; font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 10px; }
+    .body-text { font-size: 9pt; color: #333; line-height: 1.75; margin-bottom: 8px; }
+    .body-text ul { padding-left: 16px; margin-top: 6px; }
+    .body-text ul li { margin-bottom: 4px; }
+    .field { margin-bottom: 10px; }
+    .field label { display: block; font-size: 7.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 4px; }
+    .line { border: none; border-bottom: 1px solid #aaa; width: 100%; height: 22px; display: block; }
+    .field-row-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+    .sig-block { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-top: 6px; }
+    .sig-line { border-bottom: 1px solid #aaa; height: 36px; }
+    .initials-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid #eee; font-size: 9pt; }
+    .initials-row:last-child { border-bottom: none; }
+    .initials-box { width: 36px; height: 22px; border-bottom: 1px solid #aaa; flex-shrink: 0; }
+    .check-row { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; font-size: 9pt; }
+    .box { width: 12px; height: 12px; border: 1.5px solid #777; display: inline-block; border-radius: 2px; flex-shrink: 0; margin-top: 1px; }
+    @media print {
+      body { font-size: 9.5pt; }
+      .page { padding: 20px 28px 32px; max-width: 100%; }
+      .no-print { display: none !important; }
+    }
+    .print-bar { background: #1A1A1A; color: #fff; text-align: center; padding: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.06em; }
+    .print-bar button { background: #B8913A; color: #0C0B09; border: none; padding: 6px 20px; border-radius: 4px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; margin-left: 12px; }
+    .print-bar button:hover { background: #D4AA58; }
+    .back-link { color: #B8913A; text-decoration: none; font-size: 0.78rem; margin-right: 12px; }
+  </style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+  <a href="../forms.html" class="back-link">← Back to Forms</a>
+  Print this form, read carefully, fill it in by hand, and bring it to your first session.
+  <button onclick="window.print()">Print Form</button>
+</div>
+
+<div class="page">
+  <div class="header">
+    <div>
+      <div class="logo-name">REVERE</div>
+      <div class="logo-sub">Fitness</div>
+    </div>
+    <div class="form-title-block">
+      <div class="form-title">Informed Consent & Liability Waiver</div>
+      <div class="form-meta">Required · Read carefully before signing</div>
+    </div>
+  </div>
+
+  <div class="required-note">★ This form is <strong>required</strong> before commencing training. Please read each section carefully and initial where indicated.</div>
+
+  <!-- 1. Nature of Personal Training -->
+  <div class="section">
+    <div class="section-title">1. Nature of Personal Training</div>
+    <div class="body-text">
+      Personal training involves physical exercise, which by its nature carries inherent risks including but not limited to: muscle soreness, fatigue, soft tissue injury, joint strain, and in rare cases, cardiovascular events. Revere Fitness will take all reasonable measures to minimise these risks through proper screening, programme design, and supervision.
+    </div>
+    <div class="initials-row">
+      <div class="initials-box"></div>
+      <span>I understand and accept the inherent risks associated with physical exercise and personal training.</span>
+    </div>
+  </div>
+
+  <!-- 2. Client Responsibilities -->
+  <div class="section">
+    <div class="section-title">2. Client Responsibilities</div>
+    <div class="body-text">By signing this agreement, I agree to:
+      <ul>
+        <li>Disclose all relevant health, medical, and injury information honestly and completely.</li>
+        <li>Inform my trainer immediately if I feel unwell, experience pain, or feel unsafe during a session.</li>
+        <li>Follow the trainer's instructions and guidance during sessions.</li>
+        <li>Not undertake any training programme while under the influence of alcohol or recreational drugs.</li>
+        <li>Inform my trainer promptly of any changes to my health status or medical circumstances.</li>
+      </ul>
+    </div>
+    <div class="initials-row">
+      <div class="initials-box"></div>
+      <span>I accept and will fulfil the client responsibilities outlined above.</span>
+    </div>
+  </div>
+
+  <!-- 3. Limitation of Liability -->
+  <div class="section">
+    <div class="section-title">3. Limitation of Liability</div>
+    <div class="body-text">
+      To the fullest extent permitted by law, I hereby release Revere Fitness and its trainer(s) from any and all claims, damages, injuries, losses, or expenses arising from or connected to the personal training services, except where such claims arise from gross negligence or wilful misconduct on the part of the trainer.
+    </div>
+    <div class="initials-row">
+      <div class="initials-box"></div>
+      <span>I acknowledge this limitation of liability and agree to its terms.</span>
+    </div>
+  </div>
+
+  <!-- 4. Programme & Advice -->
+  <div class="section">
+    <div class="section-title">4. Programme Design & Professional Scope</div>
+    <div class="body-text">
+      I understand that my trainer is a qualified personal trainer and coach, and is not a licensed physician, physiotherapist, or dietitian. Any nutrition guidance provided is general in nature and does not constitute medical dietary advice. I will seek appropriate medical advice for any health concerns, and will consult a GP or specialist as recommended.
+    </div>
+    <div class="initials-row">
+      <div class="initials-box"></div>
+      <span>I understand the professional scope of my trainer and will seek medical advice when appropriate.</span>
+    </div>
+  </div>
+
+  <!-- 5. Photography & Media -->
+  <div class="section">
+    <div class="section-title">5. Photography & Media Consent</div>
+    <div class="body-text">Progress photos and videos may be useful tools for tracking transformation. Please indicate your preference:</div>
+    <div class="check-row" style="margin-top:8px;"><span class="box"></span> I <strong>consent</strong> to progress photos/videos being taken for personal tracking purposes (shared only with me).</div>
+    <div class="check-row"><span class="box"></span> I <strong>consent</strong> to my progress photos/videos being used anonymously in Revere Fitness marketing materials (social media, website).</div>
+    <div class="check-row"><span class="box"></span> I <strong>do not consent</strong> to any photography or video.</div>
+  </div>
+
+  <!-- 6. Payment & Cancellation -->
+  <div class="section">
+    <div class="section-title">6. Payment & Cancellation Policy</div>
+    <div class="body-text">
+      <ul>
+        <li><strong>Cancellation:</strong> Sessions cancelled with less than 24 hours' notice will be charged in full.</li>
+        <li><strong>Late arrival:</strong> Sessions begin at the scheduled time. Late arrivals do not extend the session.</li>
+        <li><strong>Payment:</strong> Payment is due at the start of each billing period. Programmes are month-to-month with no lock-in contracts.</li>
+      </ul>
+    </div>
+    <div class="initials-row">
+      <div class="initials-box"></div>
+      <span>I have read and agree to the payment and cancellation terms.</span>
+    </div>
+  </div>
+
+  <!-- Client Info & Signature -->
+  <div class="section" style="margin-top:24px;">
+    <div class="section-title">Declaration & Signature</div>
+    <div class="body-text" style="margin-bottom:14px;">
+      I confirm that I have read, understood, and voluntarily agree to all terms set out in this Informed Consent & Liability Waiver. I have had the opportunity to ask questions and am signing this freely and without duress.
+    </div>
+    <div class="field-row-2" style="margin-bottom:12px;">
+      <div class="field"><label>Full Name (print clearly)</label><span class="line"></span></div>
+      <div class="field"><label>Date of Birth</label><span class="line"></span></div>
+    </div>
+    <div class="sig-block">
+      <div class="field"><label>Signature</label><div class="sig-line"></div></div>
+      <div class="field"><label>Date</label><div class="sig-line"></div></div>
+    </div>
+  </div>
+
+  <div style="margin-top:28px; padding-top:14px; border-top: 1px solid #eee;">
+    <p style="font-size:7.5pt; color:#888; text-align:center; line-height:1.7;">Revere Fitness · hello@reverefitness.com · @reverefitness · This document is for use by Revere Fitness clients only.</p>
+  </div>
+</div>
+</body>
+</html>

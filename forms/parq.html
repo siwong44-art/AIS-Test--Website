@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PAR-Q+ — Revere Fitness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; font-size: 10pt; color: #1A1A1A; background: #fff; line-height: 1.5; }
+    .page { max-width: 720px; margin: 0 auto; padding: 36px 40px 48px; }
+    .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid #1A1A1A; padding-bottom: 16px; margin-bottom: 20px; }
+    .logo-name { font-family: 'Cormorant Garant', serif; font-size: 22pt; font-weight: 700; letter-spacing: 0.08em; color: #1A1A1A; line-height: 1; }
+    .logo-sub  { font-size: 6.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: #888; margin-top: 3px; }
+    .form-title-block { text-align: right; }
+    .form-title { font-family: 'Cormorant Garant', serif; font-size: 14pt; font-weight: 600; }
+    .form-meta  { font-size: 7.5pt; color: #888; margin-top: 3px; letter-spacing: 0.06em; }
+    .required-note { background: #faf7f0; border: 1px solid #d4aa58; border-radius: 4px; padding: 8px 12px; font-size: 8pt; color: #7a5c1e; margin-bottom: 20px; }
+    .intro-box { background: #f7f7f7; border-radius: 4px; padding: 12px 14px; font-size: 8.5pt; color: #444; line-height: 1.7; margin-bottom: 20px; }
+    .section { margin-bottom: 20px; }
+    .section-title { font-family: 'Cormorant Garant', serif; font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 12px; }
+    .q-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid #eee; }
+    .q-row:last-child { border-bottom: none; }
+    .q-num { font-weight: 700; font-size: 9pt; color: #B8913A; flex-shrink: 0; width: 18px; }
+    .q-text { flex: 1; font-size: 9pt; line-height: 1.55; }
+    .q-text .sub { font-size: 8pt; color: #666; display: block; margin-top: 2px; }
+    .q-yn { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .yn-opt { display: flex; align-items: center; gap: 4px; font-size: 8.5pt; font-weight: 600; }
+    .box { width: 13px; height: 13px; border: 1.5px solid #777; display: inline-block; border-radius: 2px; flex-shrink: 0; }
+    .field { margin-top: 8px; }
+    .field label { display: block; font-size: 7.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 4px; }
+    .line { border: none; border-bottom: 1px solid #aaa; width: 100%; height: 22px; display: block; }
+    .line-tall { border: 1px solid #ccc; border-radius: 3px; width: 100%; min-height: 44px; display: block; }
+    .sig-block { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-top: 8px; }
+    .sig-line { border-bottom: 1px solid #aaa; height: 36px; }
+    .warning-box { background: #fff8f0; border-left: 3px solid #B8913A; padding: 10px 12px; font-size: 8.5pt; color: #555; line-height: 1.65; margin: 16px 0; }
+    @media print {
+      body { font-size: 9.5pt; }
+      .page { padding: 20px 28px 32px; max-width: 100%; }
+      .no-print { display: none !important; }
+    }
+    .print-bar { background: #1A1A1A; color: #fff; text-align: center; padding: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.06em; }
+    .print-bar button { background: #B8913A; color: #0C0B09; border: none; padding: 6px 20px; border-radius: 4px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; margin-left: 12px; }
+    .print-bar button:hover { background: #D4AA58; }
+    .back-link { color: #B8913A; text-decoration: none; font-size: 0.78rem; margin-right: 12px; }
+  </style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+  <a href="../forms.html" class="back-link">← Back to Forms</a>
+  Print this form, fill it in by hand, and bring it to your first session.
+  <button onclick="window.print()">Print Form</button>
+</div>
+
+<div class="page">
+  <div class="header">
+    <div>
+      <div class="logo-name">REVERE</div>
+      <div class="logo-sub">Fitness</div>
+    </div>
+    <div class="form-title-block">
+      <div class="form-title">PAR-Q+</div>
+      <div class="form-meta">Physical Activity Readiness Questionnaire · Required</div>
+    </div>
+  </div>
+
+  <div class="required-note">★ This form is <strong>required</strong> by law before commencing any exercise programme.</div>
+
+  <div class="intro-box">
+    The PAR-Q+ is the internationally recognised pre-participation health screening tool for exercise. It helps identify individuals who may need medical clearance before beginning a programme. <strong>Please answer all questions honestly.</strong> If you are unsure about any question, answer Yes.
+  </div>
+
+  <!-- General Health -->
+  <div class="section">
+    <div class="section-title">Part 1 — General Health</div>
+    <div class="q-row">
+      <span class="q-num">1</span>
+      <span class="q-text">Has your doctor ever said that you have a heart condition or high blood pressure?</span>
+      <span class="q-yn"><span class="yn-opt"><span class="box"></span> Yes</span><span class="yn-opt"><span class="box"></span> No</span></span>
+    </div>
+    <div class="q-row">
+      <span class="q-num">2</span>
+      <span class="q-text">Do you feel pain in your chest at rest, during daily activities, or when doing physical activity?</span>
+      <span class="q-yn"><span class="yn-opt"><span class="box"></span> Yes</span><span class="yn-opt"><span class="box"></span> No</span></span>
+    </div>
+    <div class="q-row">
+      <span class="q-num">3</span>
+      <span class="q-text">Do you lose balance because of dizziness, or have you lost consciousness in the last 12 months? <span class="sub">Note: Answer No if dizziness was related to over-breathing including vigorous activity.</span></span>
+      <span class="q-yn"><span class="yn-opt"><span class="box"></span> Yes</span><span class="yn-opt"><span class="box"></span> No</span></span>
+    </div>
+    <div class="q-row">
+      <span class="q-num">4</span>
+      <span class="q-text">Have you ever been diagnosed with another chronic medical condition (other than heart disease or high blood pressure)?</span>
+      <span class="q-yn"><span class="yn-opt"><span class="box"></span> Yes</span><span class="yn-opt"><span class="box"></span> No</span></span>
+    </div>
+    <div class="q-row">
+      <span class="q-num">5</span>
+      <span class="q-text">Are you currently taking prescribed medication(s) for a chronic medical condition?</span>
+      <span class="q-yn"><span class="yn-opt"><span class="box"></span> Yes</span><span class="yn-opt"><span class="box"></span> No</span></span>
+    </div>
+    <div class="q-row">
+      <span class="q-num">6</span>
+      <span class="q-text">Do you currently have (or have had within the past 12 months) a bone, joint, or soft-tissue problem that could be made worse by becoming more physically active?
+        <span class="sub">Note: Answer No if you had a problem in the past but it does not limit your current ability to exercise.</span></span>
+      <span class="q-yn"><span class="yn-opt"><span class="box"></span> Yes</span><span class="yn-opt"><span class="box"></span> No</span></span>
+    </div>
+    <div class="q-row">
+      <span class="q-num">7</span>
+      <span class="q-text">Has your doctor ever said that you should only do medically supervised physical activity?</span>
+      <span class="q-yn"><span class="yn-opt"><span class="box"></span> Yes</span><span class="yn-opt"><span class="box"></span> No</span></span>
+    </div>
+  </div>
+
+  <!-- Follow-up -->
+  <div class="section">
+    <div class="section-title">Part 2 — Follow-Up (if you answered YES to any question above)</div>
+    <p style="font-size:8.5pt; color:#555; margin-bottom:10px;">Please provide additional details for any "Yes" answers:</p>
+    <div class="field"><label>Question number(s) and details</label><span class="line-tall" style="min-height:64px;"></span></div>
+    <div class="warning-box">
+      <strong>Important:</strong> If you answered YES to any of the questions above, you should consult your doctor before becoming more physically active or before completing a fitness assessment. Your trainer may require written medical clearance before commencing your programme. You are encouraged to complete a PARQ+ follow-up form with your healthcare provider.
+    </div>
+  </div>
+
+  <!-- Pregnancy -->
+  <div class="section">
+    <div class="section-title">Part 3 — Pregnancy</div>
+    <div class="q-row">
+      <span class="q-num">8</span>
+      <span class="q-text">Are you currently pregnant, or have you given birth in the last 12 months?</span>
+      <span class="q-yn"><span class="yn-opt"><span class="box"></span> Yes</span><span class="yn-opt"><span class="box"></span> No</span></span>
+    </div>
+    <div class="field" style="margin-top:8px;"><label>If yes, details (weeks, complications, clearance status)</label><span class="line"></span></div>
+  </div>
+
+  <!-- Declaration -->
+  <div class="section" style="margin-top:24px;">
+    <div class="section-title">Declaration</div>
+    <p style="font-size:8.5pt; color:#444; line-height:1.75; margin-bottom:14px;">
+      I have read, understood, and accurately completed this questionnaire. I understand that this pre-exercise screening is designed for my safety and to help my trainer provide appropriate programming. I confirm that any "Yes" answers have been disclosed and I will inform my trainer of any subsequent changes to my health.
+    </p>
+    <div class="sig-block">
+      <div class="field"><label>Full Name (print)</label><span class="line"></span></div>
+      <div class="field"><label>Date of Birth</label><span class="line"></span></div>
+    </div>
+    <div class="sig-block" style="margin-top:14px;">
+      <div class="field"><label>Signature</label><div class="sig-line"></div></div>
+      <div class="field"><label>Date</label><div class="sig-line"></div></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

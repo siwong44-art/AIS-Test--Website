@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Intake Form — Revere Fitness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; font-size: 10pt; color: #1A1A1A; background: #fff; line-height: 1.5; }
+    .page { max-width: 720px; margin: 0 auto; padding: 36px 40px 48px; }
+
+    /* Header */
+    .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid #1A1A1A; padding-bottom: 16px; margin-bottom: 24px; }
+    .logo-name { font-family: 'Cormorant Garant', serif; font-size: 22pt; font-weight: 700; letter-spacing: 0.08em; color: #1A1A1A; line-height: 1; }
+    .logo-sub  { font-size: 6.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: #888; margin-top: 3px; }
+    .form-title-block { text-align: right; }
+    .form-title { font-family: 'Cormorant Garant', serif; font-size: 14pt; font-weight: 600; color: #1A1A1A; }
+    .form-meta  { font-size: 7.5pt; color: #888; margin-top: 3px; letter-spacing: 0.06em; }
+    .required-note { background: #faf7f0; border: 1px solid #d4aa58; border-radius: 4px; padding: 8px 12px; font-size: 8pt; color: #7a5c1e; margin-bottom: 24px; }
+
+    /* Section headings */
+    .section { margin-bottom: 22px; }
+    .section-title { font-family: 'Cormorant Garant', serif; font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #1A1A1A; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 14px; }
+
+    /* Grid fields */
+    .field-row { display: grid; gap: 14px; margin-bottom: 12px; }
+    .col-1 { grid-template-columns: 1fr; }
+    .col-2 { grid-template-columns: 1fr 1fr; }
+    .col-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .col-13 { grid-template-columns: 1fr 3fr; }
+    .col-31 { grid-template-columns: 3fr 1fr; }
+
+    .field label { display: block; font-size: 7.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 4px; }
+    .field .line { border: none; border-bottom: 1px solid #aaa; width: 100%; height: 22px; display: block; }
+    .field .line-tall { border: 1px solid #ccc; border-radius: 3px; width: 100%; min-height: 52px; display: block; }
+
+    /* Checkbox lists */
+    .check-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px 12px; margin-top: 6px; }
+    .check-item { display: flex; align-items: center; gap: 6px; font-size: 9pt; }
+    .check-item .box { width: 11px; height: 11px; border: 1px solid #777; flex-shrink: 0; display: inline-block; border-radius: 2px; }
+    .check-item-inline { display: flex; align-items: center; gap: 6px; font-size: 9pt; margin-right: 16px; }
+
+    /* Yes/No row */
+    .yn-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 9pt; }
+    .yn-row .q { flex: 1; }
+    .yn-box { display: flex; align-items: center; gap: 4px; font-weight: 600; font-size: 8pt; }
+    .yn-box .box { width: 11px; height: 11px; border: 1px solid #777; flex-shrink: 0; display: inline-block; border-radius: 2px; }
+
+    /* Signature */
+    .sig-block { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-top: 8px; }
+    .sig-line { border-bottom: 1px solid #aaa; height: 36px; }
+
+    /* Page break */
+    .page-break { page-break-after: always; border-bottom: 1px dashed #ccc; margin: 32px 0 28px; padding-bottom: 0; }
+    .page-2-note { font-size: 8pt; color: #888; text-align: center; margin-bottom: 24px; font-style: italic; }
+
+    /* Print */
+    @media print {
+      body { font-size: 9.5pt; }
+      .page { padding: 20px 28px 32px; max-width: 100%; }
+      .no-print { display: none !important; }
+      .page-break { page-break-after: always; border: none; margin: 0; }
+      .page-2-note { display: none; }
+    }
+
+    /* Screen only */
+    .print-bar { background: #1A1A1A; color: #fff; text-align: center; padding: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.06em; }
+    .print-bar button { background: #B8913A; color: #0C0B09; border: none; padding: 6px 20px; border-radius: 4px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; margin-left: 12px; }
+    .print-bar button:hover { background: #D4AA58; }
+    .back-link { color: #B8913A; text-decoration: none; font-size: 0.78rem; margin-right: 12px; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+  <a href="../forms.html" class="back-link">← Back to Forms</a>
+  Print this form, fill it in by hand, and bring it to your first session.
+  <button onclick="window.print()">Print Form</button>
+</div>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <div class="logo-name">REVERE</div>
+      <div class="logo-sub">Fitness</div>
+    </div>
+    <div class="form-title-block">
+      <div class="form-title">Client Intake Form</div>
+      <div class="form-meta">Required · Complete before first session</div>
+    </div>
+  </div>
+
+  <div class="required-note">
+    ★ This form is <strong>required</strong> before commencing training. All information is held in strict confidence and used solely to provide a safe, effective programme.
+  </div>
+
+  <!-- 1. Personal Details -->
+  <div class="section">
+    <div class="section-title">1. Personal Details</div>
+    <div class="field-row col-2">
+      <div class="field"><label>First Name</label><span class="line"></span></div>
+      <div class="field"><label>Last Name</label><span class="line"></span></div>
+    </div>
+    <div class="field-row col-3">
+      <div class="field"><label>Date of Birth</label><span class="line"></span></div>
+      <div class="field"><label>Gender</label><span class="line"></span></div>
+      <div class="field"><label>Occupation</label><span class="line"></span></div>
+    </div>
+    <div class="field-row col-2">
+      <div class="field"><label>Email Address</label><span class="line"></span></div>
+      <div class="field"><label>Phone Number</label><span class="line"></span></div>
+    </div>
+    <div class="field-row col-1">
+      <div class="field"><label>Home Address</label><span class="line"></span></div>
+    </div>
+  </div>
+
+  <!-- 2. Emergency Contact -->
+  <div class="section">
+    <div class="section-title">2. Emergency Contact</div>
+    <div class="field-row col-3">
+      <div class="field"><label>Full Name</label><span class="line"></span></div>
+      <div class="field"><label>Relationship</label><span class="line"></span></div>
+      <div class="field"><label>Phone Number</label><span class="line"></span></div>
+    </div>
+  </div>
+
+  <!-- 3. Health & Medical History -->
+  <div class="section">
+    <div class="section-title">3. Health & Medical History</div>
+    <p style="font-size:8.5pt; color:#555; margin-bottom:10px;">Please indicate if you have been diagnosed with, or currently experience, any of the following:</p>
+    <div class="check-grid">
+      <div class="check-item"><span class="box"></span> Heart disease</div>
+      <div class="check-item"><span class="box"></span> High blood pressure</div>
+      <div class="check-item"><span class="box"></span> High cholesterol</div>
+      <div class="check-item"><span class="box"></span> Diabetes (Type 1 or 2)</div>
+      <div class="check-item"><span class="box"></span> Asthma / respiratory</div>
+      <div class="check-item"><span class="box"></span> Osteoporosis / arthritis</div>
+      <div class="check-item"><span class="box"></span> Chronic back pain</div>
+      <div class="check-item"><span class="box"></span> Thyroid disorder</div>
+      <div class="check-item"><span class="box"></span> Anxiety / depression</div>
+      <div class="check-item"><span class="box"></span> Pregnancy (current)</div>
+      <div class="check-item"><span class="box"></span> Recent surgery</div>
+      <div class="check-item"><span class="box"></span> Other (specify below)</div>
+    </div>
+    <div class="field-row col-1" style="margin-top:12px;">
+      <div class="field"><label>Please describe any checked conditions or other relevant medical details</label><span class="line-tall"></span></div>
+    </div>
+    <div class="field-row col-2" style="margin-top:8px;">
+      <div class="field"><label>Current medications (if any)</label><span class="line"></span></div>
+      <div class="field"><label>GP / Doctor name & number</label><span class="line"></span></div>
+    </div>
+  </div>
+
+  <!-- PAGE BREAK -->
+  <div class="page-break"></div>
+  <div class="page-2-note">— Page 2 of 2 — Client Intake Form continued —</div>
+
+  <!-- 4. Injury History -->
+  <div class="section">
+    <div class="section-title">4. Injury History & Physical Limitations</div>
+    <div class="yn-row"><span class="q">Do you have any current injuries?</span> <span class="yn-box"><span class="box"></span> Yes</span> <span class="yn-box"><span class="box"></span> No</span></div>
+    <div class="yn-row"><span class="q">Do you have any past injuries that still affect you?</span> <span class="yn-box"><span class="box"></span> Yes</span> <span class="yn-box"><span class="box"></span> No</span></div>
+    <div class="yn-row"><span class="q">Are there any movements or exercises you cannot perform?</span> <span class="yn-box"><span class="box"></span> Yes</span> <span class="yn-box"><span class="box"></span> No</span></div>
+    <div class="field-row col-1" style="margin-top:6px;">
+      <div class="field"><label>If yes to any of the above, please describe</label><span class="line-tall"></span></div>
+    </div>
+  </div>
+
+  <!-- 5. Training History -->
+  <div class="section">
+    <div class="section-title">5. Training Background</div>
+    <div class="field-row col-2">
+      <div class="field">
+        <label>Training experience</label>
+        <div style="display:flex; gap:10px; margin-top:6px; flex-wrap:wrap;">
+          <span class="check-item-inline"><span class="box"></span> None</span>
+          <span class="check-item-inline"><span class="box"></span> &lt; 1 year</span>
+          <span class="check-item-inline"><span class="box"></span> 1–3 years</span>
+          <span class="check-item-inline"><span class="box"></span> 3+ years</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Current activity level</label>
+        <div style="display:flex; gap:10px; margin-top:6px; flex-wrap:wrap;">
+          <span class="check-item-inline"><span class="box"></span> Sedentary</span>
+          <span class="check-item-inline"><span class="box"></span> Light</span>
+          <span class="check-item-inline"><span class="box"></span> Moderate</span>
+          <span class="check-item-inline"><span class="box"></span> Active</span>
+        </div>
+      </div>
+    </div>
+    <div class="field-row col-1">
+      <div class="field"><label>What types of training have you done before?</label><span class="line"></span></div>
+    </div>
+    <div class="field-row col-1">
+      <div class="field"><label>What has held you back from achieving your goals in the past?</label><span class="line-tall"></span></div>
+    </div>
+  </div>
+
+  <!-- 6. Goals -->
+  <div class="section">
+    <div class="section-title">6. Primary Goals</div>
+    <div class="check-grid" style="grid-template-columns: repeat(2,1fr); margin-bottom:10px;">
+      <div class="check-item"><span class="box"></span> Fat loss / body recomposition</div>
+      <div class="check-item"><span class="box"></span> Muscle building / hypertrophy</div>
+      <div class="check-item"><span class="box"></span> Athletic performance</div>
+      <div class="check-item"><span class="box"></span> General fitness & health</div>
+      <div class="check-item"><span class="box"></span> Rehabilitation / injury recovery</div>
+      <div class="check-item"><span class="box"></span> Other (specify below)</div>
+    </div>
+    <div class="field-row col-1">
+      <div class="field"><label>Describe your main goal in your own words</label><span class="line-tall"></span></div>
+    </div>
+  </div>
+
+  <!-- 7. Availability -->
+  <div class="section">
+    <div class="section-title">7. Availability & Preferences</div>
+    <div class="field-row col-3">
+      <div class="field"><label>Sessions per week</label><span class="line"></span></div>
+      <div class="field"><label>Preferred days</label><span class="line"></span></div>
+      <div class="field"><label>Preferred times</label><span class="line"></span></div>
+    </div>
+    <div class="field-row col-1">
+      <div class="field"><label>Any other information you'd like me to know?</label><span class="line-tall"></span></div>
+    </div>
+  </div>
+
+  <!-- Signature -->
+  <div class="section" style="margin-top:28px;">
+    <div class="section-title">Declaration</div>
+    <p style="font-size:8.5pt; color:#444; margin-bottom:14px; line-height:1.7;">
+      I confirm that the information provided on this form is accurate and complete to the best of my knowledge. I understand it is my responsibility to inform my trainer of any changes to my health or medical circumstances.
+    </p>
+    <div class="sig-block">
+      <div class="field"><label>Signature</label><div class="sig-line"></div></div>
+      <div class="field"><label>Date</label><div class="sig-line"></div></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

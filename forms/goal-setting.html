@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goal Setting Worksheet — Revere Fitness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; font-size: 10pt; color: #1A1A1A; background: #fff; line-height: 1.55; }
+    .page { max-width: 720px; margin: 0 auto; padding: 36px 40px 48px; }
+    .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid #1A1A1A; padding-bottom: 16px; margin-bottom: 20px; }
+    .logo-name { font-family: 'Cormorant Garant', serif; font-size: 22pt; font-weight: 700; letter-spacing: 0.08em; line-height: 1; }
+    .logo-sub  { font-size: 6.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: #888; margin-top: 3px; }
+    .form-title-block { text-align: right; }
+    .form-title { font-family: 'Cormorant Garant', serif; font-size: 14pt; font-weight: 600; }
+    .form-meta  { font-size: 7.5pt; color: #888; margin-top: 3px; letter-spacing: 0.06em; }
+    .intro-box { border-left: 3px solid #B8913A; padding: 10px 14px; font-size: 8.5pt; color: #555; line-height: 1.75; margin-bottom: 22px; background: #fdfbf8; font-style: italic; }
+    .section { margin-bottom: 22px; }
+    .section-title { font-family: 'Cormorant Garant', serif; font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 12px; }
+    .section-subtitle { font-size: 8pt; color: #888; margin-bottom: 10px; font-style: italic; }
+    .field { margin-bottom: 12px; }
+    .field label { display: block; font-size: 7.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 4px; }
+    .field .prompt { font-size: 8.5pt; color: #888; font-style: italic; margin-bottom: 5px; display: block; }
+    .line { border: none; border-bottom: 1px solid #aaa; width: 100%; height: 22px; display: block; }
+    .line-tall { border: 1px solid #ccc; border-radius: 3px; width: 100%; min-height: 52px; display: block; }
+    .line-xl { border: 1px solid #ccc; border-radius: 3px; width: 100%; min-height: 68px; display: block; }
+    .field-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+    .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 12px; }
+    .smart-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 8.5pt; }
+    .smart-table th { background: #1A1A1A; color: #fff; padding: 7px 10px; text-align: left; font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+    .smart-table td { border: 1px solid #ddd; padding: 8px 10px; vertical-align: top; }
+    .smart-table td:first-child { font-weight: 600; color: #B8913A; background: #fdfbf8; width: 90px; }
+    .smart-table td.write-area { min-height: 32px; }
+    .scale-row { display: flex; align-items: center; gap: 6px; margin: 6px 0; }
+    .scale-row label { font-size: 8.5pt; width: 180px; }
+    .scale-boxes { display: flex; gap: 5px; }
+    .scale-box { width: 22px; height: 22px; border: 1px solid #aaa; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 7.5pt; color: #bbb; }
+    .sig-block { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-top: 6px; }
+    .sig-line { border-bottom: 1px solid #aaa; height: 34px; }
+    .quote-band { background: #1A1A1A; color: #EDE8DF; padding: 14px 18px; margin: 20px 0; border-radius: 4px; font-family: 'Cormorant Garant', serif; font-style: italic; font-size: 13pt; text-align: center; line-height: 1.4; }
+    .quote-band span { color: #B8913A; }
+    @media print {
+      body { font-size: 9.5pt; }
+      .page { padding: 20px 28px 32px; max-width: 100%; }
+      .no-print { display: none !important; }
+    }
+    .print-bar { background: #1A1A1A; color: #fff; text-align: center; padding: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.06em; }
+    .print-bar button { background: #B8913A; color: #0C0B09; border: none; padding: 6px 20px; border-radius: 4px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; margin-left: 12px; }
+    .print-bar button:hover { background: #D4AA58; }
+    .back-link { color: #B8913A; text-decoration: none; font-size: 0.78rem; margin-right: 12px; }
+  </style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+  <a href="../forms.html" class="back-link">← Back to Forms</a>
+  Print this form, fill it in thoughtfully, and bring it to your first session.
+  <button onclick="window.print()">Print Form</button>
+</div>
+
+<div class="page">
+  <div class="header">
+    <div>
+      <div class="logo-name">REVERE</div>
+      <div class="logo-sub">Fitness</div>
+    </div>
+    <div class="form-title-block">
+      <div class="form-title">Goal Setting Worksheet</div>
+      <div class="form-meta">Optional · Take your time with this one</div>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    "The body achieves what the mind believes — but only when the mind knows exactly what it's aiming at. Take your time with this worksheet. Honest, specific answers here form the foundation of everything we build together."
+  </div>
+
+  <!-- 1. The Why -->
+  <div class="section">
+    <div class="section-title">1. Your Why</div>
+    <p class="section-subtitle">Understanding your motivation is more important than the goal itself. Dig past the surface here.</p>
+    <div class="field">
+      <label>What do you ultimately want from training? (in your own words — no wrong answers)</label>
+      <span class="line-xl"></span>
+    </div>
+    <div class="field">
+      <label>Why does this matter to you right now, at this point in your life?</label>
+      <span class="line-tall"></span>
+    </div>
+    <div class="field">
+      <label>How will you feel when you achieve it?</label>
+      <span class="line"></span>
+    </div>
+  </div>
+
+  <!-- 2. Short-term -->
+  <div class="section">
+    <div class="section-title">2. Short-Term Goals (4–12 Weeks)</div>
+    <p class="section-subtitle">What would feel like a meaningful win in the first 1–3 months?</p>
+    <div class="field">
+      <label>Goal 1</label><span class="line"></span>
+    </div>
+    <div class="field">
+      <label>Goal 2</label><span class="line"></span>
+    </div>
+    <div class="field">
+      <label>How will you measure progress toward these goals?</label><span class="line"></span>
+    </div>
+  </div>
+
+  <!-- 3. Long-term -->
+  <div class="section">
+    <div class="section-title">3. Long-Term Goals (3–12 Months)</div>
+    <p class="section-subtitle">Where do you want to be in 6 or 12 months from now?</p>
+    <div class="field">
+      <label>Goal 1</label><span class="line"></span>
+    </div>
+    <div class="field">
+      <label>Goal 2</label><span class="line"></span>
+    </div>
+    <div class="field">
+      <label>What does your ideal self look and feel like in 12 months?</label><span class="line-tall"></span>
+    </div>
+  </div>
+
+  <!-- 4. SMART -->
+  <div class="section">
+    <div class="section-title">4. SMART Goal Builder</div>
+    <p class="section-subtitle">Pick your single most important goal and make it SMART.</p>
+    <div class="field" style="margin-bottom:10px;"><label>My main goal is:</label><span class="line"></span></div>
+    <table class="smart-table">
+      <tr><th>Letter</th><th>Criteria</th><th>Your Answer</th></tr>
+      <tr><td>S — Specific</td><td>What exactly will you achieve? Who, what, where?</td><td class="write-area">&nbsp;</td></tr>
+      <tr><td>M — Measurable</td><td>How will you know when you've achieved it?</td><td class="write-area">&nbsp;</td></tr>
+      <tr><td>A — Achievable</td><td>Is this realistic for your current starting point?</td><td class="write-area">&nbsp;</td></tr>
+      <tr><td>R — Relevant</td><td>Why does this goal matter to you personally?</td><td class="write-area">&nbsp;</td></tr>
+      <tr><td>T — Time-bound</td><td>By when do you want to achieve this?</td><td class="write-area">&nbsp;</td></tr>
+    </table>
+  </div>
+
+  <!-- 5. Barriers -->
+  <div class="section">
+    <div class="section-title">5. Potential Barriers & Solutions</div>
+    <p class="section-subtitle">Anticipating obstacles makes them easier to overcome.</p>
+    <div class="field-row-2">
+      <div class="field"><label>Biggest obstacle to training consistently</label><span class="line-tall"></span></div>
+      <div class="field"><label>How might you overcome it?</label><span class="line-tall"></span></div>
+    </div>
+    <div class="field-row-2">
+      <div class="field"><label>Biggest obstacle to eating well</label><span class="line-tall"></span></div>
+      <div class="field"><label>How might you overcome it?</label><span class="line-tall"></span></div>
+    </div>
+  </div>
+
+  <!-- 6. Commitment -->
+  <div class="section">
+    <div class="section-title">6. Commitment & Readiness</div>
+    <p style="font-size:8.5pt; color:#555; margin-bottom:10px;">Rate your current readiness on a scale of 1–10:</p>
+    <div class="scale-row">
+      <label style="font-size:8.5pt; width:200px;">Readiness to make lifestyle changes</label>
+      <div class="scale-boxes">
+        <div class="scale-box">1</div><div class="scale-box">2</div><div class="scale-box">3</div>
+        <div class="scale-box">4</div><div class="scale-box">5</div><div class="scale-box">6</div>
+        <div class="scale-box">7</div><div class="scale-box">8</div><div class="scale-box">9</div>
+        <div class="scale-box">10</div>
+      </div>
+    </div>
+    <div class="scale-row">
+      <label style="font-size:8.5pt; width:200px;">Confidence in achieving your goal</label>
+      <div class="scale-boxes">
+        <div class="scale-box">1</div><div class="scale-box">2</div><div class="scale-box">3</div>
+        <div class="scale-box">4</div><div class="scale-box">5</div><div class="scale-box">6</div>
+        <div class="scale-box">7</div><div class="scale-box">8</div><div class="scale-box">9</div>
+        <div class="scale-box">10</div>
+      </div>
+    </div>
+    <div class="scale-row">
+      <label style="font-size:8.5pt; width:200px;">Importance of this goal to you</label>
+      <div class="scale-boxes">
+        <div class="scale-box">1</div><div class="scale-box">2</div><div class="scale-box">3</div>
+        <div class="scale-box">4</div><div class="scale-box">5</div><div class="scale-box">6</div>
+        <div class="scale-box">7</div><div class="scale-box">8</div><div class="scale-box">9</div>
+        <div class="scale-box">10</div>
+      </div>
+    </div>
+    <div class="field" style="margin-top:12px;">
+      <label>Is there anything else about your goals or situation I should know?</label>
+      <span class="line-tall"></span>
+    </div>
+  </div>
+
+  <div class="quote-band">"Respect yourself enough to start. <span>Revere yourself enough to never stop.</span>"</div>
+
+  <div class="sig-block" style="margin-top:8px;">
+    <div class="field"><label>Name</label><span class="line"></span></div>
+    <div class="field"><label>Date</label><span class="line"></span></div>
+  </div>
+
+</div>
+</body>
+</html>
