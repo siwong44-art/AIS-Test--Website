@@ -11,48 +11,48 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background-color: #0C0B09; color: #EDE8DF; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body { background-color: #0A0A0A; color: #F0F0F0; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #0C0B09; }
-    ::-webkit-scrollbar-thumb { background: #2A271F; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #B8913A; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #1E1E1E; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #AAFF00; }
 
     .nav-glass { background: rgba(12,11,9,0.75); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(42,39,31,0.6); }
     .font-display { font-family: 'Cormorant Garant', Georgia, serif; }
-    .nav-link { color: #8A8580; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s ease; }
-    .nav-link:hover { color: #EDE8DF; }
-    .nav-link.active { color: #B8913A; }
+    .nav-link { color: #888888; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s ease; }
+    .nav-link:hover { color: #F0F0F0; }
+    .nav-link.active { color: #AAFF00; }
 
-    .btn-gold { background: #B8913A; color: #0C0B09; font-weight: 600; letter-spacing: 0.04em; font-size: 0.75rem; text-transform: uppercase; transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.25s ease; }
-    .btn-gold:hover { background: #D4AA58; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(184,145,58,0.2); }
+    .btn-gold { background: #AAFF00; color: #0A0A0A; font-weight: 600; letter-spacing: 0.04em; font-size: 0.75rem; text-transform: uppercase; transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.25s ease; }
+    .btn-gold:hover { background: #CCFF00; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(170,255,0,0.2); }
     .btn-gold:active { transform: translateY(0); }
-    .btn-ghost { border: 1px solid rgba(237,232,223,0.18); color: #EDE8DF; font-weight: 500; letter-spacing: 0.04em; font-size: 0.75rem; text-transform: uppercase; transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease; }
-    .btn-ghost:hover { border-color: rgba(184,145,58,0.45); background: rgba(184,145,58,0.05); transform: translateY(-1px); }
+    .btn-ghost { border: 1px solid rgba(237,232,223,0.18); color: #F0F0F0; font-weight: 500; letter-spacing: 0.04em; font-size: 0.75rem; text-transform: uppercase; transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease; }
+    .btn-ghost:hover { border-color: rgba(170,255,0,0.45); background: rgba(170,255,0,0.05); transform: translateY(-1px); }
     .btn-ghost:active { transform: translateY(0); }
 
-    .gold-rule { height: 1px; background: linear-gradient(to right, transparent, #B8913A, transparent); opacity: 0.35; }
-    .label-chip { display: inline-flex; align-items: center; gap: 7px; background: rgba(184,145,58,0.07); border: 1px solid rgba(184,145,58,0.2); color: #B8913A; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 13px; border-radius: 100px; }
+    .gold-rule { height: 1px; background: linear-gradient(to right, transparent, #AAFF00, transparent); opacity: 0.35; }
+    .label-chip { display: inline-flex; align-items: center; gap: 7px; background: rgba(170,255,0,0.07); border: 1px solid rgba(170,255,0,0.2); color: #AAFF00; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 13px; border-radius: 100px; }
 
-    .form-card { background: #141310; border: 1px solid #2A271F; transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; }
-    .form-card:hover { border-color: rgba(184,145,58,0.4); transform: translateY(-3px); box-shadow: 0 20px 56px rgba(0,0,0,0.45), 0 0 0 1px rgba(184,145,58,0.07); }
+    .form-card { background: #111111; border: 1px solid #1E1E1E; transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; }
+    .form-card:hover { border-color: rgba(170,255,0,0.4); transform: translateY(-3px); box-shadow: 0 20px 56px rgba(0,0,0,0.45), 0 0 0 1px rgba(170,255,0,0.07); }
 
-    .icon-badge { background: rgba(184,145,58,0.07); border: 1px solid rgba(184,145,58,0.15); color: #B8913A; transition: background 0.25s ease, border-color 0.25s ease; }
-    .form-card:hover .icon-badge { background: rgba(184,145,58,0.13); border-color: rgba(184,145,58,0.3); }
+    .icon-badge { background: rgba(170,255,0,0.07); border: 1px solid rgba(170,255,0,0.15); color: #AAFF00; transition: background 0.25s ease, border-color 0.25s ease; }
+    .form-card:hover .icon-badge { background: rgba(170,255,0,0.13); border-color: rgba(170,255,0,0.3); }
 
-    .required-badge { background: rgba(184,145,58,0.1); border: 1px solid rgba(184,145,58,0.2); color: #B8913A; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
-    .optional-badge { background: rgba(138,133,128,0.08); border: 1px solid rgba(138,133,128,0.15); color: #8A8580; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
+    .required-badge { background: rgba(170,255,0,0.1); border: 1px solid rgba(170,255,0,0.2); color: #AAFF00; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
+    .optional-badge { background: rgba(138,133,128,0.08); border: 1px solid rgba(138,133,128,0.15); color: #888888; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
 
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     #mobile-nav { background: rgba(12,11,9,0.98); backdrop-filter: blur(20px); }
-    footer { border-top: 1px solid #2A271F; }
+    footer { border-top: 1px solid #1E1E1E; }
 
     .hero-bg {
       background:
-        radial-gradient(ellipse 70% 60% at 80% 30%, rgba(184,145,58,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 60% at 80% 30%, rgba(170,255,0,0.06) 0%, transparent 60%),
         radial-gradient(ellipse 50% 70% at 10% 80%, rgba(44,68,56,0.10) 0%, transparent 55%),
-        #0C0B09;
+        #0A0A0A;
     }
   </style>
 </head>
@@ -62,12 +62,12 @@
   <header class="nav-glass fixed top-0 left-0 right-0 z-50">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-3" aria-label="Revere Fitness home">
-        <div class="w-7 h-7 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #B8913A 0%, #8A6C28 100%);">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0C0B09" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0C0B09"/></svg>
+        <div class="w-7 h-7 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #AAFF00 0%, #88CC00 100%);">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0A0A0A" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0A0A0A"/></svg>
         </div>
         <div>
-          <span class="font-display font-semibold text-text-primary" style="font-size:1.05rem; letter-spacing:0.12em; color:#EDE8DF;">REVERE</span>
-          <span style="font-size:0.6rem; letter-spacing:0.22em; margin-top:-3px; line-height:1; color:#55524E; display:block; text-transform:uppercase; font-weight:500;">FITNESS</span>
+          <span class="font-display font-semibold text-text-primary" style="font-size:1.05rem; letter-spacing:0.12em; color:#F0F0F0;">REVERE</span>
+          <span style="font-size:0.6rem; letter-spacing:0.22em; margin-top:-3px; line-height:1; color:#555555; display:block; text-transform:uppercase; font-weight:500;">FITNESS</span>
         </div>
       </a>
 
@@ -82,13 +82,13 @@
 
       <div class="flex items-center gap-3">
         <a href="index.html#contact" class="hidden md:inline-flex btn-gold px-5 py-2.5 rounded">Book Free Call</a>
-        <button id="hamburger" class="md:hidden p-2 rounded" style="border:1px solid #2A271F; color:#8A8580;" aria-label="Toggle menu" aria-expanded="false">
+        <button id="hamburger" class="md:hidden p-2 rounded" style="border:1px solid #1E1E1E; color:#888888;" aria-label="Toggle menu" aria-expanded="false">
           <svg id="ham-icon"   width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M2 4H15M2 8.5H15M2 13H15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
           <svg id="close-icon" class="hidden" width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M3.5 3.5L13.5 13.5M13.5 3.5L3.5 13.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         </button>
       </div>
     </div>
-    <div id="mobile-nav" class="hidden md:hidden" style="border-top:1px solid #2A271F;">
+    <div id="mobile-nav" class="hidden md:hidden" style="border-top:1px solid #1E1E1E;">
       <nav class="flex flex-col px-6 py-4 gap-1">
         <a href="index.html#about"        class="nav-link py-3 mobile-nav-link" style="border-bottom:1px solid rgba(42,39,31,0.5);">About</a>
         <a href="index.html#services"     class="nav-link py-3 mobile-nav-link" style="border-bottom:1px solid rgba(42,39,31,0.5);">Services</a>
@@ -107,14 +107,14 @@
       <div class="max-w-7xl mx-auto px-6">
         <div class="max-w-2xl">
           <div class="label-chip mb-6 reveal">
-            <span style="width:5px;height:5px;background:#B8913A;border-radius:50%;display:inline-block;"></span>
+            <span style="width:5px;height:5px;background:#AAFF00;border-radius:50%;display:inline-block;"></span>
             Client Documents
           </div>
-          <h1 class="font-display font-semibold reveal" style="font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.97; letter-spacing: -0.01em; color:#EDE8DF; transition-delay:0.08s;">
-            Client<br/><em style="color:#B8913A; font-style:italic;">Forms</em>
+          <h1 class="font-display font-semibold reveal" style="font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.97; letter-spacing: -0.01em; color:#F0F0F0; transition-delay:0.08s;">
+            Client<br/><em style="color:#AAFF00; font-style:italic;">Forms</em>
           </h1>
           <div class="gold-rule my-6 max-w-xs reveal" style="transition-delay:0.16s;"></div>
-          <p class="reveal" style="color:#8A8580; font-size:0.95rem; line-height:1.8; max-width:520px; transition-delay:0.22s;">
+          <p class="reveal" style="color:#888888; font-size:0.95rem; line-height:1.8; max-width:520px; transition-delay:0.22s;">
             Download, print, and complete the forms below before your first session. Required forms must be submitted prior to commencing training. Optional forms help me build a fuller picture of where you are and where you want to go.
           </p>
         </div>
@@ -122,26 +122,26 @@
     </section>
 
     <!-- INSTRUCTIONS BAND -->
-    <section style="background:#141310; border-top:1px solid #2A271F; border-bottom:1px solid #2A271F; padding:28px 0;">
+    <section style="background:#111111; border-top:1px solid #1E1E1E; border-bottom:1px solid #1E1E1E; padding:28px 0;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 reveal">
           <div class="flex items-center gap-3 flex-shrink-0">
             <div class="icon-badge w-9 h-9 rounded-lg flex items-center justify-center">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7.5 5V7.5L9 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
             </div>
-            <span style="color:#EDE8DF; font-size:0.82rem; font-weight:500;">How it works</span>
+            <span style="color:#F0F0F0; font-size:0.82rem; font-weight:500;">How it works</span>
           </div>
-          <div class="flex flex-col sm:flex-row gap-6 sm:gap-10 text-sm" style="color:#8A8580;">
+          <div class="flex flex-col sm:flex-row gap-6 sm:gap-10 text-sm" style="color:#888888;">
             <div class="flex items-center gap-2.5">
-              <span style="color:#B8913A; font-weight:700; font-size:0.85rem;">1</span>
-              Click <strong style="color:#EDE8DF; font-weight:500;">Open Form</strong> to open the printable version
+              <span style="color:#AAFF00; font-weight:700; font-size:0.85rem;">1</span>
+              Click <strong style="color:#F0F0F0; font-weight:500;">Open Form</strong> to open the printable version
             </div>
             <div class="flex items-center gap-2.5">
-              <span style="color:#B8913A; font-weight:700; font-size:0.85rem;">2</span>
+              <span style="color:#AAFF00; font-weight:700; font-size:0.85rem;">2</span>
               Print the form and fill it in by hand
             </div>
             <div class="flex items-center gap-2.5">
-              <span style="color:#B8913A; font-weight:700; font-size:0.85rem;">3</span>
+              <span style="color:#AAFF00; font-weight:700; font-size:0.85rem;">3</span>
               Bring the completed form to your first session
             </div>
           </div>
@@ -150,14 +150,14 @@
     </section>
 
     <!-- FORMS GRID -->
-    <section class="py-20 md:py-28" style="background:#0C0B09;">
+    <section class="py-20 md:py-28" style="background:#0A0A0A;">
       <div class="max-w-7xl mx-auto px-6">
 
         <!-- Required -->
         <div class="mb-14">
           <div class="flex items-center gap-4 mb-8 reveal">
-            <h2 class="font-display font-semibold" style="font-size:1.9rem; color:#EDE8DF; letter-spacing:-0.01em;">Required Forms</h2>
-            <div style="flex:1; height:1px; background:linear-gradient(to right, #2A271F, transparent);"></div>
+            <h2 class="font-display font-semibold" style="font-size:1.9rem; color:#F0F0F0; letter-spacing:-0.01em;">Required Forms</h2>
+            <div style="flex:1; height:1px; background:linear-gradient(to right, #1E1E1E, transparent);"></div>
           </div>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 
@@ -169,10 +169,10 @@
                 </div>
                 <span class="required-badge">Required</span>
               </div>
-              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:4px;">Client Intake Form</h3>
-              <p style="color:#55524E; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Personal & Medical Details</p>
-              <p style="color:#8A8580; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">Personal details, medical history, emergency contacts, and any existing injuries or conditions I need to know about before we begin.</p>
-              <div class="flex items-center gap-2 mb-5" style="color:#55524E; font-size:0.75rem;">
+              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#F0F0F0; letter-spacing:-0.01em; margin-bottom:4px;">Client Intake Form</h3>
+              <p style="color:#555555; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Personal & Medical Details</p>
+              <p style="color:#888888; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">Personal details, medical history, emergency contacts, and any existing injuries or conditions I need to know about before we begin.</p>
+              <div class="flex items-center gap-2 mb-5" style="color:#555555; font-size:0.75rem;">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6H8.5M4.5 7.5H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
                 2 pages · Est. 10 min to complete
               </div>
@@ -190,10 +190,10 @@
                 </div>
                 <span class="required-badge">Required</span>
               </div>
-              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:4px;">PAR-Q+</h3>
-              <p style="color:#55524E; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Physical Activity Readiness</p>
-              <p style="color:#8A8580; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">The standard health screening questionnaire used by fitness professionals worldwide. Required by law before commencing any exercise programme.</p>
-              <div class="flex items-center gap-2 mb-5" style="color:#55524E; font-size:0.75rem;">
+              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#F0F0F0; letter-spacing:-0.01em; margin-bottom:4px;">PAR-Q+</h3>
+              <p style="color:#555555; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Physical Activity Readiness</p>
+              <p style="color:#888888; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">The standard health screening questionnaire used by fitness professionals worldwide. Required by law before commencing any exercise programme.</p>
+              <div class="flex items-center gap-2 mb-5" style="color:#555555; font-size:0.75rem;">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6H8.5M4.5 7.5H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
                 1 page · Est. 5 min to complete
               </div>
@@ -211,10 +211,10 @@
                 </div>
                 <span class="required-badge">Required</span>
               </div>
-              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:4px;">Informed Consent & Waiver</h3>
-              <p style="color:#55524E; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Liability & Agreement</p>
-              <p style="color:#8A8580; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">Confirms your understanding of the nature of personal training, the inherent risks involved, and your agreement to the terms of our coaching relationship.</p>
-              <div class="flex items-center gap-2 mb-5" style="color:#55524E; font-size:0.75rem;">
+              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#F0F0F0; letter-spacing:-0.01em; margin-bottom:4px;">Informed Consent & Waiver</h3>
+              <p style="color:#555555; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Liability & Agreement</p>
+              <p style="color:#888888; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">Confirms your understanding of the nature of personal training, the inherent risks involved, and your agreement to the terms of our coaching relationship.</p>
+              <div class="flex items-center gap-2 mb-5" style="color:#555555; font-size:0.75rem;">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6H8.5M4.5 7.5H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
                 1 page · Est. 5 min to complete
               </div>
@@ -229,8 +229,8 @@
         <!-- Optional -->
         <div>
           <div class="flex items-center gap-4 mb-8 reveal">
-            <h2 class="font-display font-semibold" style="font-size:1.9rem; color:#EDE8DF; letter-spacing:-0.01em;">Optional Forms</h2>
-            <div style="flex:1; height:1px; background:linear-gradient(to right, #2A271F, transparent);"></div>
+            <h2 class="font-display font-semibold" style="font-size:1.9rem; color:#F0F0F0; letter-spacing:-0.01em;">Optional Forms</h2>
+            <div style="flex:1; height:1px; background:linear-gradient(to right, #1E1E1E, transparent);"></div>
           </div>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 
@@ -242,10 +242,10 @@
                 </div>
                 <span class="optional-badge">Optional</span>
               </div>
-              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:4px;">Goal Setting Worksheet</h3>
-              <p style="color:#55524E; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Short & Long-Term Goals</p>
-              <p style="color:#8A8580; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">Clarify exactly what you want to achieve — short-term, long-term, and the deeper "why" behind your training. This is the foundation we build your programme on.</p>
-              <div class="flex items-center gap-2 mb-5" style="color:#55524E; font-size:0.75rem;">
+              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#F0F0F0; letter-spacing:-0.01em; margin-bottom:4px;">Goal Setting Worksheet</h3>
+              <p style="color:#555555; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Short & Long-Term Goals</p>
+              <p style="color:#888888; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">Clarify exactly what you want to achieve — short-term, long-term, and the deeper "why" behind your training. This is the foundation we build your programme on.</p>
+              <div class="flex items-center gap-2 mb-5" style="color:#555555; font-size:0.75rem;">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6H8.5M4.5 7.5H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
                 1 page · Est. 10 min to complete
               </div>
@@ -263,10 +263,10 @@
                 </div>
                 <span class="optional-badge">Optional</span>
               </div>
-              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:4px;">Nutrition & Lifestyle Assessment</h3>
-              <p style="color:#55524E; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Habits, Sleep & Wellbeing</p>
-              <p style="color:#8A8580; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">A deeper look at your current eating habits, sleep patterns, stress levels, and lifestyle. Helps me build a programme that fits around your actual life — not an ideal one.</p>
-              <div class="flex items-center gap-2 mb-5" style="color:#55524E; font-size:0.75rem;">
+              <h3 class="font-display font-semibold" style="font-size:1.25rem; color:#F0F0F0; letter-spacing:-0.01em; margin-bottom:4px;">Nutrition & Lifestyle Assessment</h3>
+              <p style="color:#555555; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500; margin-bottom:12px;">Habits, Sleep & Wellbeing</p>
+              <p style="color:#888888; font-size:0.83rem; line-height:1.75; margin-bottom:20px;">A deeper look at your current eating habits, sleep patterns, stress levels, and lifestyle. Helps me build a programme that fits around your actual life — not an ideal one.</p>
+              <div class="flex items-center gap-2 mb-5" style="color:#555555; font-size:0.75rem;">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6H8.5M4.5 7.5H7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
                 2 pages · Est. 15 min to complete
               </div>
@@ -283,12 +283,12 @@
     </section>
 
     <!-- HELP BAND -->
-    <section style="background:#141310; border-top:1px solid #2A271F; border-bottom:1px solid #2A271F; padding:48px 0;">
+    <section style="background:#111111; border-top:1px solid #1E1E1E; border-bottom:1px solid #1E1E1E; padding:48px 0;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal">
           <div>
-            <h3 class="font-display font-semibold" style="font-size:1.6rem; color:#EDE8DF; letter-spacing:-0.01em; margin-bottom:6px;">Questions about the forms?</h3>
-            <p style="color:#8A8580; font-size:0.85rem; line-height:1.7;">Don't hesitate to reach out if anything is unclear. I'd rather you ask than leave a section blank.</p>
+            <h3 class="font-display font-semibold" style="font-size:1.6rem; color:#F0F0F0; letter-spacing:-0.01em; margin-bottom:6px;">Questions about the forms?</h3>
+            <p style="color:#888888; font-size:0.85rem; line-height:1.7;">Don't hesitate to reach out if anything is unclear. I'd rather you ask than leave a section blank.</p>
           </div>
           <a href="index.html#contact" class="btn-gold px-7 py-3 rounded flex-shrink-0 flex items-center gap-2">
             Get in Touch
@@ -300,16 +300,16 @@
   </main>
 
   <!-- FOOTER -->
-  <footer style="background:#0C0B09;">
+  <footer style="background:#0A0A0A;">
     <div class="max-w-7xl mx-auto px-6 py-10">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
         <a href="index.html" class="flex items-center gap-2.5">
-          <div class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #B8913A 0%, #8A6C28 100%);">
-            <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0C0B09" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0C0B09"/></svg>
+          <div class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #AAFF00 0%, #88CC00 100%);">
+            <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0A0A0A" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0A0A0A"/></svg>
           </div>
-          <span class="font-display font-semibold" style="font-size:0.9rem; letter-spacing:0.12em; color:#EDE8DF;">REVERE <span style="color:#B8913A;">FITNESS</span></span>
+          <span class="font-display font-semibold" style="font-size:0.9rem; letter-spacing:0.12em; color:#F0F0F0;">REVERE <span style="color:#AAFF00;">FITNESS</span></span>
         </a>
-        <p style="color:#55524E; font-size:0.72rem;">© 2026 Revere Fitness. All rights reserved.</p>
+        <p style="color:#555555; font-size:0.72rem;">© 2026 Revere Fitness. All rights reserved.</p>
       </div>
     </div>
   </footer>
