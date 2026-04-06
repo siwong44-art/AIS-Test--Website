@@ -14,17 +14,17 @@
       theme: {
         extend: {
           colors: {
-            base:     '#0C0B09',
-            surface:  '#141310',
-            elevated: '#1C1A15',
-            border:   '#2A271F',
-            gold:     '#B8913A',
-            'gold-light': '#D4AA58',
-            'gold-dim':   '#8A6C28',
-            forest:   '#2C4438',
-            'text-primary':   '#EDE8DF',
-            'text-secondary': '#8A8580',
-            muted:            '#55524E',
+            base:     '#0A0A0A',
+            surface:  '#111111',
+            elevated: '#1A1A1A',
+            border:   '#1E1E1E',
+            gold:     '#AAFF00',
+            'gold-light': '#CCFF00',
+            'gold-dim':   '#88CC00',
+            forest:   '#1A1A1A',
+            'text-primary':   '#F0F0F0',
+            'text-secondary': '#888888',
+            muted:            '#555555',
           },
           fontFamily: {
             display: ['"Cormorant Garant"', 'Georgia', 'serif'],
@@ -39,17 +39,17 @@
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      background-color: #0C0B09;
-      color: #EDE8DF;
+      background-color: #0A0A0A;
+      color: #F0F0F0;
       font-family: 'DM Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
     ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #0C0B09; }
-    ::-webkit-scrollbar-thumb { background: #2A271F; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #B8913A; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #1E1E1E; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #AAFF00; }
 
     .grain::after {
       content: '';
@@ -61,15 +61,15 @@
     }
 
     .nav-glass {
-      background: rgba(12, 11, 9, 0.75);
+      background: rgba(10, 10, 10, 0.75);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(42, 39, 31, 0.6);
+      border-bottom: 1px solid rgba(30, 30, 30, 0.6);
     }
 
     .btn-gold {
-      background: #B8913A;
-      color: #0C0B09;
+      background: #AAFF00;
+      color: #0A0A0A;
       font-weight: 600;
       letter-spacing: 0.04em;
       font-size: 0.75rem;
@@ -77,16 +77,16 @@
       transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.25s ease;
     }
     .btn-gold:hover {
-      background: #D4AA58;
+      background: #CCFF00;
       transform: translateY(-1px);
-      box-shadow: 0 8px 28px rgba(184, 145, 58, 0.2), 0 2px 8px rgba(184, 145, 58, 0.12);
+      box-shadow: 0 8px 28px rgba(170, 255, 0, 0.2), 0 2px 8px rgba(170, 255, 0, 0.12);
     }
     .btn-gold:active  { transform: translateY(0); }
-    .btn-gold:focus-visible { outline: 2px solid #B8913A; outline-offset: 3px; }
+    .btn-gold:focus-visible { outline: 2px solid #AAFF00; outline-offset: 3px; }
 
     .btn-ghost {
       border: 1px solid rgba(237, 232, 223, 0.18);
-      color: #EDE8DF;
+      color: #F0F0F0;
       font-weight: 500;
       letter-spacing: 0.04em;
       font-size: 0.75rem;
@@ -94,79 +94,79 @@
       transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
     }
     .btn-ghost:hover {
-      border-color: rgba(184, 145, 58, 0.45);
-      background: rgba(184, 145, 58, 0.05);
+      border-color: rgba(170, 255, 0, 0.45);
+      background: rgba(170, 255, 0, 0.05);
       transform: translateY(-1px);
     }
     .btn-ghost:active { transform: translateY(0); }
-    .btn-ghost:focus-visible { outline: 2px solid #B8913A; outline-offset: 3px; }
+    .btn-ghost:focus-visible { outline: 2px solid #AAFF00; outline-offset: 3px; }
 
     .hero-bg {
       background:
-        radial-gradient(ellipse 65% 70% at 75% 35%, rgba(184, 145, 58, 0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 80% at 5%  85%, rgba(44, 68, 56, 0.12) 0%, transparent 55%),
-        radial-gradient(ellipse 90% 50% at 50% 0%,  rgba(184, 145, 58, 0.04) 0%, transparent 50%),
-        #0C0B09;
+        radial-gradient(ellipse 65% 70% at 75% 35%, rgba(170, 255, 0, 0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 5%  85%, rgba(170, 255, 0, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 90% 50% at 50% 0%,  rgba(170, 255, 0, 0.04) 0%, transparent 50%),
+        #0A0A0A;
     }
 
     .gold-rule {
       height: 1px;
-      background: linear-gradient(to right, transparent, #B8913A, transparent);
+      background: linear-gradient(to right, transparent, #AAFF00, transparent);
       opacity: 0.35;
     }
 
     .card {
-      background: #141310;
-      border: 1px solid #2A271F;
+      background: #111111;
+      border: 1px solid #1E1E1E;
       transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card:hover {
-      border-color: rgba(184, 145, 58, 0.35);
+      border-color: rgba(170, 255, 0, 0.35);
       transform: translateY(-4px);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(184,145,58,0.06);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(170,255,0,0.06);
     }
 
     .icon-badge {
-      background: rgba(184, 145, 58, 0.07);
-      border: 1px solid rgba(184, 145, 58, 0.15);
-      color: #B8913A;
+      background: rgba(170, 255, 0, 0.07);
+      border: 1px solid rgba(170, 255, 0, 0.15);
+      color: #AAFF00;
       transition: background 0.25s ease, border-color 0.25s ease;
     }
     .card:hover .icon-badge {
-      background: rgba(184, 145, 58, 0.13);
-      border-color: rgba(184, 145, 58, 0.28);
+      background: rgba(170, 255, 0, 0.13);
+      border-color: rgba(170, 255, 0, 0.28);
     }
 
-    .stat-item { border-right: 1px solid #2A271F; }
+    .stat-item { border-right: 1px solid #1E1E1E; }
     .stat-item:last-child { border-right: none; }
 
     .pricing-card {
-      background: #141310;
-      border: 1px solid #2A271F;
+      background: #111111;
+      border: 1px solid #1E1E1E;
       transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
     .pricing-card:hover {
-      border-color: rgba(184, 145, 58, 0.3);
+      border-color: rgba(170, 255, 0, 0.3);
       transform: translateY(-4px);
       box-shadow: 0 24px 64px rgba(0,0,0,0.45);
     }
     .pricing-card.featured {
-      background: linear-gradient(160deg, #191611 0%, #141310 100%);
-      border-color: rgba(184, 145, 58, 0.45);
-      box-shadow: 0 0 0 1px rgba(184,145,58,0.08), 0 24px 64px rgba(0,0,0,0.4);
+      background: linear-gradient(160deg, #141414 0%, #111111 100%);
+      border-color: rgba(170, 255, 0, 0.45);
+      box-shadow: 0 0 0 1px rgba(170,255,0,0.08), 0 24px 64px rgba(0,0,0,0.4);
     }
     .pricing-card.featured:hover {
-      border-color: rgba(184, 145, 58, 0.65);
+      border-color: rgba(170, 255, 0, 0.65);
       transform: translateY(-6px);
     }
 
     .testimonial-card {
-      background: #141310;
-      border: 1px solid #2A271F;
+      background: #111111;
+      border: 1px solid #1E1E1E;
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
     .testimonial-card:hover {
-      border-color: rgba(184, 145, 58, 0.22);
+      border-color: rgba(170, 255, 0, 0.22);
       box-shadow: 0 16px 48px rgba(0,0,0,0.38);
     }
 
@@ -174,9 +174,9 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      background: rgba(184, 145, 58, 0.07);
-      border: 1px solid rgba(184, 145, 58, 0.2);
-      color: #B8913A;
+      background: rgba(170, 255, 0, 0.07);
+      border: 1px solid rgba(170, 255, 0, 0.2);
+      color: #AAFF00;
       font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.14em;
@@ -187,29 +187,29 @@
     }
 
     .nav-link {
-      color: #8A8580;
+      color: #888888;
       font-size: 0.8rem;
       font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: color 0.15s ease;
     }
-    .nav-link:hover { color: #EDE8DF; }
-    .nav-link:focus-visible { outline: 2px solid #B8913A; outline-offset: 3px; border-radius: 2px; }
+    .nav-link:hover { color: #F0F0F0; }
+    .nav-link:focus-visible { outline: 2px solid #AAFF00; outline-offset: 3px; border-radius: 2px; }
 
     .avatar-ring {
-      box-shadow: 0 0 0 2px #0C0B09, 0 0 0 3.5px rgba(184, 145, 58, 0.35);
+      box-shadow: 0 0 0 2px #0A0A0A, 0 0 0 3.5px rgba(170, 255, 0, 0.35);
     }
 
     .font-display { font-family: 'Cormorant Garant', Georgia, serif; }
 
     .cta-bg {
       background:
-        radial-gradient(ellipse 70% 100% at 50% 110%, rgba(184, 145, 58, 0.09) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 60% at 0% 50%, rgba(44, 68, 56, 0.07) 0%, transparent 55%),
-        #141310;
-      border-top:    1px solid #2A271F;
-      border-bottom: 1px solid #2A271F;
+        radial-gradient(ellipse 70% 100% at 50% 110%, rgba(170, 255, 0, 0.09) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 0% 50%, rgba(170, 255, 0, 0.07) 0%, transparent 55%),
+        #111111;
+      border-top:    1px solid #1E1E1E;
+      border-bottom: 1px solid #1E1E1E;
     }
 
     .reveal {
@@ -223,8 +223,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, #0C0B09 0%, rgba(12,11,9,0.55) 55%, transparent 100%),
-        linear-gradient(to top,   #0C0B09 0%, transparent 35%);
+        linear-gradient(to right, #0A0A0A 0%, rgba(10,10,10,0.55) 55%, transparent 100%),
+        linear-gradient(to top,   #0A0A0A 0%, transparent 35%);
     }
 
     .step-num {
@@ -232,7 +232,7 @@
       font-size: 3.5rem;
       font-weight: 600;
       line-height: 1;
-      color: rgba(184, 145, 58, 0.18);
+      color: rgba(170, 255, 0, 0.18);
       letter-spacing: -0.03em;
     }
 
@@ -240,18 +240,18 @@
       font-family: 'Cormorant Garant', serif;
       font-size: 5rem;
       line-height: 0.6;
-      color: rgba(184, 145, 58, 0.15);
+      color: rgba(170, 255, 0, 0.15);
       font-style: italic;
       user-select: none;
     }
 
     #mobile-nav {
-      background: rgba(12, 11, 9, 0.98);
+      background: rgba(10, 10, 10, 0.98);
       backdrop-filter: blur(20px);
     }
 
-    footer { border-top: 1px solid #2A271F; }
-    .gold-star { color: #B8913A; }
+    footer { border-top: 1px solid #1E1E1E; }
+    .gold-star { color: #AAFF00; }
   </style>
 </head>
 
@@ -263,10 +263,10 @@
 
       <a href="#" class="flex items-center gap-3" aria-label="Revere Fitness home">
         <div class="w-7 h-7 rounded flex items-center justify-center flex-shrink-0"
-             style="background: linear-gradient(135deg, #B8913A 0%, #8A6C28 100%);">
+             style="background: linear-gradient(135deg, #AAFF00 0%, #88CC00 100%);">
           <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-            <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0C0B09" opacity="0.4"/>
-            <path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0C0B09"/>
+            <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0A0A0A" opacity="0.4"/>
+            <path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0A0A0A"/>
           </svg>
         </div>
         <div>
@@ -319,7 +319,7 @@
       <div class="relative z-10 max-w-7xl mx-auto px-6 w-full py-28 md:py-36">
         <div class="max-w-2xl">
           <div class="label-chip mb-7 reveal">
-            <span style="width:5px;height:5px;background:#B8913A;border-radius:50%;display:inline-block;"></span>
+            <span style="width:5px;height:5px;background:#AAFF00;border-radius:50%;display:inline-block;"></span>
             Personal Training &amp; Coaching
           </div>
 
@@ -327,7 +327,7 @@
               style="font-size: clamp(3.2rem, 8vw, 6.8rem); line-height: 0.97; letter-spacing: -0.01em; transition-delay: 0.08s;">
             Respect<br/>
             the body.<br/>
-            <em style="color: #B8913A; font-style: italic;">Trust the<br/>process.</em>
+            <em style="color: #AAFF00; font-style: italic;">Trust the<br/>process.</em>
           </h1>
 
           <div class="gold-rule my-7 max-w-xs reveal" style="transition-delay:0.18s;"></div>
@@ -363,28 +363,28 @@
 
       <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-30">
         <span class="font-body text-muted" style="font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase;">Scroll</span>
-        <div class="w-px h-9" style="background: linear-gradient(to bottom, #B8913A, transparent);"></div>
+        <div class="w-px h-9" style="background: linear-gradient(to bottom, #AAFF00, transparent);"></div>
       </div>
     </section>
 
     <!-- STATS -->
-    <section style="background:#141310; border-top:1px solid #2A271F; border-bottom:1px solid #2A271F;">
+    <section style="background:#111111; border-top:1px solid #1E1E1E; border-bottom:1px solid #1E1E1E;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-2 md:grid-cols-4">
           <div class="stat-item py-10 px-8 text-center reveal">
-            <p class="font-display font-semibold" style="font-size:3.25rem; color:#B8913A; letter-spacing:-0.02em; line-height:1;">200<span style="font-size:1.9rem;">+</span></p>
+            <p class="font-display font-semibold" style="font-size:3.25rem; color:#AAFF00; letter-spacing:-0.02em; line-height:1;">200<span style="font-size:1.9rem;">+</span></p>
             <p class="text-text-secondary text-xs mt-2 tracking-widest uppercase font-medium">Clients Trained</p>
           </div>
           <div class="stat-item py-10 px-8 text-center reveal" style="transition-delay:0.1s">
-            <p class="font-display font-semibold" style="font-size:3.25rem; color:#B8913A; letter-spacing:-0.02em; line-height:1;">8<span style="font-size:1.9rem;">+</span></p>
+            <p class="font-display font-semibold" style="font-size:3.25rem; color:#AAFF00; letter-spacing:-0.02em; line-height:1;">8<span style="font-size:1.9rem;">+</span></p>
             <p class="text-text-secondary text-xs mt-2 tracking-widest uppercase font-medium">Years Experience</p>
           </div>
           <div class="stat-item py-10 px-8 text-center reveal" style="transition-delay:0.2s">
-            <p class="font-display font-semibold" style="font-size:3.25rem; color:#B8913A; letter-spacing:-0.02em; line-height:1;">94<span style="font-size:1.9rem;">%</span></p>
+            <p class="font-display font-semibold" style="font-size:3.25rem; color:#AAFF00; letter-spacing:-0.02em; line-height:1;">94<span style="font-size:1.9rem;">%</span></p>
             <p class="text-text-secondary text-xs mt-2 tracking-widest uppercase font-medium">Goal Achievement</p>
           </div>
           <div class="stat-item py-10 px-8 text-center reveal" style="transition-delay:0.3s">
-            <p class="font-display font-semibold" style="font-size:3.25rem; color:#B8913A; letter-spacing:-0.02em; line-height:1;">5<span style="font-size:1.9rem;">★</span></p>
+            <p class="font-display font-semibold" style="font-size:3.25rem; color:#AAFF00; letter-spacing:-0.02em; line-height:1;">5<span style="font-size:1.9rem;">★</span></p>
             <p class="text-text-secondary text-xs mt-2 tracking-widest uppercase font-medium">Average Rating</p>
           </div>
         </div>
@@ -392,10 +392,10 @@
     </section>
 
     <!-- PHILOSOPHY BAND -->
-    <section style="background:#0C0B09; border-bottom:1px solid #2A271F; padding: 56px 0;">
+    <section style="background:#0A0A0A; border-bottom:1px solid #1E1E1E; padding: 56px 0;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center justify-between reveal">
-          <div style="border-right: 1px solid #2A271F;" class="md:pr-12 md:mr-12 pb-8 md:pb-0 border-b md:border-b-0 border-border w-full md:w-auto">
+          <div style="border-right: 1px solid #1E1E1E;" class="md:pr-12 md:mr-12 pb-8 md:pb-0 border-b md:border-b-0 border-border w-full md:w-auto">
             <p class="font-body font-medium text-muted text-xs tracking-widest uppercase mb-2">The Philosophy</p>
             <p class="font-display font-semibold text-text-primary" style="font-size:1.6rem; line-height:1.2;">Honour the work.</p>
           </div>
@@ -418,20 +418,20 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="py-24 md:py-32" style="background:#0C0B09;">
+    <section id="about" class="py-24 md:py-32" style="background:#0A0A0A;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-16 items-center">
 
           <div class="relative reveal order-2 md:order-1">
             <div class="relative rounded-xl overflow-hidden"
-                 style="box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(184,145,58,0.1);">
+                 style="box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(170,255,0,0.1);">
               <img src="https://placehold.co/600x720/141310/1C1A15?text=Trainer+Photo"
                    alt="Personal trainer" class="w-full object-cover" />
               <div class="absolute inset-0 pointer-events-none"
-                   style="background: linear-gradient(to top, rgba(12,11,9,0.65) 0%, transparent 45%), linear-gradient(135deg, rgba(184,145,58,0.04) 0%, transparent 55%);"></div>
+                   style="background: linear-gradient(to top, rgba(10,10,10,0.65) 0%, transparent 45%), linear-gradient(135deg, rgba(170,255,0,0.04) 0%, transparent 55%);"></div>
             </div>
             <div class="absolute -bottom-5 -right-4 md:-right-8 rounded-xl px-5 py-4"
-                 style="background:#1C1A15; border:1px solid #2A271F; box-shadow: 0 16px 48px rgba(0,0,0,0.45);">
+                 style="background:#1A1A1A; border:1px solid #1E1E1E; box-shadow: 0 16px 48px rgba(0,0,0,0.45);">
               <p class="font-body text-muted uppercase font-medium mb-2" style="font-size:0.6rem; letter-spacing:0.18em;">Certified By</p>
               <div class="flex flex-col gap-1.5">
                 <p class="text-text-primary text-xs font-medium">BCRPA — Certified Personal Trainer</p>
@@ -439,14 +439,14 @@
               </div>
             </div>
             <div class="absolute -top-10 -left-10 w-48 h-48 rounded-full pointer-events-none"
-                 style="background: radial-gradient(circle, rgba(184,145,58,0.10) 0%, transparent 70%);"></div>
+                 style="background: radial-gradient(circle, rgba(170,255,0,0.10) 0%, transparent 70%);"></div>
           </div>
 
           <div class="order-1 md:order-2">
             <div class="label-chip mb-5 reveal">About</div>
             <h2 class="font-display font-semibold text-text-primary reveal"
                 style="font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
-              Training as an act<br/>of <em style="color:#B8913A; font-style:italic;">self-respect.</em>
+              Training as an act<br/>of <em style="color:#AAFF00; font-style:italic;">self-respect.</em>
             </h2>
             <div class="gold-rule my-6 max-w-[200px] reveal" style="transition-delay:0.18s;"></div>
             <p class="text-text-secondary text-sm leading-[1.85] mb-5 reveal" style="transition-delay:0.22s;">
@@ -457,14 +457,14 @@
             </p>
             <ul class="space-y-5 reveal" style="transition-delay:0.34s;">
               <li class="flex gap-3">
-                <span class="flex-shrink-0 w-5 h-5 rounded flex items-center justify-center font-bold mt-0.5" style="font-size:0.65rem; background:rgba(184,145,58,0.08); color:#B8913A; border:1px solid rgba(184,145,58,0.18);">✓</span>
+                <span class="flex-shrink-0 w-5 h-5 rounded flex items-center justify-center font-bold mt-0.5" style="font-size:0.65rem; background:rgba(170,255,0,0.08); color:#AAFF00; border:1px solid rgba(170,255,0,0.18);">✓</span>
                 <div>
                   <p class="text-text-primary text-sm font-medium">British Columbia Recreation and Parks Association (BCRPA)</p>
                   <p class="text-text-secondary text-xs leading-[1.75] mt-1">The BCRPA is BC's provincial standard for personal training certification — recognised by gyms, fitness facilities, and health organisations across British Columbia. Training with a BCRPA-certified trainer means you're working with someone held to a regulated, province-wide standard of safety, professionalism, and competence.</p>
                 </div>
               </li>
               <li class="flex gap-3">
-                <span class="flex-shrink-0 w-5 h-5 rounded flex items-center justify-center font-bold mt-0.5" style="font-size:0.65rem; background:rgba(184,145,58,0.08); color:#B8913A; border:1px solid rgba(184,145,58,0.18);">✓</span>
+                <span class="flex-shrink-0 w-5 h-5 rounded flex items-center justify-center font-bold mt-0.5" style="font-size:0.65rem; background:rgba(170,255,0,0.08); color:#AAFF00; border:1px solid rgba(170,255,0,0.18);">✓</span>
                 <div>
                   <p class="text-text-primary text-sm font-medium">Infofit Sports Performance &amp; Fitness Nutrition Graduate</p>
                   <p class="text-text-secondary text-xs leading-[1.75] mt-1">Infofit is one of Canada's leading fitness education institutions. This specialisation covers the science of fuelling athletic performance, body recomposition, and long-term health — meaning your nutrition guidance is grounded in evidence, not trends. Food is treated as a tool for performance, not punishment.</p>
@@ -481,13 +481,13 @@
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="py-24 md:py-32" style="background:#141310; border-top:1px solid #2A271F;">
+    <section id="services" class="py-24 md:py-32" style="background:#111111; border-top:1px solid #1E1E1E;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="max-w-xl mb-16">
           <div class="label-chip mb-5 reveal">Programs</div>
           <h2 class="font-display font-semibold text-text-primary reveal"
               style="font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
-            Built around<br/><em style="color:#B8913A; font-style:italic;">your goals.</em>
+            Built around<br/><em style="color:#AAFF00; font-style:italic;">your goals.</em>
           </h2>
           <p class="text-text-secondary text-sm leading-[1.8] mt-4 reveal" style="transition-delay:0.18s;">
             Three focused programmes — each designed around mastery, not hustle. Sustainable, science-backed, and built for real life.
@@ -503,18 +503,18 @@
             <p class="text-muted font-body font-medium uppercase mb-4" style="font-size:0.62rem; letter-spacing:0.14em;">In-person · Fully personalised</p>
             <p class="text-text-secondary text-sm leading-[1.8] mb-6">The highest level of coaching. Every session is built around your body, your goals, and your life. Real-time feedback, intelligent programming, and complete accountability.</p>
             <ul class="space-y-3 mb-8">
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Custom training programme</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Weekly check-ins &amp; adjustments</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Real-time form coaching</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Progress tracking dashboard</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Custom training programme</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Weekly check-ins &amp; adjustments</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Real-time form coaching</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Progress tracking dashboard</li>
             </ul>
             <a href="#contact" class="btn-ghost w-full py-3 rounded flex items-center justify-center gap-2">Get Started <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5H9.5M6 2L9.5 5.5L6 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
 
           <div class="card rounded-xl p-8 reveal relative overflow-hidden"
-               style="transition-delay:0.12s; border-color: rgba(184,145,58,0.35); background: linear-gradient(160deg, #181510 0%, #141310 100%);">
+               style="transition-delay:0.12s; border-color: rgba(170,255,0,0.35); background: linear-gradient(160deg, #141414 0%, #111111 100%);">
             <div class="absolute top-5 right-5">
-              <span class="font-body font-semibold uppercase px-3 py-1.5 rounded" style="font-size:0.6rem; letter-spacing:0.1em; background:#B8913A; color:#0C0B09;">Most Popular</span>
+              <span class="font-body font-semibold uppercase px-3 py-1.5 rounded" style="font-size:0.6rem; letter-spacing:0.1em; background:#AAFF00; color:#0A0A0A;">Most Popular</span>
             </div>
             <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center mb-6">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="4" width="15" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 8H10M6 12H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -523,10 +523,10 @@
             <p class="text-muted font-body font-medium uppercase mb-4" style="font-size:0.62rem; letter-spacing:0.14em;">Remote · Full support</p>
             <p class="text-text-secondary text-sm leading-[1.8] mb-6">World-class coaching wherever you are. Train on your schedule with a programme built around your equipment, lifestyle, and goals — delivered through a dedicated coaching app.</p>
             <ul class="space-y-3 mb-8">
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Personalised remote programme</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Bi-weekly video check-ins</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Nutrition coaching included</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> 24/7 messaging support</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Personalised remote programme</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Bi-weekly video check-ins</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Nutrition coaching included</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> 24/7 messaging support</li>
             </ul>
             <a href="#contact" class="btn-gold w-full py-3 rounded flex items-center justify-center gap-2">Get Started <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5H9.5M6 2L9.5 5.5L6 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
@@ -539,10 +539,10 @@
             <p class="text-muted font-body font-medium uppercase mb-4" style="font-size:0.62rem; letter-spacing:0.14em;">Standalone · Add-on available</p>
             <p class="text-text-secondary text-sm leading-[1.8] mb-6">Fuelling the body is an act of respect. No restrictive diets — just smart, flexible eating strategies aligned with your training, your life, and your long-term wellbeing.</p>
             <ul class="space-y-3 mb-8">
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Full macro &amp; calorie targets</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Flexible meal frameworks</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Supplement guidance</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Monthly plan revisions</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Full macro &amp; calorie targets</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Flexible meal frameworks</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Supplement guidance</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Monthly plan revisions</li>
             </ul>
             <a href="#contact" class="btn-ghost w-full py-3 rounded flex items-center justify-center gap-2">Get Started <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5H9.5M6 2L9.5 5.5L6 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
@@ -551,13 +551,13 @@
     </section>
 
     <!-- PROCESS -->
-    <section id="process" class="py-24 md:py-32" style="background:#0C0B09; border-top:1px solid #2A271F;">
+    <section id="process" class="py-24 md:py-32" style="background:#0A0A0A; border-top:1px solid #1E1E1E;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-xl mx-auto mb-20">
           <div class="label-chip mb-5 reveal inline-flex">How It Works</div>
           <h2 class="font-display font-semibold text-text-primary reveal"
               style="font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
-            Your path to<br/><em style="color:#B8913A; font-style:italic;">mastery.</em>
+            Your path to<br/><em style="color:#AAFF00; font-style:italic;">mastery.</em>
           </h2>
           <p class="text-text-secondary text-sm leading-[1.8] mt-4 reveal" style="transition-delay:0.18s;">
             Three clear steps from your first conversation to your first transformation.
@@ -595,13 +595,13 @@
     </section>
 
     <!-- TESTIMONIALS -->
-    <section id="testimonials" class="py-24 md:py-32" style="background:#141310; border-top:1px solid #2A271F;">
+    <section id="testimonials" class="py-24 md:py-32" style="background:#111111; border-top:1px solid #1E1E1E;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="max-w-xl mb-16">
           <div class="label-chip mb-5 reveal">Client Results</div>
           <h2 class="font-display font-semibold text-text-primary reveal"
               style="font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
-            Real people.<br/><em style="color:#B8913A; font-style:italic;">Real results.</em>
+            Real people.<br/><em style="color:#AAFF00; font-style:italic;">Real results.</em>
           </h2>
         </div>
 
@@ -610,7 +610,7 @@
             <div class="quote-mark mb-2">"</div>
             <p class="text-text-secondary text-sm leading-[1.85] mb-7 italic">"I lost 18kg in 5 months — but the bigger shift was mental. For the first time, I actually respected what my body could do. The programme was hard, intentional, and it completely changed how I see myself."</p>
             <div class="flex items-center gap-3">
-              <img src="https://placehold.co/44x44/1C1A15/B8913A?text=JM" alt="James M." class="w-11 h-11 rounded-full object-cover" style="border:1.5px solid rgba(184,145,58,0.25);" />
+              <img src="https://placehold.co/44x44/1C1A15/B8913A?text=JM" alt="James M." class="w-11 h-11 rounded-full object-cover" style="border:1.5px solid rgba(170,255,0,0.25);" />
               <div>
                 <p class="text-text-primary text-sm font-medium">James M.</p>
                 <p class="text-muted text-xs">Lost 18kg · Online Coaching</p>
@@ -622,7 +622,7 @@
             <div class="quote-mark mb-2">"</div>
             <p class="text-text-secondary text-sm leading-[1.85] mb-7 italic">"After years of spinning my wheels, Revere gave me a clear structure and the accountability I needed. I'm deadlifting 140kg now. Turns out I just needed a process I could trust."</p>
             <div class="flex items-center gap-3">
-              <img src="https://placehold.co/44x44/2A271F/8A6C28?text=SK" alt="Sarah K." class="w-11 h-11 rounded-full object-cover" style="border:1.5px solid rgba(184,145,58,0.25);" />
+              <img src="https://placehold.co/44x44/2A271F/8A6C28?text=SK" alt="Sarah K." class="w-11 h-11 rounded-full object-cover" style="border:1.5px solid rgba(170,255,0,0.25);" />
               <div>
                 <p class="text-text-primary text-sm font-medium">Sarah K.</p>
                 <p class="text-muted text-xs">140kg deadlift · 1-on-1 Training</p>
@@ -634,7 +634,7 @@
             <div class="quote-mark mb-2">"</div>
             <p class="text-text-secondary text-sm leading-[1.85] mb-7 italic">"The nutrition coaching reframed my entire relationship with food. No more restriction — just a philosophy I could actually live by. I feel the best I've felt in my life, and I'm only getting started."</p>
             <div class="flex items-center gap-3">
-              <img src="https://placehold.co/44x44/1C1A15/B8913A?text=RP" alt="Ryan P." class="w-11 h-11 rounded-full object-cover" style="border:1.5px solid rgba(184,145,58,0.25);" />
+              <img src="https://placehold.co/44x44/1C1A15/B8913A?text=RP" alt="Ryan P." class="w-11 h-11 rounded-full object-cover" style="border:1.5px solid rgba(170,255,0,0.25);" />
               <div>
                 <p class="text-text-primary text-sm font-medium">Ryan P.</p>
                 <p class="text-muted text-xs">Body recomp · Nutrition + Coaching</p>
@@ -646,13 +646,13 @@
     </section>
 
     <!-- PRICING -->
-    <section id="pricing" class="py-24 md:py-32" style="background:#0C0B09; border-top:1px solid #2A271F;">
+    <section id="pricing" class="py-24 md:py-32" style="background:#0A0A0A; border-top:1px solid #1E1E1E;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-xl mx-auto mb-16">
           <div class="label-chip mb-5 reveal inline-flex">Pricing</div>
           <h2 class="font-display font-semibold text-text-primary reveal"
               style="font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
-            Invest in the<br/><em style="color:#B8913A; font-style:italic;">process.</em>
+            Invest in the<br/><em style="color:#AAFF00; font-style:italic;">process.</em>
           </h2>
           <p class="text-text-secondary text-sm leading-[1.8] mt-4 reveal" style="transition-delay:0.18s;">No lock-in contracts. Cancel or change plan at any time.</p>
         </div>
@@ -669,9 +669,9 @@
             </div>
             <p class="text-muted text-xs mb-7">Online coaching only</p>
             <ul class="space-y-3 mb-8">
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Custom training programme</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Weekly check-in via app</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Messaging support (48hr)</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Custom training programme</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Weekly check-in via app</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Messaging support (48hr)</li>
               <li class="flex items-center gap-2.5 text-sm text-muted"><span class="text-xs">—</span> Nutrition coaching</li>
               <li class="flex items-center gap-2.5 text-sm text-muted"><span class="text-xs">—</span> Video check-ins</li>
             </ul>
@@ -680,7 +680,7 @@
 
           <div class="pricing-card featured rounded-xl p-8 reveal relative" style="transition-delay:0.12s;">
             <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-              <span class="font-body font-semibold uppercase px-4 py-1.5 rounded whitespace-nowrap" style="font-size:0.6rem; letter-spacing:0.1em; background:#B8913A; color:#0C0B09;">Best Value</span>
+              <span class="font-body font-semibold uppercase px-4 py-1.5 rounded whitespace-nowrap" style="font-size:0.6rem; letter-spacing:0.1em; background:#AAFF00; color:#0A0A0A;">Best Value</span>
             </div>
             <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center mb-5">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
@@ -692,11 +692,11 @@
             </div>
             <p class="text-muted text-xs mb-7">Online coaching + nutrition</p>
             <ul class="space-y-3 mb-8">
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Custom training programme</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Bi-weekly video check-ins</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> 24/7 messaging support</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Full nutrition coaching</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Monthly programme revisions</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Custom training programme</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Bi-weekly video check-ins</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> 24/7 messaging support</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Full nutrition coaching</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Monthly programme revisions</li>
             </ul>
             <a href="#contact" class="btn-gold w-full py-3 rounded flex items-center justify-center gap-2">Get Started <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 6H10.5M6.5 2L10.5 6L6.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
@@ -712,19 +712,19 @@
             </div>
             <p class="text-muted text-xs mb-7">In-person + full support</p>
             <ul class="space-y-3 mb-8">
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> 4× weekly in-person sessions</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Weekly video check-ins</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Priority 24/7 support</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Full nutrition coaching</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Lifestyle &amp; recovery coaching</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> 4× weekly in-person sessions</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Weekly video check-ins</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Priority 24/7 support</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Full nutrition coaching</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Lifestyle &amp; recovery coaching</li>
             </ul>
             <a href="#contact" class="btn-ghost w-full py-3 rounded flex items-center justify-center">Get Started</a>
           </div>
 
           <!-- In-Home Training -->
-          <div class="pricing-card rounded-xl p-8 reveal relative overflow-hidden" style="transition-delay:0.36s; border-color: rgba(184,145,58,0.35); background: linear-gradient(160deg, #181510 0%, #141310 100%);">
+          <div class="pricing-card rounded-xl p-8 reveal relative overflow-hidden" style="transition-delay:0.36s; border-color: rgba(170,255,0,0.35); background: linear-gradient(160deg, #141414 0%, #111111 100%);">
             <div class="absolute top-5 right-5">
-              <span class="font-body font-semibold uppercase px-3 py-1.5 rounded" style="font-size:0.6rem; letter-spacing:0.1em; background: rgba(184,145,58,0.12); border:1px solid rgba(184,145,58,0.3); color:#B8913A;">I Come To You</span>
+              <span class="font-body font-semibold uppercase px-3 py-1.5 rounded" style="font-size:0.6rem; letter-spacing:0.1em; background: rgba(170,255,0,0.12); border:1px solid rgba(170,255,0,0.3); color:#AAFF00;">I Come To You</span>
             </div>
             <div class="icon-badge w-11 h-11 rounded-lg flex items-center justify-center mb-5">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7.5 2 5.5 4 5.5 6.5C5.5 9.5 10 15 10 15C10 15 14.5 9.5 14.5 6.5C14.5 4 12.5 2 10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M3 18C3 18 5.5 16 10 16C14.5 16 17 18 17 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -737,11 +737,11 @@
             <p class="text-muted text-xs mb-5">Lower Mainland Vancouver · House, townhouse, or condo</p>
             <p class="text-text-secondary text-sm leading-[1.8] mb-6">Fully personalised 1-on-1 training in the comfort and privacy of your own home gym. I come to you — no commute, no crowded gym floor. Just focused, results-driven coaching built entirely around you.</p>
             <ul class="space-y-3 mb-8">
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> I travel to your home in the Lower Mainland</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Intensive form coaching &amp; technique correction</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Personalised nutrition guidance each session</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Programme adapted to your available equipment</li>
-              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#B8913A; font-size:0.7rem; font-weight:600;">✓</span> Fully results-driven — no filler, no fluff</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> I travel to your home in the Lower Mainland</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Intensive form coaching &amp; technique correction</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Personalised nutrition guidance each session</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Programme adapted to your available equipment</li>
+              <li class="flex items-center gap-2.5 text-sm text-text-secondary"><span style="color:#AAFF00; font-size:0.7rem; font-weight:600;">✓</span> Fully results-driven — no filler, no fluff</li>
             </ul>
             <a href="#contact" class="btn-gold w-full py-3 rounded flex items-center justify-center gap-2">
               Book a Session
@@ -749,7 +749,7 @@
             </a>
           </div>
         </div>
-        <p class="text-center text-muted text-xs mt-8 reveal">Not sure which plan fits? <a href="#contact" class="underline" style="color:#B8913A;">Book a free discovery call</a> — we'll figure it out together.</p>
+        <p class="text-center text-muted text-xs mt-8 reveal">Not sure which plan fits? <a href="#contact" class="underline" style="color:#AAFF00;">Book a free discovery call</a> — we'll figure it out together.</p>
       </div>
     </section>
 
@@ -759,7 +759,7 @@
         <div class="label-chip mb-6 reveal inline-flex">Limited Spots</div>
         <h2 class="font-display font-semibold text-text-primary reveal"
             style="font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 0.97; letter-spacing: -0.02em; transition-delay:0.1s;">
-          Respect yourself<br/>enough to start.<br/><em style="color:#B8913A; font-style:italic;">Revere yourself<br/>enough to never stop.</em>
+          Respect yourself<br/>enough to start.<br/><em style="color:#AAFF00; font-style:italic;">Revere yourself<br/>enough to never stop.</em>
         </h2>
         <p class="text-text-secondary text-sm leading-[1.8] mt-7 max-w-md mx-auto reveal" style="transition-delay:0.2s;">
           I take on a limited number of new clients each month to ensure everyone receives my full attention. Book your free call before spots close.
@@ -775,14 +775,14 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-24 md:py-32" style="background:#0C0B09; border-top:1px solid #2A271F;">
+    <section id="contact" class="py-24 md:py-32" style="background:#0A0A0A; border-top:1px solid #1E1E1E;">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-16 items-start">
           <div>
             <div class="label-chip mb-5 reveal">Contact</div>
             <h2 class="font-display font-semibold text-text-primary reveal"
                 style="font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.0; letter-spacing: -0.01em; transition-delay:0.1s;">
-              Let's talk about<br/><em style="color:#B8913A; font-style:italic;">your goals.</em>
+              Let's talk about<br/><em style="color:#AAFF00; font-style:italic;">your goals.</em>
             </h2>
             <div class="gold-rule my-6 max-w-[160px] reveal" style="transition-delay:0.18s;"></div>
             <p class="text-text-secondary text-sm leading-[1.85] mb-8 reveal" style="transition-delay:0.22s;">Fill in the form and I'll be in touch within 24 hours to schedule your free discovery call.</p>
@@ -793,7 +793,7 @@
                 </div>
                 <div>
                   <p class="font-body text-muted uppercase font-medium mb-0.5" style="font-size:0.6rem; letter-spacing:0.18em;">Email</p>
-                  <a href="mailto:reverefitness@outlook.com" class="text-text-primary text-sm" style="transition: color 0.15s ease;" onmouseover="this.style.color='#D4AA58'" onmouseout="this.style.color='#EDE8DF'">reverefitness@outlook.com</a>
+                  <a href="mailto:reverefitness@outlook.com" class="text-text-primary text-sm" style="transition: color 0.15s ease;" onmouseover="this.style.color='#CCFF00'" onmouseout="this.style.color='#F0F0F0'">reverefitness@outlook.com</a>
                 </div>
               </div>
               <div class="flex items-center gap-4">
@@ -815,26 +815,26 @@
                   <label class="block font-body font-medium text-muted uppercase mb-2" style="font-size:0.6rem; letter-spacing:0.18em;" for="name">Full Name</label>
                   <input type="text" id="name" name="name" required placeholder="Your name"
                          class="w-full rounded px-4 py-3 text-sm text-text-primary placeholder-muted focus:outline-none"
-                         style="background:#0C0B09; border:1px solid #2A271F;"
-                         onfocus="this.style.borderColor='rgba(184,145,58,0.45)'"
-                         onblur="this.style.borderColor='#2A271F'" />
+                         style="background:#0A0A0A; border:1px solid #1E1E1E;"
+                         onfocus="this.style.borderColor='rgba(170,255,0,0.45)'"
+                         onblur="this.style.borderColor='#1E1E1E'" />
                 </div>
                 <div>
                   <label class="block font-body font-medium text-muted uppercase mb-2" style="font-size:0.6rem; letter-spacing:0.18em;" for="email">Email</label>
                   <input type="email" id="email" name="email" required placeholder="your@email.com"
                          class="w-full rounded px-4 py-3 text-sm text-text-primary placeholder-muted focus:outline-none"
-                         style="background:#0C0B09; border:1px solid #2A271F;"
-                         onfocus="this.style.borderColor='rgba(184,145,58,0.45)'"
-                         onblur="this.style.borderColor='#2A271F'" />
+                         style="background:#0A0A0A; border:1px solid #1E1E1E;"
+                         onfocus="this.style.borderColor='rgba(170,255,0,0.45)'"
+                         onblur="this.style.borderColor='#1E1E1E'" />
                 </div>
               </div>
               <div class="mb-5">
                 <label class="block font-body font-medium text-muted uppercase mb-2" style="font-size:0.6rem; letter-spacing:0.18em;" for="goal">Primary Goal</label>
                 <select id="goal" name="goal"
                         class="w-full rounded px-4 py-3 text-sm text-text-primary focus:outline-none appearance-none cursor-pointer"
-                        style="background:#0C0B09; border:1px solid #2A271F;"
-                        onfocus="this.style.borderColor='rgba(184,145,58,0.45)'"
-                        onblur="this.style.borderColor='#2A271F'">
+                        style="background:#0A0A0A; border:1px solid #1E1E1E;"
+                        onfocus="this.style.borderColor='rgba(170,255,0,0.45)'"
+                        onblur="this.style.borderColor='#1E1E1E'">
                   <option value="" disabled selected>Select your main goal</option>
                   <option value="fat-loss">Fat Loss &amp; Body Recomposition</option>
                   <option value="muscle">Muscle Building</option>
@@ -848,9 +848,9 @@
                 <textarea id="message" name="message" rows="4"
                           placeholder="Current fitness level, any injuries, what's held you back before..."
                           class="w-full rounded px-4 py-3 text-sm text-text-primary placeholder-muted resize-none focus:outline-none"
-                          style="background:#0C0B09; border:1px solid #2A271F;"
-                          onfocus="this.style.borderColor='rgba(184,145,58,0.45)'"
-                          onblur="this.style.borderColor='#2A271F'"></textarea>
+                          style="background:#0A0A0A; border:1px solid #1E1E1E;"
+                          onfocus="this.style.borderColor='rgba(170,255,0,0.45)'"
+                          onblur="this.style.borderColor='#1E1E1E'"></textarea>
               </div>
               <button type="submit" class="btn-gold w-full py-3.5 rounded flex items-center justify-center gap-2">
                 Send Message &amp; Book Call
@@ -868,16 +868,16 @@
   </main>
 
   <!-- FOOTER -->
-  <footer style="background:#0C0B09;">
+  <footer style="background:#0A0A0A;">
     <div class="max-w-7xl mx-auto px-6 py-12">
       <div class="flex flex-col md:flex-row items-start justify-between gap-10">
         <div>
           <a href="#" class="flex items-center gap-2.5 mb-4">
             <div class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
-                 style="background: linear-gradient(135deg, #B8913A 0%, #8A6C28 100%);">
+                 style="background: linear-gradient(135deg, #AAFF00 0%, #88CC00 100%);">
               <svg width="10" height="10" viewBox="0 0 14 14" fill="none">
-                <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0C0B09" opacity="0.4"/>
-                <path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0C0B09"/>
+                <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0A0A0A" opacity="0.4"/>
+                <path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0A0A0A"/>
               </svg>
             </div>
             <div>
@@ -893,18 +893,18 @@
           <div>
             <p class="font-body font-medium text-muted uppercase mb-4" style="font-size:0.6rem; letter-spacing:0.18em;">Navigation</p>
             <ul class="space-y-2.5">
-              <li><a href="#about"        class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">About</a></li>
-              <li><a href="#services"     class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">Services</a></li>
-              <li><a href="#process"      class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">How It Works</a></li>
-              <li><a href="#pricing"      class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">Pricing</a></li>
+              <li><a href="#about"        class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#AAFF00'" onmouseout="this.style.color='#888888'">About</a></li>
+              <li><a href="#services"     class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#AAFF00'" onmouseout="this.style.color='#888888'">Services</a></li>
+              <li><a href="#process"      class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#AAFF00'" onmouseout="this.style.color='#888888'">How It Works</a></li>
+              <li><a href="#pricing"      class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#AAFF00'" onmouseout="this.style.color='#888888'">Pricing</a></li>
             </ul>
           </div>
           <div>
             <p class="font-body font-medium text-muted uppercase mb-4" style="font-size:0.6rem; letter-spacing:0.18em;">Contact</p>
             <ul class="space-y-2.5">
-              <li><a href="mailto:reverefitness@outlook.com" class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">reverefitness@outlook.com</a></li>
+              <li><a href="mailto:reverefitness@outlook.com" class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#AAFF00'" onmouseout="this.style.color='#888888'">reverefitness@outlook.com</a></li>
               <li><span class="text-text-secondary text-sm">@myreverefitness</span></li>
-              <li><a href="#contact" class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#B8913A'" onmouseout="this.style.color='#8A8580'">Book a Free Call</a></li>
+              <li><a href="#contact" class="text-text-secondary text-sm" style="transition:color 0.15s;" onmouseover="this.style.color='#AAFF00'" onmouseout="this.style.color='#888888'">Book a Free Call</a></li>
             </ul>
           </div>
         </div>
@@ -914,8 +914,8 @@
       <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
         <p class="text-muted text-xs">© 2026 Revere Fitness. All rights reserved.</p>
         <div class="flex gap-5">
-          <a href="#" class="text-muted text-xs" onmouseover="this.style.color='#8A8580'" onmouseout="this.style.color='#55524E'">Privacy Policy</a>
-          <a href="#" class="text-muted text-xs" onmouseover="this.style.color='#8A8580'" onmouseout="this.style.color='#55524E'">Terms of Service</a>
+          <a href="#" class="text-muted text-xs" onmouseover="this.style.color='#888888'" onmouseout="this.style.color='#555555'">Privacy Policy</a>
+          <a href="#" class="text-muted text-xs" onmouseover="this.style.color='#888888'" onmouseout="this.style.color='#555555'">Terms of Service</a>
         </div>
       </div>
     </div>
