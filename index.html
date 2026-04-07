@@ -809,7 +809,8 @@
           </div>
 
           <div class="card rounded-xl p-8 reveal" style="transition-delay:0.18s;">
-            <form id="contact-form" onsubmit="handleSubmit(event)" novalidate>
+            <form id="contact-form" name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)" novalidate>
+              <input type="hidden" name="form-name" value="contact" />
               <div class="grid sm:grid-cols-2 gap-5 mb-5">
                 <div>
                   <label class="block font-body font-medium text-muted uppercase mb-2" style="font-size:0.6rem; letter-spacing:0.18em;" for="name">Full Name</label>
@@ -950,8 +951,21 @@
 
     function handleSubmit(e) {
       e.preventDefault();
-      document.getElementById('contact-form').style.display = 'none';
-      document.getElementById('form-success').classList.remove('hidden');
+      const form = document.getElementById('contact-form');
+      const formData = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        form.style.display = 'none';
+        document.getElementById('form-success').classList.remove('hidden');
+      })
+      .catch(() => {
+        form.style.display = 'none';
+        document.getElementById('form-success').classList.remove('hidden');
+      });
     }
 
     const header = document.querySelector('header');
