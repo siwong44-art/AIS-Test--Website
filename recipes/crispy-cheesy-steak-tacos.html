@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>High Protein Crispy Cheesy Steak Tacos — REVERE Training Kitchen</title>
+  <link rel="icon" type="image/jpeg" href="../brand_assets/REVERELOGO.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base:     '#0A0A0A',
+            surface:  '#111111',
+            elevated: '#1A1A1A',
+            border:   '#1E1E1E',
+            lime:     '#AAFF00',
+            'text-primary':   '#F0F0F0',
+            'text-secondary': '#888888',
+            muted:            '#555555',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garant"', 'Georgia', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0A0A0A;
+      color: #F0F0F0;
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .nav-glass {
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(30, 30, 30, 0.8);
+    }
+    .nav-link {
+      color: #888888;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.15s ease;
+    }
+    .nav-link:hover { color: #F0F0F0; }
+    .nav-link.active { color: #AAFF00; }
+    .btn-gold {
+      background: #AAFF00;
+      color: #0A0A0A;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-gold:hover { background: #CCFF00; transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid rgba(170, 255, 0, 0.35);
+      color: #AAFF00;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+    .btn-outline:hover {
+      background: rgba(170, 255, 0, 0.07);
+      border-color: rgba(170, 255, 0, 0.6);
+      transform: translateY(-1px);
+    }
+    .label-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(170, 255, 0, 0.07);
+      border: 1px solid rgba(170, 255, 0, 0.2);
+      color: #AAFF00;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 13px;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .macro-stat {
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+      flex: 1;
+    }
+    .ingredient-card {
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .tip-box {
+      background: rgba(170, 255, 0, 0.04);
+      border: 1px solid rgba(170, 255, 0, 0.15);
+      border-left: 3px solid #AAFF00;
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(170,255,0,0.2), transparent);
+      margin: 48px 0;
+    }
+    .step-num {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: rgba(170, 255, 0, 0.12);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+      width: 52px;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #1E1E1E; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #AAFF00; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Revere Fitness home">
+        <div class="w-7 h-7 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #AAFF00 0%, #88CC00 100%);">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0A0A0A" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0A0A0A"/></svg>
+        </div>
+        <div>
+          <span class="font-display font-semibold text-text-primary" style="font-size:1.05rem; letter-spacing:0.12em;">REVERE</span>
+          <span class="font-body font-medium text-muted uppercase block" style="font-size:0.6rem; letter-spacing:0.22em; margin-top:-3px; line-height:1;">FITNESS</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="../index.html#about"        class="nav-link">About</a>
+        <a href="../index.html#services"     class="nav-link">Services</a>
+        <a href="../index.html#process"      class="nav-link">How It Works</a>
+        <a href="../index.html#testimonials" class="nav-link">Results</a>
+        <a href="../index.html#pricing"      class="nav-link">Pricing</a>
+        <a href="../recipes.html"            class="nav-link active">Recipes</a>
+        <a href="../forms.html"              class="nav-link">Forms</a>
+      </nav>
+      <a href="../index.html#contact" class="hidden md:inline-flex btn-gold px-5 py-2.5 rounded">Book Free Call</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="min-height: 480px; background:#0A0A0A;">
+    <div class="absolute inset-0">
+      <img src="https://placehold.co/1440x480/111111/1A1A1A?text=+"
+           alt="" class="w-full h-full object-cover object-center opacity-60" aria-hidden="true" />
+      <div class="absolute inset-0" style="background: linear-gradient(to right, #0A0A0A 40%, rgba(10,10,10,0.5) 70%, transparent 100%), linear-gradient(to top, #0A0A0A 0%, transparent 40%);"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 flex flex-col justify-end pb-16 pt-36">
+      <div class="flex items-center gap-3 mb-4">
+        <a href="../recipes.html" class="flex items-center gap-1.5 text-muted hover:text-text-primary transition-colors" style="font-size:0.75rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase;">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M9 6H3M5.5 3L3 6L5.5 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          All Recipes
+        </a>
+        <span class="text-muted" style="font-size:0.7rem;">·</span>
+        <span class="label-chip" style="font-size:0.58rem; padding:3px 10px;">Ready in 30 Minutes</span>
+      </div>
+      <h1 class="font-display font-semibold reveal" style="font-size: clamp(2.4rem, 5vw, 4rem); line-height:1.0; letter-spacing:-0.02em; max-width: 700px;">
+        Crispy Cheesy<br/><em style="color:#AAFF00; font-style:italic;">Steak Tacos</em>
+      </h1>
+      <p class="text-text-secondary text-sm mt-3 reveal" style="transition-delay:0.1s;">Makes 8 Tacos &nbsp;·&nbsp; 35g Protein Each &nbsp;·&nbsp; REVERE Training Kitchen</p>
+    </div>
+  </section>
+
+  <!-- MACROS BAR -->
+  <section style="background:#111111; border-top:1px solid #1E1E1E; border-bottom:1px solid #1E1E1E;">
+    <div class="max-w-7xl mx-auto px-6 py-6">
+      <div class="flex flex-wrap gap-3 items-center justify-between">
+        <p class="font-body font-medium uppercase text-muted" style="font-size:0.62rem; letter-spacing:0.18em;">Nutrition Per Taco</p>
+        <div class="flex flex-wrap gap-3">
+          <div class="macro-stat">
+            <p class="font-display font-semibold text-text-primary" style="font-size:1.6rem; letter-spacing:-0.02em; line-height:1;">393</p>
+            <p class="font-body font-medium uppercase text-muted mt-0.5" style="font-size:0.58rem; letter-spacing:0.16em;">Calories</p>
+          </div>
+          <div class="macro-stat" style="border-color:rgba(170,255,0,0.2);">
+            <p class="font-display font-semibold" style="font-size:1.6rem; letter-spacing:-0.02em; line-height:1; color:#AAFF00;">35g</p>
+            <p class="font-body font-medium uppercase text-muted mt-0.5" style="font-size:0.58rem; letter-spacing:0.16em;">Protein</p>
+          </div>
+          <div class="macro-stat">
+            <p class="font-display font-semibold text-text-primary" style="font-size:1.6rem; letter-spacing:-0.02em; line-height:1;">18g</p>
+            <p class="font-body font-medium uppercase text-muted mt-0.5" style="font-size:0.58rem; letter-spacing:0.16em;">Carbs</p>
+          </div>
+          <div class="macro-stat">
+            <p class="font-display font-semibold text-text-primary" style="font-size:1.6rem; letter-spacing:-0.02em; line-height:1;">20g</p>
+            <p class="font-body font-medium uppercase text-muted mt-0.5" style="font-size:0.58rem; letter-spacing:0.16em;">Fat</p>
+          </div>
+        </div>
+        <a href="pdfs/Crispy_Cheesy_Steak_Tacos.pdf" download class="btn-outline px-5 py-2.5 rounded inline-flex items-center gap-2 flex-shrink-0">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2V9M6.5 9L4 6.5M6.5 9L9 6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11H11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECIPE CONTENT -->
+  <div class="max-w-4xl mx-auto px-6 py-16 md:py-24">
+
+    <!-- STEAK BITES -->
+    <div class="reveal">
+      <div class="flex items-center gap-4 mb-6">
+        <div style="width:32px; height:2px; background:#AAFF00; flex-shrink:0;"></div>
+        <h2 class="font-display font-semibold text-text-primary" style="font-size:1.75rem; letter-spacing:-0.01em;">Steak Bites</h2>
+      </div>
+
+      <div class="ingredient-card mb-4">
+        <p class="font-body font-medium uppercase text-muted mb-4" style="font-size:0.6rem; letter-spacing:0.18em;">Ingredients</p>
+        <ul class="space-y-2.5">
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 800g lean steak, diced into ½" cubes (flank steak recommended)</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> Chipotle seasoning — to taste</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> Salt — to taste</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> Cooking spray</li>
+        </ul>
+      </div>
+
+      <div class="tip-box mb-6">
+        <p class="text-sm" style="color:#AAFF00; font-weight:600; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">Pro Tip</p>
+        <p class="text-text-secondary text-sm leading-[1.75]">Freeze the steak for 30 minutes before cutting — it firms up and makes clean, even cubes much easier.</p>
+      </div>
+
+      <div class="space-y-5">
+        <div class="flex gap-4 items-start">
+          <span class="step-num">01</span>
+          <p class="text-text-secondary text-sm leading-[1.85] pt-2">Dice the flank steak into ½" cubes. Season generously with chipotle seasoning and salt, tossing well to coat every piece.</p>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="step-num">02</span>
+          <p class="text-text-secondary text-sm leading-[1.85] pt-2">Heat a pan or flat-top over high heat. Spray with cooking spray, then sear the steak bites in batches — don't crowd the pan. Cook 2–3 minutes per side until a deep crust forms. Set aside.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- PICO DE GALLO -->
+    <div class="reveal">
+      <div class="flex items-center gap-4 mb-6">
+        <div style="width:32px; height:2px; background:#AAFF00; flex-shrink:0;"></div>
+        <h2 class="font-display font-semibold text-text-primary" style="font-size:1.75rem; letter-spacing:-0.01em;">Pico de Gallo</h2>
+      </div>
+
+      <div class="ingredient-card mb-6">
+        <p class="font-body font-medium uppercase text-muted mb-4" style="font-size:0.6rem; letter-spacing:0.18em;">Ingredients</p>
+        <ul class="space-y-2.5">
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 2 salad tomatoes, diced</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> ½ red onion, finely diced</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> Small handful of fresh cilantro, chopped</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> Juice of ½ lime</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 1 tbsp olive oil</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> Salt — to taste</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <span class="step-num">01</span>
+        <p class="text-text-secondary text-sm leading-[1.85] pt-2">Combine all ingredients in a bowl. Toss well and season with salt to taste. Let sit for at least 10 minutes to allow the flavours to develop.</p>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- AVOCADO SAUCE -->
+    <div class="reveal">
+      <div class="flex items-center gap-4 mb-6">
+        <div style="width:32px; height:2px; background:#AAFF00; flex-shrink:0;"></div>
+        <h2 class="font-display font-semibold text-text-primary" style="font-size:1.75rem; letter-spacing:-0.01em;">Avocado Sauce</h2>
+      </div>
+
+      <div class="ingredient-card mb-6">
+        <p class="font-body font-medium uppercase text-muted mb-4" style="font-size:0.6rem; letter-spacing:0.18em;">Ingredients</p>
+        <ul class="space-y-2.5">
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 160g 0% Greek yogurt</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 1 ripe avocado</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 100ml skimmed milk</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> Juice of ½ lime</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 2 tsp honey</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> Salt — to taste</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <span class="step-num">01</span>
+        <p class="text-text-secondary text-sm leading-[1.85] pt-2">Combine all ingredients in a blender and blend until completely smooth. Taste and adjust salt or lime as needed. Transfer to a squeeze bottle for easy drizzling.</p>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- TACO ASSEMBLY -->
+    <div class="reveal">
+      <div class="flex items-center gap-4 mb-6">
+        <div style="width:32px; height:2px; background:#AAFF00; flex-shrink:0;"></div>
+        <h2 class="font-display font-semibold text-text-primary" style="font-size:1.75rem; letter-spacing:-0.01em;">Assembly <span style="color:#888888; font-style:italic; font-weight:400;">— Per Taco</span></h2>
+      </div>
+
+      <div class="ingredient-card mb-8">
+        <p class="font-body font-medium uppercase text-muted mb-4" style="font-size:0.6rem; letter-spacing:0.18em;">You'll Need</p>
+        <ul class="space-y-2.5">
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 1 mini tortilla</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 30g low fat shredded cheese</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 1/8 of the steak bites</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 1/8 of the pico de gallo</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> Drizzle of avocado sauce</li>
+        </ul>
+      </div>
+
+      <div class="space-y-5">
+        <div class="flex gap-4 items-start">
+          <span class="step-num">01</span>
+          <p class="text-text-secondary text-sm leading-[1.85] pt-2">Heat a flat pan or griddle over medium-high heat. Place a mini tortilla flat in the pan and scatter 30g of shredded cheese evenly over the entire surface.</p>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="step-num">02</span>
+          <p class="text-text-secondary text-sm leading-[1.85] pt-2">Once the cheese begins to melt and the edges start to crisp and turn golden, add 1/8 of the steak bites to one half of the tortilla.</p>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="step-num">03</span>
+          <p class="text-text-secondary text-sm leading-[1.85] pt-2">Spoon 1/8 of the pico de gallo over the steak, then drizzle with avocado sauce.</p>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="step-num">04</span>
+          <p class="text-text-secondary text-sm leading-[1.85] pt-2">Fold the empty cheese half over the filled half to create a taco shape. Press down gently and cook another 30–60 seconds until the outside is deeply golden and crisp. Serve immediately.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- STORAGE -->
+    <div class="reveal">
+      <div class="flex items-center gap-4 mb-6">
+        <div style="width:32px; height:2px; background:#AAFF00; flex-shrink:0;"></div>
+        <h2 class="font-display font-semibold text-text-primary" style="font-size:1.75rem; letter-spacing:-0.01em;">Storage & Reheating</h2>
+      </div>
+      <div class="ingredient-card">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <p class="font-body font-semibold uppercase mb-2" style="font-size:0.65rem; letter-spacing:0.12em; color:#AAFF00;">Store</p>
+            <p class="text-text-secondary text-sm leading-[1.85]">Allow to cool completely, then wrap in foil and refrigerate. Keeps well for up to <strong class="text-text-primary font-medium">5 days</strong> — ideal for meal prep.</p>
+          </div>
+          <div>
+            <p class="font-body font-semibold uppercase mb-2" style="font-size:0.65rem; letter-spacing:0.12em; color:#AAFF00;">Reheat</p>
+            <p class="text-text-secondary text-sm leading-[1.85]">Microwave on high for 30–60 seconds to remove the chill, then air fry or toast in a pan for a few minutes until crispy and heated through.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOWNLOAD CTA -->
+    <div class="reveal mt-16 text-center">
+      <p class="text-muted text-xs uppercase tracking-widest mb-4" style="letter-spacing:0.18em;">Save this recipe</p>
+      <a href="pdfs/Crispy_Cheesy_Steak_Tacos.pdf" download class="btn-outline px-8 py-3.5 rounded inline-flex items-center gap-2.5">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2V9.5M7 9.5L4.5 7M7 9.5L9.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12H12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Download PDF Recipe
+      </a>
+      <p class="text-muted mt-4" style="font-size:0.72rem;">
+        <a href="../recipes.html" class="hover:text-text-secondary transition-colors" style="color:#555555;">← Back to all recipes</a>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background:#0A0A0A; border-top:1px solid #1E1E1E;">
+    <div class="max-w-7xl mx-auto px-6 py-10 text-center">
+      <p class="font-display italic" style="color:#555555; font-size:0.85rem;">"Respect the body. Trust the process."</p>
+      <p style="color:#555555; font-size:0.72rem; margin-top:8px;">REVERE Training · reverefitness.ca</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
