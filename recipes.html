@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipes — Revere Training Kitchen</title>
+  <link rel="icon" type="image/jpeg" href="brand_assets/REVERELOGO.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base:     '#0A0A0A',
+            surface:  '#111111',
+            elevated: '#1A1A1A',
+            border:   '#1E1E1E',
+            lime:     '#AAFF00',
+            'lime-light': '#CCFF00',
+            'text-primary':   '#F0F0F0',
+            'text-secondary': '#888888',
+            muted:            '#555555',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garant"', 'Georgia', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0A0A0A;
+      color: #F0F0F0;
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .nav-glass {
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(30, 30, 30, 0.8);
+    }
+
+    .nav-link {
+      color: #888888;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.15s ease;
+    }
+    .nav-link:hover { color: #F0F0F0; }
+    .nav-link.active { color: #AAFF00; }
+    .nav-link:focus-visible { outline: 2px solid #AAFF00; outline-offset: 3px; border-radius: 2px; }
+
+    .btn-gold {
+      background: #AAFF00;
+      color: #0A0A0A;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-gold:hover { background: #CCFF00; transform: translateY(-1px); }
+    .btn-gold:active { transform: translateY(0); }
+
+    .label-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(170, 255, 0, 0.07);
+      border: 1px solid rgba(170, 255, 0, 0.2);
+      color: #AAFF00;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 13px;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .recipe-card {
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .recipe-card:hover {
+      border-color: rgba(170, 255, 0, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(170,255,0,0.06);
+    }
+    .recipe-card:hover .card-thumb img {
+      transform: scale(1.04);
+    }
+
+    .card-thumb {
+      overflow: hidden;
+      position: relative;
+    }
+    .card-thumb img {
+      transition: transform 0.5s ease;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .card-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .macro-badge {
+      background: rgba(170, 255, 0, 0.07);
+      border: 1px solid rgba(170, 255, 0, 0.15);
+      color: #AAFF00;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #1E1E1E; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #AAFF00; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Revere Fitness home">
+        <div class="w-7 h-7 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #AAFF00 0%, #88CC00 100%);">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0A0A0A" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0A0A0A"/></svg>
+        </div>
+        <div>
+          <span class="font-display font-semibold text-text-primary" style="font-size:1.05rem; letter-spacing:0.12em;">REVERE</span>
+          <span class="font-body font-medium text-muted uppercase block" style="font-size:0.6rem; letter-spacing:0.22em; margin-top:-3px; line-height:1;">FITNESS</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html#about"        class="nav-link">About</a>
+        <a href="index.html#services"     class="nav-link">Services</a>
+        <a href="index.html#process"      class="nav-link">How It Works</a>
+        <a href="index.html#testimonials" class="nav-link">Results</a>
+        <a href="index.html#pricing"      class="nav-link">Pricing</a>
+        <a href="recipes.html"            class="nav-link active">Recipes</a>
+        <a href="forms.html"              class="nav-link">Forms</a>
+      </nav>
+
+      <a href="index.html#contact" class="hidden md:inline-flex btn-gold px-5 py-2.5 rounded">Book Free Call</a>
+
+      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+        <span id="ham-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6H19M3 11H19M3 16H19" stroke="#F0F0F0" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span id="close-icon" class="hidden">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 5L17 17M17 5L5 17" stroke="#F0F0F0" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="hidden md:hidden px-6 pb-5 flex-col gap-1 border-t" style="border-color:#1E1E1E; background:#0A0A0A;">
+      <a href="index.html#about"        class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E;">About</a>
+      <a href="index.html#services"     class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E;">Services</a>
+      <a href="index.html#process"      class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E;">How It Works</a>
+      <a href="index.html#pricing"      class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E;">Pricing</a>
+      <a href="recipes.html"            class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E; color:#AAFF00;">Recipes</a>
+      <a href="forms.html"              class="nav-link py-3 mobile-nav-link">Forms</a>
+      <a href="index.html#contact" class="btn-gold px-5 py-3 rounded text-center mt-4">Book Free Call</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20" style="background:#0A0A0A; border-bottom:1px solid #1E1E1E;">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="label-chip mb-5 reveal">REVERE Training Kitchen</div>
+      <h1 class="font-display font-semibold reveal" style="font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1.0; letter-spacing: -0.02em; transition-delay:0.1s;">
+        High Protein.<br/><em style="color:#AAFF00; font-style:italic;">Low Calorie.</em>
+      </h1>
+      <p class="text-text-secondary text-sm leading-[1.85] mt-5 max-w-lg reveal" style="transition-delay:0.18s;">
+        Recipes built around performance. Every dish is designed to fuel your training, protect your muscle, and keep you on track — without sacrificing taste.
+      </p>
+    </div>
+  </section>
+
+  <!-- RECIPES GRID -->
+  <section class="py-16 md:py-24" style="background:#0A0A0A;">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- RECIPE CARD: Chicken Crunchwraps -->
+        <a href="recipes/chicken-crunchwraps.html" class="recipe-card rounded-xl overflow-hidden reveal group">
+          <div class="card-thumb">
+            <img src="https://placehold.co/600x440/111111/AAFF00?text=Chicken+Crunchwraps" alt="High Protein Chicken Crunchwraps" />
+            <div class="absolute bottom-3 left-3 z-10">
+              <span class="label-chip" style="font-size:0.58rem; padding:3px 10px;">Meal Prep Friendly</span>
+            </div>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <p class="font-body font-medium uppercase text-muted mb-2" style="font-size:0.6rem; letter-spacing:0.18em;">Makes 3 Wraps</p>
+            <h2 class="font-display font-semibold text-text-primary text-2xl mb-3" style="letter-spacing:-0.01em; line-height:1.1;">High Protein Chicken Crunchwraps</h2>
+            <p class="text-text-secondary text-sm leading-[1.75] mb-5 flex-1">Crispy air-fried chicken, Caesar slaw, and garlic sauce wrapped up tight. 55g of protein per wrap — prep three at once and you're set for days.</p>
+            <div class="flex gap-2 flex-wrap mb-5">
+              <span class="macro-badge">594 cal</span>
+              <span class="macro-badge">55g protein</span>
+              <span class="macro-badge">59g carbs</span>
+              <span class="macro-badge">17g fat</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-lime font-body font-semibold uppercase" style="font-size:0.7rem; letter-spacing:0.1em; color:#AAFF00;">
+              View Recipe
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5H9.5M6 2L9.5 5.5L6 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- COMING SOON placeholder — remove when new recipes are added -->
+        <div class="recipe-card rounded-xl overflow-hidden reveal opacity-40" style="transition-delay:0.12s; pointer-events:none;">
+          <div class="card-thumb">
+            <div style="width:100%; height:220px; background:#111111; display:flex; align-items:center; justify-content:center;">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="opacity:0.3;"><circle cx="16" cy="16" r="14" stroke="#AAFF00" stroke-width="1.5"/><path d="M16 10V16L20 20" stroke="#AAFF00" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="font-body font-medium uppercase text-muted mb-2" style="font-size:0.6rem; letter-spacing:0.18em;">Coming Soon</p>
+            <h2 class="font-display font-semibold text-text-primary text-2xl mb-3" style="letter-spacing:-0.01em;">More recipes dropping soon</h2>
+            <p class="text-text-secondary text-sm leading-[1.75]">New high-protein recipes added regularly. Check back soon.</p>
+          </div>
+        </div>
+
+        <div class="recipe-card rounded-xl overflow-hidden reveal opacity-40" style="transition-delay:0.24s; pointer-events:none;">
+          <div class="card-thumb">
+            <div style="width:100%; height:220px; background:#111111; display:flex; align-items:center; justify-content:center;">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="opacity:0.3;"><circle cx="16" cy="16" r="14" stroke="#AAFF00" stroke-width="1.5"/><path d="M16 10V16L20 20" stroke="#AAFF00" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="font-body font-medium uppercase text-muted mb-2" style="font-size:0.6rem; letter-spacing:0.18em;">Coming Soon</p>
+            <h2 class="font-display font-semibold text-text-primary text-2xl mb-3" style="letter-spacing:-0.01em;">More recipes dropping soon</h2>
+            <p class="text-text-secondary text-sm leading-[1.75]">New high-protein recipes added regularly. Check back soon.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0A0A0A; border-top:1px solid #1E1E1E;">
+    <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <div class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #AAFF00 0%, #88CC00 100%);">
+          <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0A0A0A" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0A0A0A"/></svg>
+        </div>
+        <span class="font-display font-semibold" style="font-size:0.9rem; letter-spacing:0.12em; color:#F0F0F0;">REVERE <span style="color:#AAFF00;">FITNESS</span></span>
+      </div>
+      <p style="color:#555555; font-size:0.72rem;">© 2026 Revere Fitness. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const hamIcon   = document.getElementById('ham-icon');
+    const closeIcon = document.getElementById('close-icon');
+    hamburger.addEventListener('click', () => {
+      const open = !mobileNav.classList.contains('hidden');
+      mobileNav.classList.toggle('hidden');
+      hamIcon.classList.toggle('hidden', !open);
+      closeIcon.classList.toggle('hidden', open);
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => {
+      mobileNav.classList.add('hidden');
+      hamIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+    }));
+
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
