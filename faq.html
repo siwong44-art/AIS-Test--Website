@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Revere Fitness</title>
+  <link rel="icon" type="image/jpeg" href="brand_assets/REVERELOGO.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base:     '#0A0A0A',
+            surface:  '#111111',
+            elevated: '#1A1A1A',
+            border:   '#1E1E1E',
+            lime:     '#AAFF00',
+            'lime-light': '#CCFF00',
+            'text-primary':   '#F0F0F0',
+            'text-secondary': '#888888',
+            muted:            '#555555',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garant"', 'Georgia', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0A0A0A;
+      color: #F0F0F0;
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .nav-glass {
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(30, 30, 30, 0.8);
+    }
+    .nav-link {
+      color: #888888;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.15s ease;
+    }
+    .nav-link:hover { color: #F0F0F0; }
+    .nav-link.active { color: #AAFF00; }
+    .nav-link:focus-visible { outline: 2px solid #AAFF00; outline-offset: 3px; border-radius: 2px; }
+
+    .btn-gold {
+      background: #AAFF00;
+      color: #0A0A0A;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-gold:hover { background: #CCFF00; transform: translateY(-1px); }
+    .btn-gold:active { transform: translateY(0); }
+
+    .label-chip {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(170, 255, 0, 0.07);
+      border: 1px solid rgba(170, 255, 0, 0.2);
+      color: #AAFF00;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 13px;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Accordion */
+    .faq-group { border-bottom: 1px solid #1E1E1E; }
+    .faq-group:first-child { border-top: 1px solid #1E1E1E; }
+
+    .faq-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      color: #F0F0F0;
+    }
+    .faq-btn:hover .faq-question { color: #AAFF00; }
+    .faq-btn:focus-visible { outline: 2px solid #AAFF00; outline-offset: 4px; border-radius: 2px; }
+
+    .faq-question {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #F0F0F0;
+      line-height: 1.5;
+      transition: color 0.15s ease;
+    }
+
+    .faq-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid #2A2A2A;
+      background: #111111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.3s ease;
+    }
+    .faq-btn[aria-expanded="true"] .faq-icon {
+      background: rgba(170,255,0,0.1);
+      border-color: rgba(170,255,0,0.35);
+      transform: rotate(45deg);
+    }
+    .faq-icon svg { display: block; }
+
+    .faq-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.32s ease;
+    }
+    .faq-body.open { grid-template-rows: 1fr; }
+    .faq-inner {
+      overflow: hidden;
+    }
+    .faq-answer {
+      padding-bottom: 20px;
+      color: #888888;
+      font-size: 0.9rem;
+      line-height: 1.85;
+      max-width: 680px;
+    }
+
+    /* Section heading */
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #AAFF00;
+      margin-bottom: 6px;
+    }
+    .section-heading {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 600;
+      color: #F0F0F0;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #1E1E1E; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #AAFF00; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Revere Fitness home">
+        <div class="w-7 h-7 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #AAFF00 0%, #88CC00 100%);">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0A0A0A" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0A0A0A"/></svg>
+        </div>
+        <div>
+          <span class="font-display font-semibold text-text-primary" style="font-size:1.05rem; letter-spacing:0.12em;">REVERE</span>
+          <span class="font-body font-medium text-muted uppercase block" style="font-size:0.6rem; letter-spacing:0.22em; margin-top:-3px; line-height:1;">FITNESS</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html#about"        class="nav-link">About</a>
+        <a href="index.html#services"     class="nav-link">Services</a>
+        <a href="index.html#process"      class="nav-link">How It Works</a>
+        <a href="index.html#testimonials" class="nav-link">Results</a>
+        <a href="index.html#pricing"      class="nav-link">Pricing</a>
+        <a href="recipes.html"            class="nav-link">Recipes</a>
+        <a href="apps.html"               class="nav-link">Apps</a>
+        <a href="faq.html"                class="nav-link active">FAQ</a>
+        <a href="forms.html"              class="nav-link">Forms</a>
+      </nav>
+
+      <a href="index.html#contact" class="hidden md:inline-flex btn-gold px-5 py-2.5 rounded">Book Free Call</a>
+
+      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+        <span id="ham-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6H19M3 11H19M3 16H19" stroke="#F0F0F0" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span id="close-icon" class="hidden">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 5L17 17M17 5L5 17" stroke="#F0F0F0" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="hidden md:hidden px-6 pb-5 flex-col gap-1 border-t" style="border-color:#1E1E1E; background:#0A0A0A;">
+      <a href="index.html#about"        class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E;">About</a>
+      <a href="index.html#services"     class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E;">Services</a>
+      <a href="index.html#process"      class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E;">How It Works</a>
+      <a href="index.html#pricing"      class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E;">Pricing</a>
+      <a href="recipes.html"            class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E;">Recipes</a>
+      <a href="apps.html"               class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E;">Apps</a>
+      <a href="faq.html"                class="nav-link py-3 border-b mobile-nav-link" style="border-color:#1E1E1E; color:#AAFF00;">FAQ</a>
+      <a href="forms.html"              class="nav-link py-3 mobile-nav-link">Forms</a>
+      <a href="index.html#contact" class="btn-gold px-5 py-3 rounded text-center mt-4">Book Free Call</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20" style="background:#0A0A0A; border-bottom:1px solid #1E1E1E;">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="label-chip mb-5 reveal">FAQ</div>
+      <h1 class="font-display font-semibold reveal" style="font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1.0; letter-spacing: -0.02em; transition-delay:0.1s;">
+        Frequently Asked<br/><em style="color:#AAFF00; font-style:italic;">Questions.</em>
+      </h1>
+      <p class="text-text-secondary text-sm leading-[1.85] mt-5 max-w-lg reveal" style="transition-delay:0.18s;">
+        Everything you need to know before your first session.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ CONTENT -->
+  <section class="py-16 md:py-24" style="background:#0A0A0A;">
+    <div class="max-w-3xl mx-auto px-6">
+
+      <!-- Getting Started -->
+      <div class="mb-14 reveal">
+        <p class="section-label">01</p>
+        <h2 class="section-heading">Getting Started</h2>
+        <div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">Do I need prior fitness experience to train with Revere Fitness?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Not at all. Whether you've never set foot in a gym or you're returning after years away, every program starts at your level. We build your foundation first — technique always comes before intensity.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">How do I get started?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Simply reach out through the contact page or book a free consultation. We'll talk about your goals, your history, and what you want to achieve. From there I'll build a program specifically for you.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">Do you offer a free consultation?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Yes. Before any commitment, we'll have a conversation about your goals, lifestyle, and what success looks like for you. No pressure, no sales pitch — just an honest conversation.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">Where are sessions held?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Sessions are available in person in the New Westminster and Burnaby area, or fully online through our virtual coaching program. Whichever works best for your life.</p></div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Training & Programming -->
+      <div class="mb-14 reveal" style="transition-delay:0.08s;">
+        <p class="section-label">02</p>
+        <h2 class="section-heading">Training & Programming</h2>
+        <div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">How do you build my program?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Every program starts with understanding you — your goals, your history, any injuries or limitations, and your schedule. From there I build a structured, periodized program that progresses intentionally over time. Nothing is random.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">How long before I see results?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Most clients notice improvements in strength, energy, and movement quality within the first 3–4 weeks. Visible physical changes typically follow between 6–12 weeks depending on consistency, nutrition, and sleep. Give me 30 days and you'll feel the difference.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">What does a typical session look like?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Every session includes a proper warm-up, focused resistance training tailored to your program, and a cool-down. We track every set, rep, and weight so progress is always measurable and intentional.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">Do you train people over 40?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Absolutely — it's one of my specialties. Training after 40 requires a smarter approach: longer warm-ups, appropriate recovery time, and programming that respects your joints while still delivering real results. The goal is to help you move better, feel stronger, and live longer.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">Do you train younger clients and youth?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Yes. I've trained clients from age 5 to 93. For younger clients the focus is movement quality, coordination, and building healthy habits early. For teens we introduce structured resistance training with an emphasis on technique and foundation.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">What if I have an injury or physical limitation?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">This is something we address in your initial consultation. Many clients come to me with existing injuries or movement limitations. Programs are designed around your body — not despite it.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">How many days a week will I train?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">This depends entirely on your goals, schedule, and recovery capacity. Most clients train 3–4 days per week. We'll find what works for your life and build from there.</p></div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Online Coaching -->
+      <div class="mb-14 reveal" style="transition-delay:0.12s;">
+        <p class="section-label">03</p>
+        <h2 class="section-heading">Online Coaching</h2>
+        <div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">How does online coaching work?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">You receive a fully customized training program delivered through an app or document. We check in regularly, track your progress, adjust the program as needed, and stay connected through messaging or video calls. You get a real coach — not just a PDF.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">Is online coaching as effective as in-person training?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">For the right person, absolutely. If you're self-motivated, have access to equipment, and communicate well, online coaching delivers the same quality programming and accountability as in-person sessions — with the flexibility to train on your schedule.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">What equipment do I need for online coaching?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">It depends on your program and goals. Many programs can be built around a basic home setup. We'll discuss what you have available and design accordingly.</p></div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Nutrition -->
+      <div class="mb-14 reveal" style="transition-delay:0.14s;">
+        <p class="section-label">04</p>
+        <h2 class="section-heading">Nutrition</h2>
+        <div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">Do you provide nutrition coaching?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">I provide practical nutrition guidance as part of your overall program — what to eat, when to eat, and how to support your training goals. For clinical or medical nutrition needs I'll refer you to a registered dietitian.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">Do I need to follow a strict diet?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">No. Sustainable results come from sustainable habits. We focus on practical, realistic nutrition strategies that fit your lifestyle — not extreme diets that don't last.</p></div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Pricing & Commitment -->
+      <div class="mb-14 reveal" style="transition-delay:0.16s;">
+        <p class="section-label">05</p>
+        <h2 class="section-heading">Pricing & Commitment</h2>
+        <div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">What pricing options do you offer?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Revere Fitness offers four options to fit your lifestyle and goals — Monthly, In-Person Private 1-on-1, Online Coaching, and Revere Bespoke for a fully custom experience. Visit the <a href="index.html#pricing" style="color:#AAFF00; text-decoration:underline; text-underline-offset:3px;">pricing page</a> for full details.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">Is there a long-term contract?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">No long-term contracts. I believe results and experience should keep you coming back — not a contract.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">What is your cancellation policy?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">I ask for 24 hours notice for cancellations. Life happens and I'm always reasonable — but consistent late cancellations affect your progress and your results.</p></div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Philosophy -->
+      <div class="mb-14 reveal" style="transition-delay:0.18s;">
+        <p class="section-label">06</p>
+        <h2 class="section-heading">Philosophy</h2>
+        <div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">What makes Revere Fitness different?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Most trainers focus on making sessions look impressive. I focus on making them work. Technique comes first, intensity is earned, and every program is built around your life — not a generic template. My clients are my resume. Their results are my reputation.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">What does Revere mean to you?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">To revere something means to hold it in deep respect. At Revere Fitness we revere the body, the process, and the commitment it takes to show up consistently. Training here isn't punishment — it's an act of self-respect.</p></div></div>
+          </div>
+
+          <div class="faq-group">
+            <button class="faq-btn" aria-expanded="false">
+              <span class="faq-question">What is your training philosophy in one sentence?</span>
+              <span class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1V10M1 5.5H10" stroke="#AAFF00" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faq-body"><div class="faq-inner"><p class="faq-answer">Train to be better at life — whatever that means for you.</p></div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Still Have Questions CTA -->
+      <div class="reveal" style="transition-delay:0.2s;">
+        <div class="rounded-2xl px-8 py-10 text-center" style="background:#111111; border:1px solid #1E1E1E;">
+          <p class="font-display font-semibold" style="font-size:clamp(1.8rem, 4vw, 2.6rem); letter-spacing:-0.01em; line-height:1.15; margin-bottom:10px;">
+            Still have questions?
+          </p>
+          <p class="text-text-secondary text-sm leading-[1.85] mb-8 max-w-sm mx-auto">
+            I'd love to hear from you.
+          </p>
+          <p class="font-display italic mb-8" style="font-size:1.4rem; color:#AAFF00;">— Simon</p>
+          <a href="index.html#contact" class="btn-gold inline-flex items-center gap-2 px-8 py-3.5 rounded">
+            Get in Touch
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5H11M7 2.5L11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0A0A0A; border-top:1px solid #1E1E1E;">
+    <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <div class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #AAFF00 0%, #88CC00 100%);">
+          <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0A0A0A" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0A0A0A"/></svg>
+        </div>
+        <span class="font-display font-semibold" style="font-size:0.9rem; letter-spacing:0.12em; color:#F0F0F0;">REVERE <span style="color:#AAFF00;">FITNESS</span></span>
+      </div>
+      <p style="color:#555555; font-size:0.72rem;">© 2026 Revere Fitness. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const hamIcon   = document.getElementById('ham-icon');
+    const closeIcon = document.getElementById('close-icon');
+    hamburger.addEventListener('click', () => {
+      const open = !mobileNav.classList.contains('hidden');
+      mobileNav.classList.toggle('hidden');
+      hamIcon.classList.toggle('hidden', !open);
+      closeIcon.classList.toggle('hidden', open);
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => {
+      mobileNav.classList.add('hidden');
+      hamIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+    }));
+
+    // Accordion
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body    = btn.nextElementSibling;
+        const isOpen  = btn.getAttribute('aria-expanded') === 'true';
+
+        // Close all others
+        document.querySelectorAll('.faq-btn').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          b.nextElementSibling.classList.remove('open');
+        });
+
+        // Toggle clicked
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          body.classList.add('open');
+        }
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
