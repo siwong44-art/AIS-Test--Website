@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chinese Poached Spot Prawns — REVERE Training Kitchen</title>
+  <link rel="icon" type="image/jpeg" href="../brand_assets/REVERELOGO.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base:     '#0A0A0A',
+            surface:  '#111111',
+            elevated: '#1A1A1A',
+            border:   '#1E1E1E',
+            lime:     '#AAFF00',
+            'text-primary':   '#F0F0F0',
+            'text-secondary': '#888888',
+            muted:            '#555555',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garant"', 'Georgia', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0A0A0A;
+      color: #F0F0F0;
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .nav-glass {
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(30, 30, 30, 0.8);
+    }
+    .nav-link {
+      color: #888888;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.15s ease;
+    }
+    .nav-link:hover { color: #F0F0F0; }
+    .nav-link.active { color: #AAFF00; }
+
+    .btn-gold {
+      background: #AAFF00;
+      color: #0A0A0A;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-gold:hover { background: #CCFF00; transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1px solid rgba(170, 255, 0, 0.35);
+      color: #AAFF00;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+    .btn-outline:hover {
+      background: rgba(170, 255, 0, 0.07);
+      border-color: rgba(170, 255, 0, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .label-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(170, 255, 0, 0.07);
+      border: 1px solid rgba(170, 255, 0, 0.2);
+      color: #AAFF00;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 13px;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .macro-stat {
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+      flex: 1;
+    }
+
+    .ingredient-card {
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(170,255,0,0.2), transparent);
+      margin: 48px 0;
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: rgba(170, 255, 0, 0.12);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+      width: 52px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #1E1E1E; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #AAFF00; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Revere Fitness home">
+        <div class="w-7 h-7 rounded flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #AAFF00 0%, #88CC00 100%);">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="#0A0A0A" opacity="0.4"/><path d="M7 4L10 5.75V8.25L7 10L4 8.25V5.75L7 4Z" fill="#0A0A0A"/></svg>
+        </div>
+        <div>
+          <span class="font-display font-semibold text-text-primary" style="font-size:1.05rem; letter-spacing:0.12em;">REVERE</span>
+          <span class="font-body font-medium text-muted uppercase block" style="font-size:0.6rem; letter-spacing:0.22em; margin-top:-3px; line-height:1;">FITNESS</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="../index.html#about"        class="nav-link">About</a>
+        <a href="../index.html#services"     class="nav-link">Services</a>
+        <a href="../index.html#process"      class="nav-link">How It Works</a>
+        <a href="../index.html#testimonials" class="nav-link">Results</a>
+        <a href="../index.html#pricing"      class="nav-link">Pricing</a>
+        <a href="../recipes.html"            class="nav-link active">Recipes</a>
+        <a href="../apps.html"               class="nav-link">Apps</a>
+        <a href="../faq.html"                class="nav-link">FAQ</a>
+        <a href="../forms.html"              class="nav-link">Forms</a>
+      </nav>
+
+      <a href="../index.html#contact" class="hidden md:inline-flex btn-gold px-5 py-2.5 rounded">Book Free Call</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="min-height: 520px; background:#0A0A0A;">
+    <div class="absolute inset-0">
+      <img src="https://www.nomss.com/wp-content/uploads/2022/05/spot-prawns-720x932.png"
+           alt="Chinese Poached Spot Prawns" class="w-full h-full object-cover opacity-65" style="object-position: center top;" aria-hidden="true" />
+      <div class="absolute inset-0" style="background: linear-gradient(to right, #0A0A0A 40%, rgba(10,10,10,0.5) 70%, transparent 100%), linear-gradient(to top, #0A0A0A 0%, transparent 45%);"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 flex flex-col justify-end pb-16 pt-36">
+      <div class="flex items-center gap-3 mb-4">
+        <a href="../recipes.html" class="flex items-center gap-1.5 text-muted hover:text-text-primary transition-colors" style="font-size:0.75rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase;">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M9 6H3M5.5 3L3 6L5.5 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          All Recipes
+        </a>
+        <span class="text-muted" style="font-size:0.7rem;">·</span>
+        <span class="label-chip" style="font-size:0.58rem; padding:3px 10px;">High Protein</span>
+        <span class="label-chip" style="font-size:0.58rem; padding:3px 10px;">5 Minutes</span>
+      </div>
+
+      <h1 class="font-display font-semibold reveal" style="font-size: clamp(2.4rem, 5vw, 4rem); line-height:1.0; letter-spacing:-0.02em; max-width: 700px;">
+        Chinese Poached<br/><em style="color:#AAFF00; font-style:italic;">Spot Prawns</em>
+        <span class="block" style="font-size:0.45em; letter-spacing:0.08em; color:#555555; font-style:normal; margin-top:10px;">白灼蝦</span>
+      </h1>
+      <p class="text-text-secondary text-sm mt-3 reveal" style="transition-delay:0.1s;">Serves 2–4 &nbsp;·&nbsp; REVERE Training Kitchen</p>
+    </div>
+  </section>
+
+  <!-- MACROS BAR -->
+  <section style="background:#111111; border-top:1px solid #1E1E1E; border-bottom:1px solid #1E1E1E;">
+    <div class="max-w-7xl mx-auto px-6 py-6">
+      <div class="flex flex-wrap gap-3 items-center justify-between">
+        <p class="font-body font-medium uppercase text-muted" style="font-size:0.62rem; letter-spacing:0.18em;">Nutrition Per Serving</p>
+        <div class="flex flex-wrap gap-3">
+          <div class="macro-stat">
+            <p class="font-display font-semibold text-text-primary" style="font-size:1.6rem; letter-spacing:-0.02em; line-height:1;">193</p>
+            <p class="font-body font-medium uppercase text-muted mt-0.5" style="font-size:0.58rem; letter-spacing:0.16em;">Calories</p>
+          </div>
+          <div class="macro-stat" style="border-color:rgba(170,255,0,0.2);">
+            <p class="font-display font-semibold" style="font-size:1.6rem; letter-spacing:-0.02em; line-height:1; color:#AAFF00;">45.6g</p>
+            <p class="font-body font-medium uppercase text-muted mt-0.5" style="font-size:0.58rem; letter-spacing:0.16em;">Protein</p>
+          </div>
+          <div class="macro-stat">
+            <p class="font-display font-semibold text-text-primary" style="font-size:1.6rem; letter-spacing:-0.02em; line-height:1;">0g</p>
+            <p class="font-body font-medium uppercase text-muted mt-0.5" style="font-size:0.58rem; letter-spacing:0.16em;">Carbs</p>
+          </div>
+          <div class="macro-stat">
+            <p class="font-display font-semibold text-text-primary" style="font-size:1.6rem; letter-spacing:-0.02em; line-height:1;">1.2g</p>
+            <p class="font-body font-medium uppercase text-muted mt-0.5" style="font-size:0.58rem; letter-spacing:0.16em;">Fat</p>
+          </div>
+        </div>
+        <!-- Timing chips -->
+        <div class="flex flex-wrap gap-2">
+          <div class="macro-stat" style="padding:10px 16px; flex:unset;">
+            <p class="font-display font-semibold text-text-primary" style="font-size:1.1rem; line-height:1;">4 min</p>
+            <p class="font-body font-medium uppercase text-muted mt-0.5" style="font-size:0.55rem; letter-spacing:0.14em;">Prep</p>
+          </div>
+          <div class="macro-stat" style="padding:10px 16px; flex:unset;">
+            <p class="font-display font-semibold text-text-primary" style="font-size:1.1rem; line-height:1;">1 min</p>
+            <p class="font-body font-medium uppercase text-muted mt-0.5" style="font-size:0.55rem; letter-spacing:0.14em;">Cook</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECIPE CONTENT -->
+  <div class="max-w-4xl mx-auto px-6 py-16 md:py-24">
+
+    <!-- PRAWNS -->
+    <div class="reveal">
+      <div class="flex items-center gap-4 mb-6">
+        <div style="width:32px; height:2px; background:#AAFF00; flex-shrink:0;"></div>
+        <h2 class="font-display font-semibold text-text-primary" style="font-size:1.75rem; letter-spacing:-0.01em;">The Poach</h2>
+      </div>
+
+      <div class="ingredient-card mb-6">
+        <p class="font-body font-medium uppercase text-muted mb-4" style="font-size:0.6rem; letter-spacing:0.18em;">Ingredients</p>
+        <ul class="space-y-2.5">
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 2 lbs fresh live spot prawns</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 6 cups water</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 2 tbsp sea salt</li>
+        </ul>
+      </div>
+
+      <div class="space-y-5">
+        <div class="flex gap-4 items-start">
+          <span class="step-num">01</span>
+          <p class="text-text-secondary text-sm leading-[1.85] pt-2">Bring 6 cups of water and sea salt to a rolling boil in a large pot over medium-high heat.</p>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="step-num">02</span>
+          <p class="text-text-secondary text-sm leading-[1.85] pt-2">Once boiling, add the live spot prawns all at once. Poach for approximately 30 seconds — they're done the moment they turn pink and curl.</p>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="step-num">03</span>
+          <p class="text-text-secondary text-sm leading-[1.85] pt-2">Use a ladle or tongs to transfer the cooked prawns immediately to a serving plate. Spread in a single layer so they stop cooking.</p>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="step-num">04</span>
+          <p class="text-text-secondary text-sm leading-[1.85] pt-2">Serve immediately with chili soy dipping sauce and steamed white rice.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- PRO TIP -->
+    <div class="reveal">
+      <div class="flex items-center gap-4 mb-6">
+        <div style="width:32px; height:2px; background:#AAFF00; flex-shrink:0;"></div>
+        <h2 class="font-display font-semibold text-text-primary" style="font-size:1.75rem; letter-spacing:-0.01em;">Pro Tips</h2>
+      </div>
+      <div class="ingredient-card">
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <span style="color:#AAFF00; font-weight:700; font-size:0.75rem; margin-top:2px; flex-shrink:0;">01</span>
+            <div>
+              <p class="font-body font-semibold text-text-primary text-sm mb-1">Timing is everything</p>
+              <p class="text-text-secondary text-sm leading-[1.85]">Spot prawns cook incredibly fast. Do not walk away — 30 seconds is all it takes. Any longer and they'll turn tough and rubbery. Pink = done.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3" style="border-top:1px solid #1E1E1E; padding-top:16px;">
+            <span style="color:#AAFF00; font-weight:700; font-size:0.75rem; margin-top:2px; flex-shrink:0;">02</span>
+            <div>
+              <p class="font-body font-semibold text-text-primary text-sm mb-1">Live is better</p>
+              <p class="text-text-secondary text-sm leading-[1.85]">BC spot prawns are one of the best prawns in the world — sweet, delicate, and buttery. Use them live for the best flavour. Fresh-killed also works, but avoid pre-frozen if possible.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3" style="border-top:1px solid #1E1E1E; padding-top:16px;">
+            <span style="color:#AAFF00; font-weight:700; font-size:0.75rem; margin-top:2px; flex-shrink:0;">03</span>
+            <div>
+              <p class="font-body font-semibold text-text-primary text-sm mb-1">Single layer matters</p>
+              <p class="text-text-secondary text-sm leading-[1.85]">Spreading prawns in a single layer on the plate stops the residual heat from continuing to cook them. Piling them will overcook the ones on the bottom.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- DIPPING SAUCE -->
+    <div class="reveal">
+      <div class="flex items-center gap-4 mb-6">
+        <div style="width:32px; height:2px; background:#AAFF00; flex-shrink:0;"></div>
+        <h2 class="font-display font-semibold text-text-primary" style="font-size:1.75rem; letter-spacing:-0.01em;">Chili Soy Dipping Sauce</h2>
+      </div>
+
+      <div class="ingredient-card mb-6">
+        <p class="font-body font-medium uppercase text-muted mb-4" style="font-size:0.6rem; letter-spacing:0.18em;">Ingredients</p>
+        <ul class="space-y-2.5">
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 3 tbsp light soy sauce</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 1 tsp sesame oil</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 1–2 fresh red chilies, finely sliced</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 1 clove garlic, minced</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 1 tsp sugar (optional)</li>
+          <li class="flex items-start gap-3 text-sm text-text-secondary"><span style="color:#AAFF00; font-weight:700; font-size:0.7rem; margin-top:2px;">—</span> 1 tbsp warm water</li>
+        </ul>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <span class="step-num">01</span>
+        <p class="text-text-secondary text-sm leading-[1.85] pt-2">Combine all ingredients in a small bowl and stir until sugar dissolves. Taste and adjust heat or salt. Serve in a small dish alongside the prawns.</p>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- PHOTO -->
+    <div class="reveal">
+      <div class="rounded-2xl overflow-hidden" style="max-height:500px;">
+        <img src="https://www.nomss.com/wp-content/uploads/2022/05/3-802x1038.png"
+             alt="Chinese Poached Spot Prawns plated"
+             class="w-full object-cover"
+             style="object-position: center top; max-height:500px;" />
+      </div>
+      <p style="font-size:0.68rem; color:#444; text-align:right; margin-top:8px;">Photo: nomss.com</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- SERVE WITH -->
+    <div class="reveal">
+      <div class="flex items-center gap-4 mb-6">
+        <div style="width:32px; height:2px; background:#AAFF00; flex-shrink:0;"></div>
+        <h2 class="font-display font-semibold text-text-primary" style="font-size:1.75rem; letter-spacing:-0.01em;">Serve With</h2>
+      </div>
+      <div class="ingredient-card">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <p class="font-body font-semibold uppercase mb-2" style="font-size:0.65rem; letter-spacing:0.12em; color:#AAFF00;">Classic Pairing</p>
+            <p class="text-text-secondary text-sm leading-[1.85]">Steamed jasmine or short-grain white rice. The neutral rice is perfect for absorbing the dipping sauce and letting the prawns shine.</p>
+          </div>
+          <div>
+            <p class="font-body font-semibold uppercase mb-2" style="font-size:0.65rem; letter-spacing:0.12em; color:#AAFF00;">Lower Carb Option</p>
+            <p class="text-text-secondary text-sm leading-[1.85]">Skip the rice and serve with steamed bok choy or Chinese broccoli (gai lan). The macros on these prawns are already exceptional — 45g protein at under 200 calories.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACK LINK -->
+    <div class="reveal mt-16 text-center">
+      <p class="text-muted mt-4" style="font-size:0.72rem;">
+        <a href="../recipes.html" class="hover:text-text-secondary transition-colors" style="color:#555555;">← Back to all recipes</a>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background:#0A0A0A; border-top:1px solid #1E1E1E;">
+    <div class="max-w-7xl mx-auto px-6 py-10 text-center">
+      <p class="font-display italic" style="color:#555555; font-size:0.85rem;">"Respect the body. Trust the process."</p>
+      <p style="color:#555555; font-size:0.72rem; margin-top:8px;">REVERE Training · reverefitness.ca</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
